@@ -1,4 +1,5 @@
 body {
+  background-color: black;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -7,14 +8,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#bigBody {
+  background-color: aquamarine;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  margin: 0%;
+  padding: 0%;
+  
+}
+
+#topSpace {
+  height: 2rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
- buttonActivityPage {
+ /* buttonActivityPage {
   justify-content: space-evenly;
- }
+ } */
 
 
 
@@ -46,7 +62,7 @@ code {
 
 
 #header {
-  background-color: black;
+  background-color: grey;
 }
 
 #actList {

@@ -106,14 +106,7 @@ const UserPage = ({ user, msgAlert, newActivity, newProject }) => {
 	return (
 		<>
         <div >
-		    <Segment 
-                raised
-                inverted 
-                color='yellow' 
-                // verticalAlign='middle' 
-                fluid
-                
-            >
+		    
                 <Container fluid>
                 <Image src={user.avatar} size='small' wrapped />
                 <MessagesModal
@@ -165,9 +158,6 @@ const UserPage = ({ user, msgAlert, newActivity, newProject }) => {
                         </Segment>
                     </Grid.Column>
                 </Grid>
-		    </Segment>
-         
-		
         </div>
 		</>
 	)

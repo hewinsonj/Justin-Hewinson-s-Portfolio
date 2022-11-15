@@ -21,6 +21,14 @@ const ProjectForm = (props) => {
                     />
                 </Form.Group>
                 <Form.Input 
+                        name='priority'
+                        id='priority'
+                        label='priority' 
+                        placeholder='(a), (b), (c), (d), (e), (f)'
+                        defaultValue= { project.priority}
+                        onChange= { handleChange }
+                    />
+                <Form.Input 
                         name='img1'
                         id='img1'
                         label='img1' 
@@ -28,6 +36,7 @@ const ProjectForm = (props) => {
                         defaultValue= { project.img1}
                         onChange= { handleChange }
                     />
+                
                 <Form.Input 
                         name='img2'
                         id='img2'

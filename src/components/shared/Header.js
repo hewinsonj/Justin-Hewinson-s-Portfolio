@@ -23,11 +23,10 @@ export default class Header extends Component {
 	  const { activeItem } = this.state
   
 	  return (
-		<div>
-
+		<>
 		{/* ----------------------------------------------------------------- */}
 		<Sticky>
-		  <Menu inverted pointing secondary  size='massive' id='header' >
+		  <Menu inverted secondary pointing size='massive' id='header' >
  					
 				<Menu.Item
 					name='honey badges'
@@ -38,6 +37,17 @@ export default class Header extends Component {
 						to='/' 
 					>
 						<Icon name='certificate'/>
+					</Link>
+				</Menu.Item>
+				<Menu.Item
+					name='feed page'
+					active={activeItem === 'feed page'}
+					onClick={this.handleItemClick}
+				>
+					<Link 
+						to={`/feed-page`}  
+					>
+						Feed
 					</Link>
 				</Menu.Item>
 			
@@ -77,17 +87,7 @@ export default class Header extends Component {
 						Search
 					</Link>
 				</Menu.Item> */}
-				<Menu.Item
-					name='feed page'
-					active={activeItem === 'feed page'}
-					onClick={this.handleItemClick}
-				>
-					<Link 
-						to={`feed-page/${this.props.user._id}`}  
-					>
-						Feed
-					</Link>
-				</Menu.Item>
+				
 				<Menu.Item
 					name='my public profile'
 					active={activeItem === 'my public profile'}
@@ -108,7 +108,7 @@ export default class Header extends Component {
 					<Link 
 						to='user-page' 
 					>
-						Private Profile
+						Project
 					</Link>
 				</Menu.Item>
 				<Menu.Item
@@ -152,7 +152,7 @@ export default class Header extends Component {
 			}
 		  </Menu>
 		  </Sticky>
-		</div>
+	</>
 
 		
 	  )
