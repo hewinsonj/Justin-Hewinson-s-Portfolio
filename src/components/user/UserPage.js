@@ -122,17 +122,7 @@ const UserPage = ({ user, msgAlert, newActivity, newProject }) => {
 
                 <Grid columns={3}>
                     <Grid.Column width={4}>
-                        <BadgesSegment 
-                            badges={badges} 
-                            badgeOwnerHandle={user.email} 
-                            mine={true} 
-                            activities={allMyActivities}
-                            setBadgeUpdate={setBadgeUpdate}
-                            completedCounts={completedCounts}
-                            badgeUpdate={badgeUpdate} 
-                            setBadges={setBadges}
 
-                        />
                     </Grid.Column>
                     <Grid.Column width={7}>
                             <Segment>
@@ -149,13 +139,7 @@ const UserPage = ({ user, msgAlert, newActivity, newProject }) => {
         
                     </Grid.Column>
                     <Grid.Column width={5} >
-                        <Segment raised textAlign='middle'>
-                            <h1 id='commFeed'>Community Tasks</h1>
-                            <div className='scrolling-group'>
-                            {/* {activitiesJSX} */}
-                            {/* {projectsJSX} */}
-                            </div>
-                        </Segment>
+
                     </Grid.Column>
                 </Grid>
         </div>

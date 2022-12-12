@@ -22,6 +22,7 @@ const ProjectForm = (props) => {
                 </Form.Group>
                 <Form.Input 
                         name='priority'
+                        required
                         id='priority'
                         label='priority' 
                         placeholder='(a), (b), (c), (d), (e), (f)'
@@ -81,6 +82,7 @@ const ProjectForm = (props) => {
                         defaultValue= { project.startDate}
                         onChange= { handleChange }
                     />
+                    </Form.Group>
                      <Form.Input 
                         name='link1'
                         id='link1'
@@ -133,7 +135,7 @@ const ProjectForm = (props) => {
                         value = { project.progress }
                         onChange= { handleChange }
                     />
-                </Form.Group>
+                
                 <Form.Field>
                     <Checkbox 
                         label='Mark Project as Private'

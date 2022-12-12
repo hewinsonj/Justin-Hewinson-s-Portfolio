@@ -26,36 +26,115 @@ export default class Header extends Component {
 		<>
 		{/* ----------------------------------------------------------------- */}
 		<Sticky>
-		  <Menu inverted secondary pointing size='massive' id='header' >
- 					
-				<Menu.Item
-					name='honey badges'
-					active={activeItem === 'honey badges'}
-					onClick={this.handleItemClick}
-				>
-					<Link 
-						to='/' 
-					>
-						<Icon name='certificate'/>
-					</Link>
-				</Menu.Item>
-				<Menu.Item
-					name='feed page'
-					active={activeItem === 'feed page'}
-					onClick={this.handleItemClick}
-				>
-					<Link 
-						to={`/feed-page`}  
-					>
-						Feed
-					</Link>
-				</Menu.Item>
-			
-			{this.props.user ? 
-			
-			// AUTHINTICATED OPTIONS 
-			<Menu.Menu position='right'>		
+			{/* <Grid>
+				<Grid.Column width={3}>
+					<Segment fluid>
+						
+						<Menu pointing secondary vertical fluid>
+							<Menu.Item
+							name='home'
+							active={activeItem === 'home'}
+							onClick={this.handleItemClick}
+							>
+								<Link to='/'>
+									<Icon name='certificate'/>
+								</Link>
+							</Menu.Item>
+							<Menu.Item
+							name='messages'
+							active={activeItem === 'messages'}
+							onClick={this.handleItemClick}
+							></Menu.Item>
+							<Menu.Item
+							name='friends'
+							active={activeItem === 'friends'}
+							onClick={this.handleItemClick}
+							></Menu.Item>
+						</Menu>
+						
+					</Segment>
+					{/* <div id='stretch'></div> 
+				</Grid.Column>
+			</Grid> */}
 
+
+		   <Menu inverted secondary pointing size='huge' id='header' >
+ 					
+
+				<Menu.Item
+					name='about me'
+					active={activeItem === 'about me'}
+					onClick={this.handleItemClick}
+				>
+					<Link 
+						to={`/about-me`}  
+					>
+						About me
+					</Link>
+				</Menu.Item>
+				<Menu.Item
+					name='search'
+					active={activeItem === 'search'}
+					onClick={this.handleItemClick}
+				>
+					<Link 
+						to={`/projects`}  
+					>
+						Projects
+					</Link>
+				</Menu.Item>
+				<Menu.Item
+					name='skills'
+					active={activeItem === 'skills'}
+					onClick={this.handleItemClick}
+				>
+					<Link 
+						to={`skills `} 
+					>
+						Skills
+					</Link>
+					
+				</Menu.Item>
+				<Menu.Item
+					name='my public profile'
+					active={activeItem === 'my public profile'}
+					onClick={this.handleItemClick}
+				>
+					<Link 
+						to={``} 
+					>
+						Goals
+					</Link>
+				</Menu.Item>
+				
+				<Menu.Item
+					name='resume'
+					active={activeItem === 'resume'}
+					onClick={this.handleItemClick}
+				>
+					{/* <Link 
+						to={`//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view`} 
+					>
+						Resume
+					</Link> */}
+					<a href="//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view" target="_blank">Resume</a>
+				</Menu.Item>
+				<Menu.Item
+					name='contact'
+					active={activeItem === 'contact'}
+					onClick={this.handleItemClick}
+				>
+					<Link 
+						to={`contact`} 
+					>
+						Contact
+					</Link>
+				</Menu.Item>
+				
+			{this.props.user ?  
+			
+			<Menu.Menu>		
+				
 				<Modal
 					onClose={() => this.handleClose()}
 					onOpen={() => this.setState({setOpen: true})}
@@ -76,41 +155,7 @@ export default class Header extends Component {
 						<CreateProject user={this.props.user} setNewProject={this.props.setNewProject}  msgAlert={this.props.msgAlert} handleClose={this.handleClose}  />
 					</Modal.Content>
         		</Modal>
-				{/* <Menu.Item
-					name='search'
-					active={activeItem === 'search'}
-					onClick={this.handleItemClick}
-				>
-					<Link 
-						to={`/activities`}  
-					>
-						Search
-					</Link>
-				</Menu.Item> */}
-				
-				<Menu.Item
-					name='my public profile'
-					active={activeItem === 'my public profile'}
-					onClick={this.handleItemClick}
-				>
-					<Link 
-						to={`user-public-page/${this.props.user._id}`} 
-					>
-						Public Profile
-					</Link>
-				</Menu.Item>
-				<Menu.Item
-					name='private profile'
-					active={activeItem === 'private profile'}
-					onClick={this.handleItemClick}
 
-				>
-					<Link 
-						to='user-page' 
-					>
-						Project
-					</Link>
-				</Menu.Item>
 				<Menu.Item
 					name='sign out'
 					active={activeItem === 'sign out'}
@@ -133,24 +178,16 @@ export default class Header extends Component {
 						Change Password
 					</Link>
 				</Menu.Item>
-			</Menu.Menu>
 
-			: 
-			// UNAUTHINTICATED OPTIONS
-			null
+			</Menu.Menu> 
 
-			// <Menu.Menu position='right'>	
-			// 	<>
-			// 		<Menu.Item
-			// 			name='user access'
-			// 			active={activeItem === 'user access'}
-			// 			onClick={this.handleItemClick}
-			// 			href='sign-page'
-			// 		></Menu.Item>
-			// 	</>
-			// </Menu.Menu>
-			}
-		  </Menu>
+			:  
+			
+				null
+
+
+			 } 
+		   </Menu> 
 		  </Sticky>
 	</>
 

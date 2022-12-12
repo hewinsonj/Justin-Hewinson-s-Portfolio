@@ -3,17 +3,16 @@ import LoadingScreen from "../shared/LoadingPage"
 import { Container } from "semantic-ui-react"
 
 
-const MyProjects = ({allMyProjects, msgAlert, user, addProject}) => {
+const MyProjects = ({allProjects, msgAlert, user, addProject}) => {
 
 
-    const myProjectsJSX = allMyProjects ? 
-    allMyProjects.map((project) => (
+    const myProjectsJSX = allProjects ? 
+    allProjects.map((project) => (
             <ProjectSegment 
             key={project.id} 
             project={project} 
             user={user} 
             msgAlert={msgAlert} 
-            mine={true} 
             addProject={(type)=>addProject(type)}
             />
         ))

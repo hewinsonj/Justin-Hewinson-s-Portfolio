@@ -20,6 +20,12 @@ import ShowActivity from './components/activities/ShowActivity'
 import IndexActivity from './components/activities/IndexActivity'
 import ShowProject from './components/projects/ShowProject'
 import IndexProject from './components/projects/IndexProject'
+import AboutMe from './components/NewComponents/AboutMe'
+import LandingPage from './components/NewComponents/LandingPage'
+import CreateAccount from './components/NewComponents/CreateAccount'
+import Projects from './components/NewComponents/Projects'
+import Contact from './components/NewComponents/Contact'
+import Skills from './components/NewComponents/Skills'
 import {  Button, Segment, Grid, Label, Icon, Image, Modal, Ref, Form, Container, Sidebar, Menu, Checkbox } from 'semantic-ui-react'
 
 
@@ -76,57 +82,14 @@ const App = (triggerRefresh) => {
 					deleteAlert={deleteAlert}
 				/>
 			))}
-			{/* <UserPublicPage user={user} msgAlert={msgAlert} setNewActivity={setNewActivity} setNewProject={setNewProject}/> */}
+
 			<>
 			
-
-			
-				{/* <Sidebar.Pushable 
-					as={Segment} 
-					vertical>
-					<Sidebar
-						as={Menu}
-						animation='overlay'
-						icon='labeled'
-						inverted
-						onHide={() => setVisible(false)}
-						vertical
-						visible={visible}
-						width='very thin'
-						target={segmentRef}
-					>
-						<Menu.Item as='a'>
-						<Link to='/' >
-							
-								<Icon name='home' />
-								Home
-							
-						</Link>
-						</Menu.Item>
-						<Menu.Item as='a'>
-						<Icon name='gamepad' />
-						Games
-						</Menu.Item>
-						<Menu.Item as='a'>
-						<Icon name='camera' />
-						Channels
-						</Menu.Item>
-						<Link to={`/feed-page`} >
-							<Menu.Item	name='feed page' as='a'>
-								<Icon name='smile outline'/>
-								About Me
-							</Menu.Item>
-						</Link>
-					</Sidebar>
-					<Sidebar.Pusher> */}
 					<Header user={user} msgAlert={msgAlert} setNewActivity={setNewActivity} setNewProject={setNewProject}/>
 							<Ref innerRef={segmentRef} >
 								<Routes>
-									<Route path='/' element={<Home user={user} msgAlert={msgAlert} setUser={setUser} />} />
-									{/* <Route
-										path='/sign-up'
-										element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
-									/> */}
+									{/* <Route path='/' element={<Home user={user} msgAlert={msgAlert} setUser={setUser} />} /> */}
+
 									<Route 
 										path='/user-page/' 
 										element={<UserPage msgAlert={msgAlert} user={user} newActivity={newActivity} newProject={newProject} />} 
@@ -148,6 +111,12 @@ const App = (triggerRefresh) => {
 										}
 									/>
 									<Route
+										path='/create-account'
+										element={
+											<CreateAccount msgAlert={msgAlert}/>
+										}
+									/>
+									<Route
 										path='/sign-page'
 										element={<SignPage msgAlert={msgAlert} setUser={setUser} />}
 									/>
@@ -163,6 +132,18 @@ const App = (triggerRefresh) => {
 										path='/feed-page'
 										element={
 											<FeedPage msgAlert={msgAlert}/>
+									}
+									/>
+									<Route
+										path='/'
+										element={
+											<LandingPage msgAlert={msgAlert}/>
+									}
+									/>
+									<Route
+										path='/about-me'
+										element={
+											<AboutMe msgAlert={msgAlert}/>
 									}
 									/>
 									<Route
@@ -186,7 +167,19 @@ const App = (triggerRefresh) => {
 									<Route
 										path='/projects'
 										element={
-											<IndexProject msgAlert={msgAlert} user={user} />
+											<Projects msgAlert={msgAlert} />
+									}
+									/>
+									<Route
+										path='/contact'
+										element={
+											<Contact msgAlert={msgAlert} />
+									}
+									/>
+									<Route
+										path='/skills'
+										element={
+											<Skills msgAlert={msgAlert} />
 									}
 									/>
 									{/* <Route
@@ -199,8 +192,6 @@ const App = (triggerRefresh) => {
 									/> */}
 								</Routes>
 							</Ref>
-					{/* </Sidebar.Pusher>
-				</Sidebar.Pushable> */}
 			</>	
 		</Fragment>
 	)

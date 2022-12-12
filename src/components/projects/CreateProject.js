@@ -7,6 +7,7 @@ const CreateProject = ({ user,  msgAlert, handleClose, setNewProject }) => {
 
     const defaultProject = {
         projTitle: '',
+        priority: '',
         img1: '',
         img2: '',
         img3: '',

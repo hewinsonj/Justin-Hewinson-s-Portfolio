@@ -78,10 +78,7 @@ const ProjectSegment = ({ project, msgAlert, user, mine}) => {
         <Segment id='actListItems'>
             <Container fluid>
             <Grid>
-                <Grid.Column width={4} verticalAlign='middle' textAlign='center'>
-                </Grid.Column>
 
-                <Grid.Column width={8} textAlign='middle' verticalAlign='center'>
                     <Link to={`/projects/${project._id}`}><h1>{project.projTitle}</h1></Link>
                     <List horizontal size='huge'>
                         <List.Item >Img1: {project.img1}</List.Item>
@@ -95,10 +92,8 @@ const ProjectSegment = ({ project, msgAlert, user, mine}) => {
                         <List.Item >Link 3: {project.link3}</List.Item>
                         <List.Item >Role: {project.role}</List.Item>
                         <List.Item >Client: {project.client}</List.Item>
-
                     </List>
-                </Grid.Column>
-                <Grid.Column width={4} verticalAlign='center' textAlign='middle'>
+                {/* <Grid.Column width={4} verticalAlign='center' textAlign='middle'>
                     <Progress percent={percent} indicating />
                     { mine ? 
                     <>
@@ -118,7 +113,7 @@ const ProjectSegment = ({ project, msgAlert, user, mine}) => {
                     :
                     null
                     } 
-                </Grid.Column>
+                </Grid.Column> */}
             </Grid>
             </Container>
         </Segment>

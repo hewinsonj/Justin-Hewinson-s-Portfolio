@@ -9,7 +9,7 @@ body {
 }
 
 #bigBody {
-  background-color: aquamarine;
+  background-color: rgba(100, 110, 100, 1);
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -17,6 +17,62 @@ body {
   margin: 0%;
   padding: 0%;
   
+}
+
+#landingback {
+  background-image: url(https://i.imgur.com/abbkxj3.jpg);
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 10rem;
+  padding: 2rem;
+  font-size: 7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Steelfish Rg', 'helvetica neue',
+           helvetica, arial, sans-serif;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  width: 100%;
+  /* text-align: center;
+  align-items: center;
+  justify-content: center; */
+  position: relative;
+  animation-name: bground;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+  
+
+}
+
+@keyframes bground {
+    0%   {background-position: 0px;}
+    25%  {background-position: 4px 0 0px 0;}
+    50%  {background-position: 16px 0 0px 0;}
+    75%  {background-position: 32px 0 0px 0;}
+    100% {background-position: 120px 0 0px 0;}
+  }
+
+#stretch {
+  height: 100rem;
+}
+
+#picOme {
+  height: 30rem;
+  border-radius: 5rem;
+}
+
+#picOstuff {
+  height: 25rem;
+  border-radius: 5rem;
+}
+
+#picObar {
+  height: 35rem;
+  border-radius: 5rem;
 }
 
 #topSpace {

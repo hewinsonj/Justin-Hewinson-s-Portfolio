@@ -12,7 +12,7 @@ import { useNavigate, Link } from 'react-router-dom'
 
 
 
-const LoginPage = (props) => {
+const CreateAccount = (props) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -141,4 +141,4 @@ return (
   </Grid>
 )}
 
-export default LoginPage
+export default CreateAccount

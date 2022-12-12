@@ -19,7 +19,7 @@ const IndexProject = ({ user, msgAlert }) => {
     const handleChange = (e) => {
         let projects = allProjects
         setFilterProjects(projects.filter(
-        a => a.project.includes(e.target.value) || a.type.includes(e.target.value))
+        a => a.description.includes(e.target.value))
         )
     }
     
@@ -51,7 +51,7 @@ const IndexProject = ({ user, msgAlert }) => {
     // })
 
     const Index = filterProjects.map(projects => (
-        <Segment key={ projects.id } inverted color='yellow' class="capitalize-me">
+        <Segment key={ projects.id } inverted class="capitalize-me">
             <Grid centered stretched>
                 <Grid.Row padded>
                     <h1>{projects.projTitle}</h1>
@@ -116,10 +116,10 @@ const IndexProject = ({ user, msgAlert }) => {
 
 return (
     <>
-        <Segment inverted color='yellow' class="capitalize-me">
+        <Segment inverted class="capitalize-me">
             <Grid centered stretched>
                 <Grid.Row padded>
-                        <Segment raised >
+                        
                         <h1>All Projects</h1>
                         <h2>Check out my work </h2>
                         <div className="headerSearch">
@@ -130,14 +130,14 @@ return (
 
                     <Form >
                         <Form.Input
-                            placeholder='Type  here  to  filter  results  by  activity  name  or  type'
+                            placeholder='Type  here  to  filter  results  by  language'
                             onChange={handleChange}
                             >
                             
                         </Form.Input>
                     </Form>
                     </div>
-                        </Segment>
+                      
                 </Grid.Row>
             </Grid>
         </Segment>

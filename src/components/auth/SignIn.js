@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
-import {  Segment, Form, Container, Input } from 'semantic-ui-react'
+import {  Segment, Form, Container, Input, Button } from 'semantic-ui-react'
 
 
 
@@ -59,11 +59,11 @@ const SignIn = (props) => {
         >
             <Segment  
                 padded='very'  
-                inverted color='yellow' 
-                verticalAlign='middle' 
-                id="segment"
+                inverted 
+                color='black' 
+
             >
-                <h3 id="signOutText">Sign In</h3>
+                <h3>Sign In</h3>
                 <Form  onSubmit={onSignIn}>
                     <Form.Field>
                         <Form.Input 
@@ -102,7 +102,11 @@ const SignIn = (props) => {
                     >
                         Submit
                     </Form.Button>
+                     <Link to='/create-account'>
+                        <Button inverted secondary>Create new account</Button>
+                </Link>
                 </Form>
+                
             </Segment>
         </Container>
     </div>
