@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
     // YOU MUST CHANGE PRODUCTION URL WHEN DEPLOYING
-	// production: 'https://honeybadgesapi.fly.dev',
+	production: 'https://hewinson-portfolio-api.fly.dev',
 	development: 'http://localhost:8000',
 }
 
