@@ -38,10 +38,10 @@ const AboutMe  = () => {
                             Musician/Audio Engineer - Had to learn to utilize various types of equipment and technologies and instilled the importance of mastering the fundamentals of a craft within me at a young age
                         </List.Item>
                         <List.Item>
-                            Gamer - Games have taught me crutial ways of problem solving and have been a big motivation for learning to code and create unique user experiences
+                            Gamer - Games have taught me crucial ways of problem solving and have been a big motivation for learning to code and create unique user experiences
                         </List.Item>
                         <List.Item>
-                            Bartender - The service industry fostered strong work ethic and the ability to communicate clearly and work cohesivly with a large team 
+                            Bartender - The service industry fostered strong work ethic and the ability to communicate clearly and work cohesively with a large team 
                         </List.Item>
                         <List.Item>
                             Handy Man - Completing minor/major renovations on my house over the years has given me a profound respect for trusting the process and measuring twice to cut once
