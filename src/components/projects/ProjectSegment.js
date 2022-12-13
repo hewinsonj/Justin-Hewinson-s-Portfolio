@@ -125,20 +125,34 @@ const ProjectSegment = ({ project, msgAlert, user}) => {
                     </Grid.Column>
                     <Grid.Column width={3}>
                         
-                        <Grid.Row verticalAlign='middle' fluid textAlign='center'>
+                        <Grid.Row fluid>
                            
-                                <h2> <Icon name='caret right' /><a href={`${project.link1}`} target="_blank">Front-end</a></h2>
+                                <h2> <Icon name='caret right' /><a href={`${project.link1}`} target="_blank">
+                                    { project.link2.length > 1 ?
+                                    'Front-end'
+                                    :
+                                    'Repo'
+                                    }
+                                </a></h2>
+                                { project.link2.length > 1 ?
+                                    <h2> <Icon name='caret right' /><a href={`${project.link2}`} target="_blank">Back-end</a></h2>
+                                    :
+                                    null
+                                }
+                                
+                                { project.link3 ?
+                                    <h2> <Icon name='caret right' /><a href={`${project.link3}`} target="_blank">Deployed</a></h2>
+                                    :
+                                    null
+                                }
                            
-                                <h2> <Icon name='caret right' /><a href={`${project.link2}`} target="_blank">Back-end</a></h2>
-                           
-                       
-                                <h2> <Icon name='caret right' /><a href={`${project.link3}`} target="_blank">Deployed</a></h2>
+                                
                           
                         </Grid.Row>
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
-                        <List.Item ><h4>{project.description}</h4></List.Item>
+                        <List.Item ><h3>{project.description}</h3></List.Item>
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>

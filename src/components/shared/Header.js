@@ -95,7 +95,7 @@ export default class Header extends Component {
 					</Link>
 					
 				</Menu.Item>
-				<Menu.Item
+				{/* <Menu.Item
 					name='my public profile'
 					active={activeItem === 'my public profile'}
 					onClick={this.handleItemClick}
@@ -105,7 +105,7 @@ export default class Header extends Component {
 					>
 						Goals
 					</Link>
-				</Menu.Item>
+				</Menu.Item> */}
 				
 				<Menu.Item
 					name='resume'

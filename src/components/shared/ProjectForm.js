@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Checkbox, Form, Container, Icon} from 'semantic-ui-react'
+import {Button, Checkbox, Form, Container, Icon, Grid} from 'semantic-ui-react'
 
 const ProjectForm = (props) => {
 
@@ -53,8 +53,7 @@ const ProjectForm = (props) => {
                         placeholder='img3'
                         defaultValue= { project.img3}
                         onChange= { handleChange }
-                    />
-                <Form.Group inline>
+                    />            
                     <Form.Input 
                         required
                         // width={6}
@@ -62,9 +61,13 @@ const ProjectForm = (props) => {
                         name='description'
                         id='description'
                         label='description'
+                        placeholder='description'
+                        fluid
                         value = { project.description }
                         onChange= { handleChange }
                     />
+                <Form.Group inline>
+                    
                      <Form.Input 
                         name='finishDate'
                         id='finishDate'

@@ -14,8 +14,8 @@ const LandingPage  = () => {
  
     return(
     <>
-        <Grid>
-            <Grid.Row>
+        <Grid padded>
+            <Grid.Row >
         <div id='landingback'>
             Welcome to Justin Hewinson<Link to={`sign-in`} >'</Link>s
         </div>
