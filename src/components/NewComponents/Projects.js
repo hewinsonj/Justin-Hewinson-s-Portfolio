@@ -14,14 +14,25 @@ import MyProjects from '../projects/MyProjects'
 
 
 
-const Projects = ({ msgAlert, newProject }) => {
+const Projects = ({ msgAlert, newProject, user }) => {
 
     const [allProjects, setAllProjects] = useState(null)
+    const [filterProjects, setFilterProjects] = useState([])
+    const [searchText, setSearchText] = useState([])
+
+
+    const handleChange = (e) => {
+        let projects = allProjects
+        setFilterProjects(projects.filter(
+        a => a.description.includes(e.target.value))
+        )
+    }
 
     useEffect(() => {
         getAllProjects()
             .then(res => {
                 setAllProjects(res.data.projects.reverse())
+                setFilterProjects(res.data.projects.reverse())
             })
             .catch(error => {
                 msgAlert({
@@ -40,16 +51,17 @@ const Projects = ({ msgAlert, newProject }) => {
 		    
                 <Divider />
 
-                <Grid columns={3}>
-                    <Grid.Column width={4}>
-
-                    </Grid.Column>
-                    <Grid.Column width={7}>
+                <Grid centered>
+  
+                    <Grid.Column width={13}>
                             <Segment>
-                                <h2 id='yourActs'>Your Projects</h2>
+                                <h2 id='yourActs'>My Projects</h2>
                                 <MyProjects
                                     allProjects={allProjects}
                                     msgAlert={msgAlert}
+                                    user={user}
+                                    filterProjects={filterProjects}
+                                    handleChange={handleChange}
                                     // completedCounts={completedCounts}
                                     // setCompletedCounts={setCompletedCounts}
                                     // setBadgeUpdate={setBadgeUpdate}
@@ -57,9 +69,7 @@ const Projects = ({ msgAlert, newProject }) => {
                             </Segment>          
         
                     </Grid.Column>
-                    <Grid.Column width={5} >
 
-                    </Grid.Column>
                 </Grid>
         </div>
 		</>

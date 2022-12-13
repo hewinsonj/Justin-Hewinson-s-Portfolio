@@ -1,13 +1,13 @@
 import ProjectSegment from "./ProjectSegment"
 import LoadingScreen from "../shared/LoadingPage"
-import { Container } from "semantic-ui-react"
+import { Container, Form } from "semantic-ui-react"
 
 
-const MyProjects = ({allProjects, msgAlert, user, addProject}) => {
+const MyProjects = ({allProjects, filterProjects, msgAlert, user, addProject, handleChange}) => {
 
 
     const myProjectsJSX = allProjects ? 
-    allProjects.map((project) => (
+    filterProjects.map((project) => (
             <ProjectSegment 
             key={project.id} 
             project={project} 
@@ -20,7 +20,16 @@ const MyProjects = ({allProjects, msgAlert, user, addProject}) => {
         <LoadingScreen />
 
     return(
-        <div className='scrolling-group'>
+        <div >
+             <Form>
+                <Form.Input
+                    placeholder='Type  here  to  filter  results  by  languages'
+                    onChange={handleChange}
+                    
+                    >
+                    
+                </Form.Input>
+            </Form>
             {myProjectsJSX}
         </div>
     )

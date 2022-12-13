@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import {  Button, Segment, Grid, Feed, Icon, Image, Progress, List, Divider, Container } from 'semantic-ui-react'
+import {  Button, Segment, Grid, Feed, Icon, Image, Progress, List, Divider, Container, Modal } from 'semantic-ui-react'
 import { signOut } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 import { updateProject } from '../../api/project'
 
 
-const ProjectSegment = ({ project, msgAlert, user, mine}) => {
+const ProjectSegment = ({ project, msgAlert, user}) => {
     //declare pieces of state --> grab current progress from activity object and set it as initial state. Set state variables to track when progress is being saved and whether to show the save button
     const [percent, setPercent] = useState(project.progress)
     const [percentChangeSaving, setPercentChangeSaving] = useState(false)
     const [showSaveButton, setShowSaveButton] = useState(false)
+    const [open, setOpen] = useState(false)
 
     //functions to increment/decrement progress when user clicks --> this only changes the progress bar. Nothing is changed on the backend until "save" is hit. Progress cannot be above 100 or below 0
     
@@ -75,24 +76,85 @@ const ProjectSegment = ({ project, msgAlert, user, mine}) => {
     }, [percent])
 
     return (
-        <Segment id='actListItems'>
+        <Segment id='actListItems' raised>
             <Container fluid>
-            <Grid>
+            <Grid columns={4} textAlign='center'>
+                <Grid.Row>
+                {user ? <Link to={`./${project.id}`}><h1 id='center'>{project.projTitle}</h1></Link> : <h1 id='center'>{project.projTitle}</h1>}
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column width={11} padded textAlign='center'>
+                        <Segment>
+                    <Modal
+					onClose={() => setOpen(false)}
+                    onOpen={() => setOpen(true)}
+					open={open}
+                    dimmer='blurring'
+					trigger={
+                    <Image src={project.img1} size='massive'></Image>
+						}
+       			 >
+					<Modal.Content color='grey'>
+                        <Grid textAlign='center' verticalAlign='middle'>
+                            <Grid.Row>
+                                <Segment textAlign='center' color='grey' inverted>
+                                    <Image spaced src={project.img1} size='massive'></Image>
+                                </Segment>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Segment textAlign='center' color='grey' inverted>
+                                    <Image spaced src={project.img2} size='massive'></Image>
+                                </Segment>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Segment textAlign='center' color='grey' inverted>
+                                    <Image spaced src={project.img3} size='massive'></Image>
+                                </Segment>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <div>
+                                <Button onClick={() => setOpen(false)} color='red' floated='right' circular size='large'>Close</Button>
+                                </div>
+                            </Grid.Row>
+                        </Grid>
+                       
+					</Modal.Content>
+        		</Modal>
+                </Segment>
+                        <h4>click the image to view more</h4>
+                    </Grid.Column>
+                    <Grid.Column width={3}>
+                        
+                        <Grid.Row verticalAlign='middle' fluid textAlign='center'>
+                           
+                                <h2> <Icon name='caret right' /><a href={`${project.link1}`} target="_blank">Front-end</a></h2>
+                           
+                                <h2> <Icon name='caret right' /><a href={`${project.link2}`} target="_blank">Back-end</a></h2>
+                           
+                       
+                                <h2> <Icon name='caret right' /><a href={`${project.link3}`} target="_blank">Deployed</a></h2>
+                          
+                        </Grid.Row>
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                        <List.Item ><h4>{project.description}</h4></List.Item>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column>
+                        <List.Item ><h4>Start Date:</h4> {project.startDate}</List.Item>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <List.Item ><h4>Finish Date:</h4> {project.finishDate}</List.Item>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <List.Item ><h4>Client:</h4> {project.client}</List.Item>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <List.Item ><h4>Role:</h4> {project.role}</List.Item>
+                    </Grid.Column>
+                </Grid.Row>                    
 
-                    <Link to={`/projects/${project._id}`}><h1>{project.projTitle}</h1></Link>
-                    <List horizontal size='huge'>
-                        <List.Item >Img1: {project.img1}</List.Item>
-                        <List.Item >Img2: {project.img2}</List.Item>
-                        <List.Item >Img3: {project.img3}</List.Item>
-                        <List.Item >Description: {project.description}</List.Item>
-                        <List.Item >Finish Date: {project.finishDate}</List.Item>
-                        <List.Item >Start Date: {project.startDate}</List.Item>
-                        <List.Item >Link 1: {project.link1}</List.Item>
-                        <List.Item >Link 2: {project.link2}</List.Item>
-                        <List.Item >Link 3: {project.link3}</List.Item>
-                        <List.Item >Role: {project.role}</List.Item>
-                        <List.Item >Client: {project.client}</List.Item>
-                    </List>
                 {/* <Grid.Column width={4} verticalAlign='center' textAlign='middle'>
                     <Progress percent={percent} indicating />
                     { mine ? 

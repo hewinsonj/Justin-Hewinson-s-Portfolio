@@ -40,7 +40,7 @@ const SignIn = (props) => {
 			// 		variant: 'success',
 			// 	})
 			// )
-			.then(() => navigate('/user-page'))
+			.then(() => navigate('/'))
 			.catch((error) => {
                 setEmail('')
                 setPassword('')

@@ -60,6 +60,10 @@ body {
   height: 100rem;
 }
 
+#center {
+  text-align: center
+}
+
 #picOme {
   height: 30rem;
   border-radius: 5rem;

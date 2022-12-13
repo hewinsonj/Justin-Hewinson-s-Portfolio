@@ -167,7 +167,7 @@ const App = (triggerRefresh) => {
 									<Route
 										path='/projects'
 										element={
-											<Projects msgAlert={msgAlert} />
+											<Projects msgAlert={msgAlert} user={user} />
 									}
 									/>
 									<Route

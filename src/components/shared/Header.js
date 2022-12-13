@@ -58,7 +58,7 @@ export default class Header extends Component {
 			</Grid> */}
 
 
-		   <Menu inverted secondary pointing size='huge' id='header' >
+		   <Menu inverted secondary pointing size='huge' id='header'>
  					
 
 				<Menu.Item
@@ -112,12 +112,14 @@ export default class Header extends Component {
 					active={activeItem === 'resume'}
 					onClick={this.handleItemClick}
 				>
-					{/* <Link 
+					<Link 
 						to={`//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view`} 
+						target='_blank'
+						color='blue'
 					>
 						Resume
-					</Link> */}
-					<a href="//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view" target="_blank">Resume</a>
+					</Link>
+					{/* <a href="//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view" target="_blank">Resume</a> */}
 				</Menu.Item>
 				<Menu.Item
 					name='contact'
@@ -133,7 +135,7 @@ export default class Header extends Component {
 				
 			{this.props.user ?  
 			
-			<Menu.Menu>		
+			<Menu.Menu widths={3}>		
 				
 				<Modal
 					onClose={() => this.handleClose()}
@@ -145,10 +147,7 @@ export default class Header extends Component {
 							active={activeItem === 'new project'}
 							onClick={this.handleItemClick}
 						>
-							<Link
-								to='user-page'>
 								New Project
-							</Link>
 						</Menu.Item>}
        			 >
 					<Modal.Content>

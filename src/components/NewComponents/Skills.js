@@ -16,30 +16,84 @@ const Skills  = () => {
         <Segment textAlign='center'>
             <h1>Skills</h1> 
         </Segment>
-        <Segment>
+        <Segment color='grey' inverted>
         <Grid columns={2} centered padded >
             
-            <Grid.Column textAlign='center'>
-            <Grid.Row>
-                <h1>Email: <a href='mailto:hewinsonj@gmail.com?subject=Contacting you from your portfolio'>hewinsonj@gmail.com</a></h1>
+            <Grid.Column padded floated='right'  width={3}>
+            <Grid.Row textAlign='center'>
+                <h1 id='center'>Development</h1>
+            </Grid.Row>
+            <Segment>
+            <Grid.Row >
+                <h2><Icon name='circle' size='tiny' centered/> JavaScript</h2>
             </Grid.Row>
             <Grid.Row>
-                <h1>Cell: (404) 454 1727</h1>
+                <h2><Icon name='circle' size='tiny' centered/> Python</h2>
             </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> MongoDb</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> Django</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> SQL</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> HTML 5</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> CSS 3</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> PostgreSQL</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> Bootstrap</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> React</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> Semantic UI</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> Node</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> Liquid</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> Express</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> JSON</h2>
+            </Grid.Row>
+            </Segment>
             </Grid.Column>
-            <Grid.Column textAlign='center'>
+            <Grid.Column padded width={3} floated='left'>
             <Grid.Row>
-                <h1>LinkedIn: <a href='https://www.linkedin.com/in/justin-hewinson/'>https://www.linkedin.com/in/justin-hewinson/</a></h1>
+                <h1 id='center'>Tools</h1>
+            </Grid.Row>
+            <Segment>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> GitHub</h2>
             </Grid.Row>
             <Grid.Row>
-                <h1>GitHub: <a href='https://github.com/hewinsonj'>https://github.com/hewinsonj</a></h1>
+                <h2><Icon name='circle' size='tiny' centered/> Postman</h2>
             </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> Powershell</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> Mongoose</h2>
+            </Grid.Row>
+            <Grid.Row>
+                <h2><Icon name='circle' size='tiny' centered/> VS Code</h2>
+            </Grid.Row>
+            
+            </Segment>
             </Grid.Column>
-            <Grid textAlign='center' padded>
-            <Grid.Row textAlign='center' verticalAlign='middle'>
-                <h1>Located near Atlanta, Georgia</h1>
-            </Grid.Row>
-            </Grid>
         </Grid>
         </Segment>
     </Segment>
