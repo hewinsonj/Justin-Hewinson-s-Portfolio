@@ -2,7 +2,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import {  Button, Segment, Grid, Label, Icon, Image, Modal, Header, List, GridRow, Container } from 'semantic-ui-react'
 import React, { useState, useEffect } from 'react'
 import { signOut } from '../../api/auth'
-import messages from '../shared/AutoDismissAlert/messages'
 import LoadingScreen from '../shared/LoadingPage'
 
 

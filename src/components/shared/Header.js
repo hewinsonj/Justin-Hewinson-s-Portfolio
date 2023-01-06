@@ -119,7 +119,7 @@ export default class Header extends Component {
 					>
 						Resume
 					</Link>
-					{/* <a href="//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view" target="_blank">Resume</a> */}
+
 				</Menu.Item>
 				<Menu.Item
 					name='contact'
@@ -151,7 +151,9 @@ export default class Header extends Component {
 						</Menu.Item>}
        			 >
 					<Modal.Content>
+
 						<CreateProject user={this.props.user} setNewProject={this.props.setNewProject}  msgAlert={this.props.msgAlert} handleClose={this.handleClose}  />
+						
 					</Modal.Content>
         		</Modal>
 
