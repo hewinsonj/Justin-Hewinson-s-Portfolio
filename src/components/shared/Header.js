@@ -58,7 +58,7 @@ export default class Header extends Component {
 			</Grid> */}
 
 
-		   <Menu inverted secondary pointing size='huge' id='header'>
+		   <Menu inverted secondary pointing size='huge' id='header' widths={5}>
  					
 
 				<Menu.Item

@@ -15,16 +15,21 @@ const LandingPage  = () => {
     return(
     <>
         <Grid padded>
-            <Grid.Row >
-        <div id='landingback'>
-            Welcome to Justin Hewinson<Link to={`sign-in`} >'</Link>s
-        </div>
-        </Grid.Row>
-        <Grid.Row>
-        <div id='landingback'>
-           portfolio
-        </div>
-        </Grid.Row>
+            <Grid.Row padded='no'>
+                <div class='landingback'>
+                    <p>Welcome to </p>
+                </div>
+            </Grid.Row>
+            <Grid.Row>
+                <div class='landingback'>
+                    <p>Justin Hewinson<Link to={`sign-in`} >'</Link>s</p>
+                </div>
+            </Grid.Row>
+            <Grid.Row>
+                <div class='landingback'>
+                    <p>portfolio</p>
+                </div>
+            </Grid.Row>
         </Grid>
 	</>	
 	)
