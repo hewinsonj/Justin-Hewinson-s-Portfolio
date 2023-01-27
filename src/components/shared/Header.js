@@ -26,40 +26,8 @@ export default class Header extends Component {
 		<>
 		{/* ----------------------------------------------------------------- */}
 		<Sticky>
-			{/* <Grid>
-				<Grid.Column width={3}>
-					<Segment fluid>
-						
-						<Menu pointing secondary vertical fluid>
-							<Menu.Item
-							name='home'
-							active={activeItem === 'home'}
-							onClick={this.handleItemClick}
-							>
-								<Link to='/'>
-									<Icon name='certificate'/>
-								</Link>
-							</Menu.Item>
-							<Menu.Item
-							name='messages'
-							active={activeItem === 'messages'}
-							onClick={this.handleItemClick}
-							></Menu.Item>
-							<Menu.Item
-							name='friends'
-							active={activeItem === 'friends'}
-							onClick={this.handleItemClick}
-							></Menu.Item>
-						</Menu>
-						
-					</Segment>
-					{/* <div id='stretch'></div> 
-				</Grid.Column>
-			</Grid> */}
 
-
-		   <Menu inverted secondary pointing size='huge' id='header' widths={5}>
- 					
+		   <Menu inverted secondary pointing size='huge' id='header' widths={5} >
 
 				<Menu.Item
 					name='about me'
