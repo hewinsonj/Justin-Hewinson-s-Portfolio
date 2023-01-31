@@ -21,11 +21,12 @@ const MyProjects = ({allProjects, filterProjects, msgAlert, user, addProject, ha
 
     return(
         <div >
-             <Form>
+             <Form raised>
                 <Form.Input
                     placeholder='Type  here  to  filter  results  by  coding languages and technologies'
                     onChange={handleChange}
                     size='big'
+                    
                     
                     >
                     

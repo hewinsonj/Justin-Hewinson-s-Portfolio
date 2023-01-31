@@ -13,26 +13,26 @@ const AboutMe  = () => {
     return(
     <>
     <Segment textAlign='center'>
-        <h1>About me</h1> 
+        <h1 class='oswald projName' >About me</h1> 
     </Segment>
         <Grid columns={2} padded>
-            <Grid.Column width={5} textAlign='center'>
+            <Grid.Column width={4} textAlign='center'>
                <img src="https://i.imgur.com/ETX781T.jpg" title="source: imgur.com" id='picOme'/>
             </Grid.Column>
             <Grid.Column width={11} verticalAlign='middle'>
                 <Segment padded='very'>
-                    <h1>Hello world!</h1> 
-                    <h2>
+                    <h1 class='oswald'>Hello world!</h1> 
+                    <h2 class='oswald'>
                     My name is Justin Hewinson and I am a self-driven Fullstack Software Engineer and Game Developer focused on problem-solving with creative solutions and creating unique user experiences that are both intuitive and effective. My 20+ years of combined experience as an audio engineer and a service industry professional give me the ability to adapt to new/consistently changing software and technologies, strong communication skills and self-motivated drive that are a crucial asset for any industry. 
                     </h2>
                 </Segment>
             </Grid.Column>
         </Grid>
         <Grid columns={2} padded>
-            <Grid.Column width={11}>
+            <Grid.Column width={10}>
                 <Segment padded='very' >
-                    <h1>Parts of me</h1> 
-                    <h2>
+                    <h1 class='oswald'>Parts of me</h1> 
+                    <h2 class='oswald'>
                     <List bulleted >
                     <List.Item>
                             Software Developer - Learning to code has given me the ability to combine and utilize my skills gained through previous life experiences and create applications that fill the needs I see unmet in the world around me
@@ -65,7 +65,7 @@ const AboutMe  = () => {
                     </List></h2>
                 </Segment>
             </Grid.Column>
-            <Grid.Column width={5} textAlign='center'>
+            <Grid.Column width={6} textAlign='center'>
             <Grid>
                 <Grid.Column textAlign='center'>
                     <img src="https://i.imgur.com/2SsnHLh.jpg" title="source: imgur.com" id='picObar'/>

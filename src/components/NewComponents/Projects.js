@@ -22,9 +22,10 @@ const Projects = ({ msgAlert, newProject, user }) => {
 
 
     const handleChange = (e) => {
+        // const caseUnsense = e.target.value.toUpperCase()
         let projects = allProjects
         setFilterProjects(projects.filter(
-        a => a.client.includes(e.target.value))
+        a => a.client.toUpperCase().includes(e.target.value.toUpperCase()))
         )
     }
 

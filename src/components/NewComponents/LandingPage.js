@@ -15,7 +15,7 @@ const LandingPage  = () => {
     return(
     <>
         <Grid padded>
-            <Grid.Row padded='no'>
+            <Grid.Row >
                 <div class='landingback'>
                     <p>Welcome to </p>
                 </div>

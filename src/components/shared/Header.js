@@ -33,6 +33,7 @@ export default class Header extends Component {
 					active={activeItem === 'Landing'}
 					onClick={this.handleItemClick}
 					size='huge'
+					
 				>
 					<Link 
 						to={`/`}  
@@ -48,7 +49,7 @@ export default class Header extends Component {
 					size='huge'
 				>
 					<Link 
-						to={`/about-me`}  
+						to={`/about-me`}  class='projName' 
 					>
 						About me
 					</Link>
