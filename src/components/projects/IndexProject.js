@@ -19,7 +19,7 @@ const IndexProject = ({ user, msgAlert }) => {
     const handleChange = (e) => {
         let projects = allProjects
         setFilterProjects(projects.filter(
-        a => a.description.includes(e.target.value))
+        a => a.client.includes(e.target.value))
         )
     }
     

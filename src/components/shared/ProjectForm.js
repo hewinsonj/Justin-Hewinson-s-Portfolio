@@ -123,7 +123,7 @@ const ProjectForm = (props) => {
                         required 
                         name='client'
                         id='client'
-                        label='client' 
+                        label='Technologies' 
                         placeholder='client'
                         defaultValue= { project.client}
                         onChange= { handleChange }

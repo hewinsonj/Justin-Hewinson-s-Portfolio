@@ -1,6 +1,6 @@
 import ProjectSegment from "./ProjectSegment"
 import LoadingScreen from "../shared/LoadingPage"
-import { Container, Form } from "semantic-ui-react"
+import { Container, Form, Icon } from "semantic-ui-react"
 
 
 const MyProjects = ({allProjects, filterProjects, msgAlert, user, addProject, handleChange}) => {
@@ -23,8 +23,9 @@ const MyProjects = ({allProjects, filterProjects, msgAlert, user, addProject, ha
         <div >
              <Form>
                 <Form.Input
-                    placeholder='Type  here  to  filter  results  by  languages'
+                    placeholder='Type  here  to  filter  results  by  coding languages and technologies'
                     onChange={handleChange}
+                    size='big'
                     
                     >
                     

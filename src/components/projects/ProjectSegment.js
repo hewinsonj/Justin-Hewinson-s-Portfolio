@@ -79,52 +79,81 @@ const ProjectSegment = ({ project, msgAlert, user}) => {
         <Segment id='actListItems' raised>
             <Container fluid>
             <Grid columns={4} textAlign='center'>
-                <Grid.Row>
-                {user ? <Link to={`./${project.id}`}><h1 id='center'>{project.projTitle}</h1></Link> : <h1 id='center'>{project.projTitle}</h1>}
-                </Grid.Row>
+                {/* <Grid.Row>
+                {user ? <Link to={`./${project.id}`}><h1 class='porjName'>{project.projTitle}</h1></Link> : <h1 class='porjName'>{project.projTitle}</h1>}
+                </Grid.Row> */}
                 <Grid.Row>
                     <Grid.Column width={11} padded textAlign='center'>
                         <Segment>
-                    <Modal
-					onClose={() => setOpen(false)}
-                    onOpen={() => setOpen(true)}
-					open={open}
-                    dimmer='blurring'
-					trigger={
-                    <Image src={project.img1} size='massive'></Image>
-						}
-       			 >
-					<Modal.Content color='grey'>
-                        <Grid textAlign='center' verticalAlign='middle'>
-                            <Grid.Row>
-                                <Segment textAlign='center' color='grey' inverted>
-                                    <Image spaced src={project.img1} size='massive'></Image>
-                                </Segment>
-                            </Grid.Row>
-                            <Grid.Row>
-                                <Segment textAlign='center' color='grey' inverted>
-                                    <Image spaced src={project.img2} size='massive'></Image>
-                                </Segment>
-                            </Grid.Row>
-                            <Grid.Row>
-                                <Segment textAlign='center' color='grey' inverted>
-                                    <Image spaced src={project.img3} size='massive'></Image>
-                                </Segment>
-                            </Grid.Row>
-                            <Grid.Row>
-                                <div>
-                                <Button onClick={() => setOpen(false)} color='red' floated='right' circular size='large'>Close</Button>
-                                </div>
-                            </Grid.Row>
-                        </Grid>
-                       
-					</Modal.Content>
-        		</Modal>
-                </Segment>
-                        <h4>click the image to view more</h4>
-                    </Grid.Column>
-                    <Grid.Column width={3}>
+                            <Modal
+                            onClose={() => setOpen(false)}
+                            onOpen={() => setOpen(true)}
+                            open={open}
+                            dimmer='blurring'
+                            trigger={
+                            <Image src={project.img1} size='massive' centered></Image>
+                                }
+                            >
+                            <Modal.Content color='grey'>
+                                <Grid textAlign='center' verticalAlign='middle'>
+                                    <Grid.Row>
+                                        <Segment textAlign='center' color='grey' inverted>
+                                            <Image spaced src={project.img1} size='massive'></Image>
+                                        </Segment>
+                                    </Grid.Row>
+                                    <Grid.Row>
+                                        <Segment textAlign='center' color='grey' inverted>
+                                            <Image spaced src={project.img2} size='massive'></Image>
+                                        </Segment>
+                                    </Grid.Row>
+                                    <Grid.Row>
+                                        <Segment textAlign='center' color='grey' inverted>
+                                            <Image spaced src={project.img3} size='massive'></Image>
+                                        </Segment>
+                                    </Grid.Row>
+                                    <Grid.Row>
+                                        <div>
+                                        <Button onClick={() => setOpen(false)} color='red' floated='right' circular size='large'>Close</Button>
+                                        </div>
+                                    </Grid.Row>
+                                </Grid>
+                            
+                            </Modal.Content>
+        		            </Modal>
+                        </Segment>
+                        <h2>click the image to view more</h2>
+                        <Grid.Row>
+                    <Grid.Column>
                         
+                        <Segment><Grid columns={2}>
+                            <Grid.Column>
+                            <List.Item ><h2>Start Date:</h2> <h3>{project.startDate} </h3>
+                            
+                            </List.Item>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <h2>Finish Date:</h2> <h3>{project.finishDate}</h3>
+                            </Grid.Column>
+                        </Grid></Segment>
+                        
+                    </Grid.Column>
+
+                    {/* <Grid.Column>
+                        <List.Item ><h4>Technologies:</h4> {project.client}</List.Item>
+                    </Grid.Column> */}
+                    {/* <Grid.Column>
+                        <List.Item ><h4>Role:</h4> {project.role}</List.Item>
+                    </Grid.Column> */}
+                </Grid.Row>  
+                    </Grid.Column>
+                    <Grid.Column width={5}>
+                        
+                        
+                        {user ? <Link to={`./${project.id}`}><h1 class='porjName'>{project.projTitle}</h1></Link> : <h1 class='porjName'>{project.projTitle}</h1>}
+                        <List.Item ><h3>{project.description}</h3></List.Item>
+                        <Segment>
+                        <List.Item ><h2>Technologies:</h2> <h3>{project.client}</h3></List.Item>
+                        </Segment>
                         <Grid.Row fluid>
                            
                                 <h2> <Icon name='caret right' /><a href={`${project.link1}`} target="_blank">
@@ -151,23 +180,29 @@ const ProjectSegment = ({ project, msgAlert, user}) => {
                         </Grid.Row>
                     </Grid.Column>
                 </Grid.Row>
-                <Grid.Row>
+                {/* <Grid.Row>
                         <List.Item ><h3>{project.description}</h3></List.Item>
-                </Grid.Row>
-                <Grid.Row>
+                </Grid.Row> */}
+
+
+                {/* <Grid.Row>
                     <Grid.Column>
-                        <List.Item ><h4>Start Date:</h4> {project.startDate}</List.Item>
+                        <Segment>
+                            <List.Item ><h4>Start Date:</h4> {project.startDate}</List.Item>
+                        </Segment>
                     </Grid.Column>
                     <Grid.Column>
-                        <List.Item ><h4>Finish Date:</h4> {project.finishDate}</List.Item>
+                        <Segment>
+                            <List.Item ><h4>Finish Date:</h4> {project.finishDate}</List.Item>
+                        </Segment>
                     </Grid.Column>
-                    <Grid.Column>
-                        <List.Item ><h4>Client:</h4> {project.client}</List.Item>
-                    </Grid.Column>
+
                     <Grid.Column>
                         <List.Item ><h4>Role:</h4> {project.role}</List.Item>
                     </Grid.Column>
-                </Grid.Row>                    
+                </Grid.Row>                     */}
+
+
 
                 {/* <Grid.Column width={4} verticalAlign='center' textAlign='middle'>
                     <Progress percent={percent} indicating />

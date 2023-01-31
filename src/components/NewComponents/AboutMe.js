@@ -17,7 +17,7 @@ const AboutMe  = () => {
     </Segment>
         <Grid columns={2} padded>
             <Grid.Column width={5} textAlign='center'>
-               <img src="https://i.imgur.com/SBPQdjl.jpg" title="source: imgur.com" id='picOme'/>
+               <img src="https://i.imgur.com/ETX781T.jpg" title="source: imgur.com" id='picOme'/>
             </Grid.Column>
             <Grid.Column width={11} verticalAlign='middle'>
                 <Segment padded='very'>
@@ -34,6 +34,9 @@ const AboutMe  = () => {
                     <h1>Parts of me</h1> 
                     <h2>
                     <List bulleted >
+                    <List.Item>
+                            Software Developer - Learning to code has given me the ability to combine and utilize my skills gained through previous life experiences and create applications that fill the needs I see unmet in the world around me
+                        </List.Item>
                         <List.Item >
                             Musician/Audio Engineer - Had to learn to utilize various types of equipment and technologies and instilled the importance of mastering the fundamentals of a craft within me at a young age
                         </List.Item>
@@ -45,9 +48,6 @@ const AboutMe  = () => {
                         </List.Item>
                         <List.Item>
                             Handy Man - Completing minor/major renovations on my house over the years has given me a profound respect for trusting the process and measuring twice to cut once
-                        </List.Item>
-                        <List.Item>
-                            Software Developer - Learning to code has given me the ability to combine and utilize my skills gained through previous life experiences and create applications that fill the needs I see unmet in the world around me
                         </List.Item>
                         <List.Item>
                             Favorite Artists Right Now - Snarky Puppy, Patrick Watson, Mastodon, Sungazer, Thundercat, Flume, FKJ, ミラクルミュージカル

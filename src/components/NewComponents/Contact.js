@@ -20,10 +20,11 @@ const Contact  = () => {
             
             <Grid.Column textAlign='center'>
             <Grid.Row>
-                <h1>Email: <a href='mailto:hewinsonj@gmail.com?subject=Contacting you from your portfolio'>hewinsonj@gmail.com</a></h1>
+                <h1>Email: <a href='mailto:hewinsonbusiness@gmail.com?subject=Contacting you from your portfolio'>hewinsonbusiness@gmail.com</a></h1>
             </Grid.Row>
             <Grid.Row>
-                <h1>Cell: (404) 454 1727</h1>
+                {/* <h1>Cell: (404) 454 1727</h1> */}
+                <h1>Located near Atlanta, Georgia</h1>
             </Grid.Row>
             </Grid.Column>
             <Grid.Column textAlign='center'>
@@ -34,11 +35,11 @@ const Contact  = () => {
                 <h1>GitHub: <a href='https://github.com/hewinsonj'>https://github.com/hewinsonj</a></h1>
             </Grid.Row>
             </Grid.Column>
-            <Grid textAlign='center' padded>
+            {/* <Grid textAlign='center' padded>
             <Grid.Row textAlign='center' verticalAlign='middle'>
                 <h1>Located near Atlanta, Georgia</h1>
             </Grid.Row>
-            </Grid>
+            </Grid> */}
         </Grid>
         </Segment>
     </Segment>

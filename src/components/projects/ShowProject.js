@@ -223,7 +223,7 @@ useEffect (()=> {
                             <Grid.Column>
                                 <h3>Role: </h3>
                                 <h3>{project.role}</h3>
-                                <h3>Client: </h3>
+                                <h3>Technologies: </h3>
                                 <h3>{project.client}</h3>
                             </Grid.Column>
 

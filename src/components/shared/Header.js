@@ -27,12 +27,25 @@ export default class Header extends Component {
 		{/* ----------------------------------------------------------------- */}
 		<Sticky>
 
-		   <Menu inverted secondary pointing size='huge' id='header' widths={5} >
-
+		   <Menu inverted secondary pointing size='massive' id='header' widths={6} >
+		   		<Menu.Item
+					name='Landing'
+					active={activeItem === 'Landing'}
+					onClick={this.handleItemClick}
+					size='huge'
+				>
+					<Link 
+						to={`/`}  
+					>
+						<Icon name='globe'></Icon>
+						
+					</Link>
+				</Menu.Item>
 				<Menu.Item
 					name='about me'
 					active={activeItem === 'about me'}
 					onClick={this.handleItemClick}
+					size='huge'
 				>
 					<Link 
 						to={`/about-me`}  
