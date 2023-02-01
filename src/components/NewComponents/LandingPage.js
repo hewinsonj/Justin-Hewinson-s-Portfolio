@@ -16,17 +16,17 @@ const LandingPage  = () => {
     <>
         <Grid padded>
             <Grid.Row >
-                <div class='landingback'>
+                <div class='landingback raleway'>
                     <p>Welcome to </p>
                 </div>
             </Grid.Row>
             <Grid.Row>
-                <div class='landingback'>
+                <div class='landingback raleway'>
                     <p>Justin Hewinson<Link to={`sign-in`} >'</Link>s</p>
                 </div>
             </Grid.Row>
             <Grid.Row>
-                <div class='landingback'>
+                <div class='landingback raleway'>
                     <p>portfolio</p>
                 </div>
             </Grid.Row>

@@ -27,18 +27,17 @@ export default class Header extends Component {
 		{/* ----------------------------------------------------------------- */}
 		<Sticky>
 
-		   <Menu inverted secondary pointing size='massive' id='header' widths={6} >
+		   <Menu inverted secondary pointing class='linkSize' id='header' widths={6} >
 		   		<Menu.Item
 					name='Landing'
 					active={activeItem === 'Landing'}
 					onClick={this.handleItemClick}
-					size='huge'
 					
 				>
 					<Link 
-						to={`/`}  
+						to={`/`}  class='linkSize'
 					>
-						<Icon name='globe'></Icon>
+						<Icon name='globe' ></Icon>
 						
 					</Link>
 				</Menu.Item>
@@ -46,10 +45,10 @@ export default class Header extends Component {
 					name='about me'
 					active={activeItem === 'about me'}
 					onClick={this.handleItemClick}
-					size='huge'
 				>
 					<Link 
-						to={`/about-me`}  class='projName' 
+						to={`/about-me`}  
+						class='linkSize'
 					>
 						About me
 					</Link>
@@ -60,7 +59,8 @@ export default class Header extends Component {
 					onClick={this.handleItemClick}
 				>
 					<Link 
-						to={`/projects`}  
+						to={`/projects`}
+						class='linkSize'  
 					>
 						Projects
 					</Link>
@@ -72,6 +72,7 @@ export default class Header extends Component {
 				>
 					<Link 
 						to={`skills `} 
+						class='linkSize'
 					>
 						Skills
 					</Link>
@@ -98,6 +99,7 @@ export default class Header extends Component {
 						to={`//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view`} 
 						target='_blank'
 						color='blue'
+						class='linkSize'
 					>
 						Resume
 					</Link>
@@ -110,6 +112,7 @@ export default class Header extends Component {
 				>
 					<Link 
 						to={`contact`} 
+						class='linkSize'
 					>
 						Contact
 					</Link>
@@ -128,6 +131,7 @@ export default class Header extends Component {
 							name='New Project'
 							active={activeItem === 'new project'}
 							onClick={this.handleItemClick}
+							class='linkSize'
 						>
 								New Project
 						</Menu.Item>}
@@ -146,6 +150,7 @@ export default class Header extends Component {
 				>
 					<Link 
 						to='sign-out' 
+						class='linkSize'
 					>
 						Sign Out
 					</Link>
@@ -157,6 +162,7 @@ export default class Header extends Component {
 				>
 					<Link 
 						to='change-password' 
+						class='linkSize'
 					>
 						Change Password
 					</Link>

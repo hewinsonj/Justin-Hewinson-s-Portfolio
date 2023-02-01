@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import {  Button, Segment, Grid, Label, Icon, Image, Modal, Header, List, GridRow, Container } from 'semantic-ui-react'
+import PropTypes from "prop-types";
+import { CarouselProvider, Slide, Slider } from "pure-react-carousel";
+import {  Button, Segment, Grid, Label, Icon, Image, Modal, Header, List, GridRow, Container, Transition } from 'semantic-ui-react'
 import React, { useState, useEffect } from 'react'
 import { signOut } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
@@ -8,8 +10,38 @@ import LoadingScreen from '../shared/LoadingPage'
 
 const AboutMe  = () => {
 
-      const [open, setOpen] = React.useState(false)
- 
+    const [open, setOpen] = React.useState(false)
+    const [visible, setViz] = useState(true)
+
+
+    const handleToggleVisibility = () => {
+        setViz( visible ? false : true)
+    }
+
+
+    // let [counter, setCounter] = useState(2)
+
+    // state = {}
+
+    // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+
+    // const handleNext = () => {
+    //     setCounter += 1
+
+    //     console.log(counter, 'counter')
+
+    // }
+    // const handlePrev = () => {
+    //     setCounter -= 1
+
+    //     console.log(counter, 'counter')
+
+    // }
+
+
+
+
     return(
     <>
     <Segment textAlign='center'>
@@ -79,21 +111,25 @@ const AboutMe  = () => {
             
             <Grid.Column textAlign='center' >
                 <Grid centered>
-                    {/* <Grid.Column > <img src="https://i.imgur.com/t21n4O5.jpg" title="source: imgur.com" id='picOstuff'/></Grid.Column> */}
+
                     <Grid.Column textAlign='center' verticalAlign='middle'>
-                        {/* <Image src='https://i.imgur.com/nfqobdk.jpg' size='massive' circular/> */}
-                    <img src="https://i.imgur.com/nfqobdk.jpg" title="source: imgur.com" id='picOstuff'/>
-                    <h2 id='centered'>My recording studio</h2>
+
+                    
+                    <Button
+                    content={visible ? 'Hide' : 'Show'}
+                    onClick={handleToggleVisibility}
+                    name='jeff'
+                    />
+                    
+                    <Transition visible={visible} animation='scale' duration={500}>
+                    <img src="https://i.imgur.com/nfqobdk.jpg" title="source: imgur.com" id='picOstuff'
+                    />
+                    </Transition>
+
+
                     </Grid.Column>
                 </Grid>
-            {/* <Grid columns={2}>
-                
-                <Grid.Column>
-                <img src="https://i.imgur.com/t21n4O5.jpg" title="source: imgur.com" id='picOstuff'/>
-                </Grid.Column>
-                <Grid.Column width={3}></Grid.Column>
-            </Grid> */}
-            
+
             </Grid.Column>
             {/* <Grid.Column textAlign='center'>
                 <img src="https://i.imgur.com/CIfphyK.jpg" title="source: imgur.com" id='picOstuff'/>
