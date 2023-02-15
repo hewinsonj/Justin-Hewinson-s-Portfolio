@@ -130,23 +130,23 @@ const AboutMe  = () => {
                     </Grid.Column>
                 </Grid>
 
-            </Grid.Column> */}
+            </Grid.Column> 
 
 
             
-            {/* <Grid.Column textAlign='center'>
+             <Grid.Column textAlign='center'>
                 <img src="https://i.imgur.com/CIfphyK.jpg" title="source: imgur.com" id='picOstuff'/>
                 <h2 id='centered'>The bathroom my girlfriend and I renovated</h2>
-            </Grid.Column> */}
-            {/* <Grid.Column width={11}>
+            </Grid.Column> 
+            <Grid.Column width={11}>
                 <Segment padded='very' >
                     <h1>Future Goals</h1> 
                     <h2>
                         The challenges and lessons I've been faced with in the software engineering field have been very rewarding and I have truly enjoyed my experiences in this field. I hope to one day take the skills I have aquired to the Game Development industry so I can finaly marry my creativity with my technical abilities. Other than working in game development I plan on developing various applications to fill the needs I've found in the world around me.
                     </h2>
                 </Segment>
-            </Grid.Column> */}
-        </Grid>
+            </Grid.Column> 
+        </Grid>*/}
     </>	
     )
 }
