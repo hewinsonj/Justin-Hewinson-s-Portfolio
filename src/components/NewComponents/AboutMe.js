@@ -107,7 +107,7 @@ const AboutMe  = () => {
             </Grid>
             </Grid.Column>
         </Grid>
-        <Grid columns={2} padded>
+        {/* <Grid columns={2} padded>
             
             <Grid.Column textAlign='center' >
                 <Grid centered>
@@ -130,7 +130,10 @@ const AboutMe  = () => {
                     </Grid.Column>
                 </Grid>
 
-            </Grid.Column>
+            </Grid.Column> */}
+
+
+            
             {/* <Grid.Column textAlign='center'>
                 <img src="https://i.imgur.com/CIfphyK.jpg" title="source: imgur.com" id='picOstuff'/>
                 <h2 id='centered'>The bathroom my girlfriend and I renovated</h2>
