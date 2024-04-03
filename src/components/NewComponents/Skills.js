@@ -12,7 +12,7 @@ const Skills  = () => {
  
     return(
     <>
-    <Segment color='black' inverted >
+    <Segment color='black' inverted fluid>
         <Segment textAlign='center'>
             <h1>Skills</h1> 
         </Segment>

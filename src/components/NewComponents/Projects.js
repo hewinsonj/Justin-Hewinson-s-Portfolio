@@ -35,13 +35,13 @@ const Projects = ({ msgAlert, newProject, user }) => {
                 setAllProjects(res.data.projects.reverse())
                 setFilterProjects(res.data.projects.reverse())
             })
-            .catch(error => {
-                msgAlert({
-                    'heading': 'Error',
-                    'message': 'Could not get Projects',
-                    'variant': 'danger'
-                })
-            })
+            // .catch(error => {
+            //     msgAlert({
+            //         'heading': 'Error',
+            //         'message': 'Could not get Projects',
+            //         'variant': 'danger'
+            //     })
+            // })
     },[])
 
 

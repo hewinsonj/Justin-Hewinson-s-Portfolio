@@ -48,9 +48,9 @@ const App = (triggerRefresh) => {
 	const segmentRef = React.useRef()
 	const [visible, setVisible] = React.useState(false)
 	const [email, setEmail] = useState('')
-	const [thisUser, setThisUser] = useState({})
-	const handleRefresh = (e) => {
-		e.preventDefault()
+  const [thisUser, setThisUser] = useState({})
+  const [bigMenu, setBigMenu] = React.useState(false)
+	const handleRefresh = (e) => { e.preventDefault()
 		triggerRefresh()
 	}
 
@@ -69,120 +69,138 @@ const App = (triggerRefresh) => {
 				[{ heading, message, variant, id }]
 		)
 		})
-	}
+  }
+  
+    // window.addEventListener("resize", updateDimensions);
+    // window.addEventListener("load", updateDimensions);
+
+  const componentDidMount = ({}) => {
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+  }
+  const componentWillUnmount = ({}) => {
+    window.removeEventListener("resize", updateDimensions);
+    window.removeEventListener("load", updateDimensions);
+  }
+
+  const updateDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+
+    console.log(window.innerWidth);
+
+    if (window.innerWidth > 1536) {
+      handleWindowBig();
+    } else {
+      handleWindowSmall();
+    }
+  }
+
+  const handleWindowBig = () => {
+    this.setState({ bigMenu: true });
+    console.log("handleBig happened", this.bigMenu);
+  };
+  const handleWindowSmall = () => {
+    this.setState({ bigMenu: false });
+    console.log("handleSmall happened", this.bigMenu);
+  }
+
+
 	return (
-		<Fragment>
-			{msgAlerts.map((msgAlert) => (
-				<AutoDismissAlert
-					key={msgAlert.id}
-					heading={msgAlert.heading}
-					variant={msgAlert.variant}
-					message={msgAlert.message}
-					id={msgAlert.id}
-					deleteAlert={deleteAlert}
-				/>
-			))}
+    <Fragment>
+      <>
+        <Header
+          user={user}
+          msgAlert={msgAlert}
+          setNewActivity={setNewActivity}
+          setNewProject={setNewProject}
+          bigMenu={setBigMenu}
+          handleWindowBig={handleWindowBig}
+          handleWindowSmall={handleWindowSmall}
+          componentWillUnmount={componentWillUnmount}
+          componentDidMount={componentDidMount}
+        />
+        <Ref innerRef={segmentRef}>
+          <Routes>
+            {/* <Route path='/' element={<Home user={user} msgAlert={msgAlert} setUser={setUser} />} /> */}
 
-			<>
-			
-					<Header user={user} msgAlert={msgAlert} setNewActivity={setNewActivity} setNewProject={setNewProject}/>
-							<Ref innerRef={segmentRef} >
-								<Routes>
-									{/* <Route path='/' element={<Home user={user} msgAlert={msgAlert} setUser={setUser} />} /> */}
-
-									<Route 
-										path='/user-page/' 
-										element={<UserPage msgAlert={msgAlert} user={user} newActivity={newActivity} newProject={newProject} />} 
-									/>
-									<Route 
-										path='/user-public-page/:otherUserId' 
-										element={<UserPublicPage msgAlert={msgAlert} currentUser={user} viewedUser={viewedUser}/>} 
-									/>
-									<Route
-										path='/sign-in'
-										element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
-									/>
-									<Route
-										path='/sign-out'
-										element={
-										<RequireAuth user={user}>
-											<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-										</RequireAuth> 
-										}
-									/>
-									<Route
-										path='/create-account'
-										element={
-											<CreateAccount msgAlert={msgAlert}/>
-										}
-									/>
-									<Route
-										path='/sign-page'
-										element={<SignPage msgAlert={msgAlert} setUser={setUser} />}
-									/>
-									<Route
-										path='/change-password'
-										element={
-										<RequireAuth user={user}>
-											<ChangePassword msgAlert={msgAlert} user={user} />
-										</RequireAuth>
-									}
-									/>
-									<Route
-										path='/feed-page'
-										element={
-											<FeedPage msgAlert={msgAlert}/>
-									}
-									/>
-									<Route
-										path='/'
-										element={
-											<LandingPage msgAlert={msgAlert}/>
-									}
-									/>
-									<Route
-										path='/about-me'
-										element={
-											<AboutMe msgAlert={msgAlert}/>
-									}
-									/>
-									<Route
-										path='/show-page/:activityId'
-										element={
-											<ShowActivity msgAlert={msgAlert} user={user} />
-									}
-									/>
-									<Route
-										path='/projects/:projectId'
-										element={
-											<ShowProject msgAlert={msgAlert} user={user} />
-									}
-									/>
-									<Route
-										path='/activities'
-										element={
-											<IndexActivity msgAlert={msgAlert} user={user} />
-									}
-									/>
-									<Route
-										path='/projects'
-										element={
-											<Projects msgAlert={msgAlert} user={user} />
-									}
-									/>
-									<Route
-										path='/contact'
-										element={
-											<Contact msgAlert={msgAlert} />
-									}
-									/>
-									<Route
-										path='/skills'
-										element={
-											<Skills msgAlert={msgAlert} />
-									}
-									/>
-									{/* <Route
+            <Route
+              path="/user-page/"
+              element={
+                <UserPage
+                  msgAlert={msgAlert}
+                  user={user}
+                  newActivity={newActivity}
+                  newProject={newProject}
+                />
+              }
+            />
+            <Route
+              path="/user-public-page/:otherUserId"
+              element={
+                <UserPublicPage
+                  msgAlert={msgAlert}
+                  currentUser={user}
+                  viewedUser={viewedUser}
+                />
+              }
+            />
+            <Route
+              path="/sign-in"
+              element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+            />
+            <Route
+              path="/sign-out"
+              element={
+                <RequireAuth user={user}>
+                  <SignOut
+                    msgAlert={msgAlert}
+                    clearUser={clearUser}
+                    user={user}
+                  />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/create-account"
+              element={<CreateAccount msgAlert={msgAlert} />}
+            />
+            <Route
+              path="/sign-page"
+              element={<SignPage msgAlert={msgAlert} setUser={setUser} />}
+            />
+            <Route
+              path="/change-password"
+              element={
+                <RequireAuth user={user}>
+                  <ChangePassword msgAlert={msgAlert} user={user} />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/feed-page"
+              element={<FeedPage msgAlert={msgAlert} />}
+            />
+            <Route path="/" element={<LandingPage msgAlert={msgAlert} />} />
+            <Route path="/about-me" element={<AboutMe msgAlert={msgAlert} />} />
+            <Route
+              path="/show-page/:activityId"
+              element={<ShowActivity msgAlert={msgAlert} user={user} />}
+            />
+            <Route
+              path="/projects/:projectId"
+              element={<ShowProject msgAlert={msgAlert} user={user} />}
+            />
+            <Route
+              path="/activities"
+              element={<IndexActivity msgAlert={msgAlert} user={user} />}
+            />
+            <Route
+              path="/projects"
+              element={<Projects msgAlert={msgAlert} user={user} />}
+            />
+            <Route path="/contact" element={<Contact msgAlert={msgAlert} />} />
+            <Route path="/skills" element={<Skills msgAlert={msgAlert} />} />
+            {/* <Route
 										path='/user-page'
 										element={
 										<RequireAuth user={user}>
@@ -190,11 +208,21 @@ const App = (triggerRefresh) => {
 										</RequireAuth>
 									}
 									/> */}
-								</Routes>
-							</Ref>
-			</>	
-		</Fragment>
-	)
+          </Routes>
+        </Ref>
+      </>
+      {msgAlerts.map((msgAlert) => (
+        <AutoDismissAlert
+          key={msgAlert.id}
+          heading={msgAlert.heading}
+          variant={msgAlert.variant}
+          message={msgAlert.message}
+          id={msgAlert.id}
+          deleteAlert={deleteAlert}
+        />
+      ))}
+    </Fragment>
+  );
 }
 
 export default App
