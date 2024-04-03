@@ -151,3 +151,80 @@
                 </Segment>
             </Grid.Column> */
 }
+
+
+
+
+
+          <Transition visible={card11Viz} animation="scale" duration={1000}>
+            <Grid.Row centered>
+              <Container onClick={handleToggleVisibilityCard11A}>
+                <Segment inverted>
+                  <Grid columns={2} centered fluid>
+                    <Grid.Column width={7} centered>
+                      <Image
+                        size="huge"
+                        src="https://i.imgur.com/yeyQ0aa.jpg"
+                      />
+                    </Grid.Column>
+                    <Grid.Column width={9}>
+                      <Message>
+                        <Message.Header padded>
+                          <h1>Gamer</h1>
+                        </Message.Header>
+                        <Divider />
+                        <Message.Content>
+                          <h2>
+                            Games have taught me crucial ways of problem solving
+                    and have been a big motivation for learning to code and
+                    create unique user experiences
+                          </h2>
+                        </Message.Content>
+                      </Message>
+                    </Grid.Column>
+                  </Grid>
+                </Segment>
+              </Container>
+            </Grid.Row>
+          </Transition>
+          <Transition visible={card12Viz} animation="scale" duration={1000}>
+            <Grid.Row centered>
+              <Container fluid onClick={handleToggleVisibilityCard11A}>
+                <Segment
+                  inverted
+                  style={{
+                    border: "solid",
+                    bordercolor: "light grey",
+                  }}
+                >
+                  <Grid centered>
+                    <Grid.Row>
+                      <Image
+                        size="medium"
+                        src="https://i.imgur.com/yeyQ0aa.jpg"
+                      />
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Message>
+                        <Message.Header padded>
+                          <h1>Gamer</h1>
+                        </Message.Header>
+                        <Message.Content>
+                          <h4>
+                            Games have taught me crucial ways of problem solving
+                    and have been a big motivation for learning to code and
+                    create unique user experiences
+                          </h4>
+                        </Message.Content>
+                      </Message>
+                    </Grid.Row>
+                  </Grid>
+                </Segment>
+              </Container>
+            </Grid.Row>
+          </Transition>
+
+
+
+
+
