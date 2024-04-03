@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { CarouselProvider, Slide, Slider } from "pure-react-carousel";
 import {
@@ -28,19 +28,22 @@ import { signOut } from "../../api/auth";
 import messages from "../shared/AutoDismissAlert/messages";
 import LoadingScreen from "../shared/LoadingPage";
 
-const AboutMe = () => {
+const AboutMe = (triggerRefresh) => {
   const [visible, setViz] = useState(false);
   const [card1Viz, setcard1Viz] = useState(false);
   const [card2Viz, setcard2Viz] = useState(false);
+  const [card3Viz, setcard3Viz] = useState(false);
+  const [card4Viz, setcard4Viz] = useState(false);
   const [width, setWidth] = React.useState(0);
   const [height, setHeight] = React.useState(0);
   const [bigMenu, setBigMenu] = React.useState(true);
 
   useEffect(() => {
-      handleToggleVisibility();
-      updateDimensions();
+    handleToggleVisibility();
+    updateDimensions();
     componentDidMount();
     componentWillUnmount();
+    // triggerRefresh();
   }, []);
 
   const componentDidMount = () => {
@@ -94,13 +97,55 @@ const AboutMe = () => {
       console.log("Workin!");
     }
   };
+  const handleToggleVisibilityCard1A = () => {
+    if (bigMenu) {
+      setcard1Viz((preViz) => (preViz = false));
+      setViz((preViz) => (preViz = true));
+    } else {
+      setcard2Viz((preViz2) => (preViz2 = false));
+      setViz((preViz) => (preViz = true));
+
+      console.log("WorkinFalse!");
+    }
+  };
+
+  const handleToggleVisibilityCard3 = () => {
+    //   setViz((visible ? visible = true: visible = true)
+    if (bigMenu) {
+      setcard3Viz((preViz) => (preViz = true));
+    } else {
+      setcard4Viz((preViz) => (preViz = true));
+      console.log("Workin!");
+    }
+  };
+  const handleToggleVisibilityCard3A = () => {
+    if (bigMenu) {
+      setcard3Viz((preViz) => (preViz = false));
+      setViz((preViz) => (preViz = true));
+    } else {
+      setcard4Viz((preViz2) => (preViz2 = false));
+      setViz((preViz) => (preViz = true));
+
+      console.log("WorkinFalse!");
+    }
+  };
 
   const handleToggleInvisibility = () => {
     //   setViz((visible ? visible = true: visible = true)
     setViz((preViz) => (preViz = false));
     handleToggleVisibilityCard1();
-    console.log("VIZ TOGGLE");
   };
+
+  const handleToggleInvisibility3 = () => {
+    //   setViz((visible ? visible = true: visible = true)
+    setViz((preViz) => (preViz = false));
+    handleToggleVisibilityCard3();
+  };
+
+  //     const handleTriggerRefresh = (e) => {
+  //       e.preventDefault();
+  //     triggerRefresh()
+  //   };
 
   return (
     <>
@@ -112,7 +157,7 @@ const AboutMe = () => {
           <Divider hidden />
           <Transition visible={card1Viz} animation="scale" duration={1000}>
             <Grid.Row centered>
-              <Container>
+              <Container onClick={handleToggleVisibilityCard1A}>
                 <Segment inverted>
                   <Grid columns={2} centered fluid>
                     <Grid.Column width={7} centered>
@@ -121,12 +166,12 @@ const AboutMe = () => {
                         src="https://i.imgur.com/9yHemjS.jpg"
                       />
                     </Grid.Column>
-                    <Grid.Column width={9} >
-                      <Message >
+                    <Grid.Column width={9}>
+                      <Message>
                         <Message.Header padded>
                           <h1>Summary of Me</h1>
                         </Message.Header>
-                        <Divider/>
+                        <Divider />
                         <Message.Content>
                           <h2>
                             My name is Justin Hewinson and I am a self-driven
@@ -151,7 +196,7 @@ const AboutMe = () => {
           </Transition>
           <Transition visible={card2Viz} animation="scale" duration={1000}>
             <Grid.Row centered>
-              <Container fluid>
+              <Container fluid onClick={handleToggleVisibilityCard1A}>
                 <Segment
                   inverted
                   style={{
@@ -193,9 +238,86 @@ const AboutMe = () => {
               </Container>
             </Grid.Row>
           </Transition>
+
+          <Transition visible={card3Viz} animation="scale" duration={1000}>
+            <Grid.Row centered>
+              <Container onClick={handleToggleVisibilityCard3A}>
+                <Segment inverted>
+                  <Grid columns={2} centered fluid>
+                    <Grid.Column width={7} centered>
+                      <Image
+                        size="huge"
+                        src="https://i.imgur.com/kPyrE4S.jpg"
+                      />
+                    </Grid.Column>
+                    <Grid.Column width={9}>
+                      <Message>
+                        <Message.Header padded>
+                          <h1>Software Engineer</h1>
+                        </Message.Header>
+                        <Divider />
+                        <Message.Content>
+                          <h2>
+                            Learning to code has given me the ability to combine
+                            and utilize my skills gained through previous life
+                            experiences and create applications that fill the
+                            needs I see unmet in the world around me
+                          </h2>
+                        </Message.Content>
+                      </Message>
+                    </Grid.Column>
+                  </Grid>
+                </Segment>
+              </Container>
+            </Grid.Row>
+          </Transition>
+          <Transition visible={card4Viz} animation="scale" duration={1000}>
+            <Grid.Row centered>
+              <Container fluid onClick={handleToggleVisibilityCard3A}>
+                <Segment
+                  inverted
+                  style={{
+                    border: "solid",
+                    bordercolor: "light grey",
+                  }}
+                >
+                  <Grid centered>
+                    <Grid.Row>
+                      <Image
+                        size="medium"
+                        src="https://i.imgur.com/kPyrE4S.jpg"
+                      />
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Message>
+                        <Message.Header padded>
+                          <h1>Software Developer</h1>
+                        </Message.Header>
+                        <Message.Content>
+                          <h4>
+                            Learning to code has given me the ability to combine
+                            and utilize my skills gained through previous life
+                            experiences and create applications that fill the
+                            needs I see unmet in the world around me
+                          </h4>
+                        </Message.Content>
+                      </Message>
+                    </Grid.Row>
+                  </Grid>
+                </Segment>
+              </Container>
+            </Grid.Row>
+          </Transition>
+
           <Transition visible={visible} animation="scale" duration={1000}>
             <Header as="h2" size="huge" icon inverted>
-              <Icon name="user outline" size="huge" />
+              {/* <Link to={`/about-me`} class="linkSize"> */}
+              <Icon
+                name="user outline"
+                size="huge"
+                // onClick={handleTriggerRefresh}
+              />
+              {/* </Link> */}
               About Me
               <HeaderSubheader></HeaderSubheader>
             </Header>
@@ -240,14 +362,24 @@ const AboutMe = () => {
                 vertical
               > */}
                 <Card
-                  onClick={handleToggleInvisibility}
+                  onClick={handleToggleInvisibility3}
                   centered
                   href="#card-example-link-card"
+                  //   style={{
+                  //       width: "300px",
+                  //       height: "290px",
+                  //     //   overflow: "hidden",
+                  //     }}
                 >
                   <Image
-                    src="https://i.imgur.com/fFEjwMs.jpg"
-                    wrapped
-                    ui={false}
+                    src="https://i.imgur.com/kPyrE4S.jpg"
+                    // size="small"
+                    // style={{
+                    //   width: "300px",
+                    //       height: "200px",
+                    //       overflow: "hidden",
+                    //     marginBottom: "-200px",
+                    // }}
                   />
 
                   <CardContent extra>
@@ -278,7 +410,7 @@ const AboutMe = () => {
               ></Segment> */}
                 <Card onClick={handleToggleInvisibility} centered>
                   <Image
-                    src="https://i.imgur.com/fFEjwMs.jpg"
+                    src="https://i.imgur.com/fOUep1j.jpg"
                     wrapped
                     ui={false}
                   />
@@ -309,7 +441,7 @@ const AboutMe = () => {
               > */}
                 <Card onClick={handleToggleInvisibility} centered>
                   <Image
-                    src="https://i.imgur.com/fFEjwMs.jpg"
+                    src="https://i.imgur.com/Jum8hGP.jpg"
                     wrapped
                     ui={false}
                   />
@@ -317,7 +449,7 @@ const AboutMe = () => {
                   <CardContent extra>
                     <a>
                       <Icon name="user" />
-                      Software Engineer
+                      Bar Tender
                     </a>
                   </CardContent>
                 </Card>

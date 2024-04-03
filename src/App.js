@@ -50,9 +50,9 @@ const App = (triggerRefresh) => {
 	const [email, setEmail] = useState('')
   const [thisUser, setThisUser] = useState({})
   const [bigMenu, setBigMenu] = React.useState(false)
-	const handleRefresh = (e) => { e.preventDefault()
-		triggerRefresh()
-	}
+	// const handleRefresh = (e) => { e.preventDefault()
+	// 	triggerRefresh()
+	// }
 
 	const clearUser = () => {setUser(null)}
 
@@ -181,7 +181,7 @@ const App = (triggerRefresh) => {
               element={<FeedPage msgAlert={msgAlert} />}
             />
             <Route path="/" element={<LandingPage msgAlert={msgAlert} />} />
-            <Route path="/about-me" element={<AboutMe msgAlert={msgAlert} />} />
+            <Route path="/about-me" triggerRefresh={triggerRefresh} element={<AboutMe msgAlert={msgAlert} />} />
             <Route
               path="/show-page/:activityId"
               element={<ShowActivity msgAlert={msgAlert} user={user} />}
