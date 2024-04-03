@@ -12,22 +12,28 @@ const LandingPage = (
 //   const { componentWillUnmount, componentDidMount, bigMenu } = props;
 
     const [open, setOpen] = React.useState(false);
-    const [bigMenu, setBigMenu] = React.useState(false);
+    const [bigMenu, setBigMenu] = React.useState(true);
     const [width, setWidth] = React.useState(0);
     const [height, setHeight] = React.useState(0);
+
+      useEffect(() => {
+        componentDidMount();
+          componentWillUnmount();
+          updateDimensions();
+      }, []);
 
     const componentDidMount = () => {
         window.addEventListener("resize", updateDimensions);
         window.addEventListener("load", updateDimensions);
         
-        console.log(window.innerWidth, "YOOOO1");
+        // console.log(window.innerWidth, "YOOOO1");
     };
 
     const componentWillUnmount = () => {
         window.addEventListener("resize", updateDimensions);
         window.addEventListener("load", updateDimensions);
 
-        console.log(window.innerWidth, "YOOOO2");
+        // console.log(window.innerWidth, "YOOOO2");
     };
 
     const updateDimensions = () => {

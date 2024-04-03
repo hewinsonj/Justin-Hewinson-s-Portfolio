@@ -216,7 +216,7 @@ export default class Header extends Component {
                 icon={<Icon name="globe" size="large" inverted />}
                 simple
               >
-                <DropdownMenu size="huge" inverted>
+                <DropdownMenu size="medium" inverted>
                   <DropdownItem>
                     <Link
                       to={`/`}

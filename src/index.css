@@ -13,10 +13,11 @@ body {
 
 html {
   font-family: 'Arvo', serif;
-  /* height: 200vh;
-  width: 200vw; */
-  display: flex;
-}
+  /* height: 200vh; */
+  width: 100vw; 
+  /* display: flex; */
+} 
+
 
 #mobileMenu {
   background-color: grey;
@@ -38,6 +39,8 @@ html {
   margin: 0%;
   padding: 0%;
   display: flex;
+  /* overflow: hidden; */
+  width: 100vw;
   
 }
 
@@ -157,6 +160,7 @@ code {
 
 #stickyHeader {
   margin-top: 0%;
+  width: 100vw;
 }
 
 #header {
@@ -239,8 +243,6 @@ code {
 .linkSize {
   font-size: 2rem;
   font-family: 'Raleway', sans-serif;
-
-
 }
 
 /* #profilePic {
