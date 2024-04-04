@@ -41,14 +41,14 @@ const Projects = ({ msgAlert, newProject, user }) => {
       window.addEventListener("resize", updateDimensions);
       window.addEventListener("load", updateDimensions);
 
-      console.log(window.innerWidth, "YOOOO1");
+    //   console.log(window.innerWidth, "YOOOO1");
     };
 
     const componentWillUnmount = () => {
       window.addEventListener("resize", updateDimensions);
       window.addEventListener("load", updateDimensions);
 
-      console.log(window.innerWidth, "YOOOO2");
+    //   console.log(window.innerWidth, "YOOOO2");
     };
 
     const updateDimensions = () => {
@@ -64,11 +64,11 @@ const Projects = ({ msgAlert, newProject, user }) => {
 
     const handleWindowBig = () => {
       setBigMenu((prevBigMenu) => (prevBigMenu = true));
-      console.log("handleBig happened", bigMenu);
+    //   console.log("handleBig happened", bigMenu);
     };
     const handleWindowSmall = () => {
       setBigMenu((prevBigMenu) => (prevBigMenu = false));
-      console.log("handleSmall happened", window.innerWidth, bigMenu);
+    //   console.log("handleSmall happened", window.innerWidth, bigMenu);
     };
 
     componentDidMount();
