@@ -125,18 +125,6 @@ export default class Header extends Component {
                   Skills
                 </Link>
               </Menu.Item>
-              {/* <Menu.Item
-					name='my public profile'
-					active={activeItem === 'my public profile'}
-					onClick={this.handleItemClick}
-				>
-					<Link 
-						to={``} 
-					>
-						Goals
-					</Link>
-				</Menu.Item> */}
-
               <Menu.Item
                 name="resume"
                 active={activeItem === "resume"}
@@ -210,7 +198,8 @@ export default class Header extends Component {
               ) : null}
             </Menu>
           ) : (
-            <Menu attached="top" color="grey" id="mobileMenu">
+              <Menu attached="top" color="grey" id="mobileMenu"
+              >
               <Dropdown
                 item
                 icon={<Icon name="globe" size="large" inverted />}

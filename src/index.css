@@ -50,6 +50,8 @@ html {
   height: 30vh;
 }
 
+
+
 .landingback {
   background-image: url(https://i.imgur.com/abbkxj3.jpg);
   background-repeat: repeat;
@@ -58,7 +60,7 @@ html {
   /* margin-top: 10rem; */
   display: block;
   /* padding: 2rem; */
-  font-size: 7rem;
+  /* font-size: 7rem; */
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Steelfish Rg', 'helvetica neue',
@@ -77,9 +79,35 @@ html {
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
   animation-timing-function: ease-in-out;
-  
-  
+}
 
+.landingback2 {
+  background-image: url(https://i.imgur.com/abbkxj3.jpg);
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* margin-top: 10rem; */
+  display: block;
+  /* padding: 2rem; */
+  /* font-size: 7rem; */
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  font-family: 'Steelfish Rg', 'helvetica neue',
+    helvetica, arial, sans-serif;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
+  /* height: 50vh;
+  width: 100%; */
+  /* text-align: center;
+  align-items: center; */
+  justify-content: center;
+  /* margin-left: 5vw; */
+  /* position: relative; */
+  animation-name: bground;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
 }
 
 @keyframes bground {

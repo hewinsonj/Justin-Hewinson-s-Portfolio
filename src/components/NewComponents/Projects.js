@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {  Button, Divider, Segment, Grid, Feed, Icon, Image, Progress, Modal, Container } from 'semantic-ui-react'
+import {  Button, Divider, Segment, Grid, Feed, Icon, Image, Progress, Modal, Container, Header } from 'semantic-ui-react'
 import { signOut } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 import ActivitySegment from '../activities/ActivitySegment'
@@ -47,34 +47,34 @@ const Projects = ({ msgAlert, newProject, user }) => {
 
 
 	return (
-		<>
-        <div >
-		    
-                <Divider />
+    <>
+      <div>
+        <Divider />
 
-                <Grid centered>
-  
-                    <Grid.Column width={13}>
-                            <Segment>
-                                <h2 id='yourActs'>My Projects</h2>
-                                <MyProjects
-                                    allProjects={allProjects}
-                                    msgAlert={msgAlert}
-                                    user={user}
-                                    filterProjects={filterProjects}
-                                    handleChange={handleChange}
-                                    // completedCounts={completedCounts}
-                                    // setCompletedCounts={setCompletedCounts}
-                                    // setBadgeUpdate={setBadgeUpdate}
-                                />
-                            </Segment>          
-        
-                    </Grid.Column>
-
-                </Grid>
-        </div>
-		</>
-	)
+        <Grid centered>
+          <Grid.Column width={13}>
+            <Grid.Row>
+              <Header size="huge" icon inverted>
+                Projects
+              </Header>
+            </Grid.Row>
+            <Segment>
+              <MyProjects
+                allProjects={allProjects}
+                msgAlert={msgAlert}
+                user={user}
+                filterProjects={filterProjects}
+                handleChange={handleChange}
+                // completedCounts={completedCounts}
+                // setCompletedCounts={setCompletedCounts}
+                // setBadgeUpdate={setBadgeUpdate}
+              />
+            </Segment>
+          </Grid.Column>
+        </Grid>
+      </div>
+    </>
+  );
 }
 
 export default Projects

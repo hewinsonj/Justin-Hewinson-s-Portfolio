@@ -710,7 +710,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
         </Grid>
       )}
 
-      {visible ? (
+      {/* {visible ? ( */}
         <Grid columns={2} centered container>
           {/*------------------------------MAIN AREA-----------------------------------  */}
           <Grid.Row>
@@ -740,7 +740,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
           <Grid.Row style={{ margin: "0, 0, 0, 0" }}>
             <Grid.Column>
               <Grid.Row>
-                <Divider hidden />
+                
                 <Transition visible={visible} animation="scale" duration={1000}>
                   <Card onClick={handleToggleInvisibility} centered>
                     <Image
@@ -762,7 +762,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
 
             <Grid.Column>
               <Grid.Row>
-                <Divider hidden />
                 <Transition visible={visible} animation="scale" duration={1000}>
                   <Card
                     onClick={handleToggleInvisibility3}
@@ -861,7 +860,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
 
                     <CardContent extra>
                       <a>
-                        <Icon name="wrench" />
+                        <Icon name="game" />
                         Gamer
                       </a>
                     </CardContent>
@@ -871,7 +870,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      ) : null}
+      {/* ) : null} */}
 
       <Divider hidden />
     </>

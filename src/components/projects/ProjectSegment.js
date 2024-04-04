@@ -7,81 +7,14 @@ import { updateProject } from '../../api/project'
 
 
 const ProjectSegment = ({ project, msgAlert, user}) => {
-    //declare pieces of state --> grab current progress from activity object and set it as initial state. Set state variables to track when progress is being saved and whether to show the save button
-    const [percent, setPercent] = useState(project.progress)
-    const [percentChangeSaving, setPercentChangeSaving] = useState(false)
-    const [showSaveButton, setShowSaveButton] = useState(false)
+    
     const [open, setOpen] = useState(false)
 
-    //functions to increment/decrement progress when user clicks --> this only changes the progress bar. Nothing is changed on the backend until "save" is hit. Progress cannot be above 100 or below 0
-    
-
-    const increaseProgress = (e) => {
-        setPercent(prevPercent => {
-            if (prevPercent >= 100) {
-                msgAlert({
-                    heading:'Whoa There!',
-                    message: "You're already done!",
-                    variant: 'success'
-                })
-                return prevPercent
-            } else {
-                return Math.min(100, (prevPercent + 20))
-            }
-        })  
-    }
-
-    const decreaseProgress = (e) => {
-        setPercent(prevPercent => {
-            if (prevPercent <= 0) {
-                msgAlert({
-                    heading:'Hey now',
-                    message: "You can't do less than nothing! ",
-                    variant: 'success'
-                })
-                return prevPercent
-            } else {
-                return Math.max(0, (prevPercent - 20))
-            }
-        })  
-    }
-
-    
-    //save the progress made/lost and determine if completed activity count needs to change
-    const handleSaveProgress = (e) => {
-        //set percentChangeSaving to true so that save button will show as loading
-        setPercentChangeSaving(true)
-        //set new progress
-        project.progress = percent
-        //make axios call
-        updateProject(user, project, project.id )
-            //set 'saving' state to false so save button is no longer loading
-            .then(() => {
-                setPercentChangeSaving(false)
-                setShowSaveButton(false)
-            })
-            .catch(error => {
-                msgAlert({
-                    heading:'Something went wrong',
-                    message: "Update progress failed " + error,
-                    variant: 'danger'
-                })
-            })
-    }
-
-
-    //function to determine whether to show save button or not 
-    useEffect (()=> {
-        setShowSaveButton((percent != project.progress))
-    }, [percent])
 
     return (
         <Segment id='actListItems' raised>
             <Container fluid>
             <Grid columns={4} textAlign='center'>
-                {/* <Grid.Row>
-                {user ? <Link to={`./${project.id}`}><h1 class='porjName'>{project.projTitle}</h1></Link> : <h1 class='porjName'>{project.projTitle}</h1>}
-                </Grid.Row> */}
                 <Grid.Row>
                     <Grid.Column width={11} padded textAlign='center'>
                         <Segment>
@@ -138,17 +71,9 @@ const ProjectSegment = ({ project, msgAlert, user}) => {
                         
                     </Grid.Column>
 
-                    {/* <Grid.Column>
-                        <List.Item ><h4>Technologies:</h4> {project.client}</List.Item>
-                    </Grid.Column> */}
-                    {/* <Grid.Column>
-                        <List.Item ><h4>Role:</h4> {project.role}</List.Item>
-                    </Grid.Column> */}
                 </Grid.Row>  
                     </Grid.Column>
                     <Grid.Column width={5}>
-                        
-                        
                         {user ? <Link to={`./${project.id}`}><h1 class='porjName'>{project.projTitle}</h1></Link> : <h1 class='porjName'>{project.projTitle}</h1>}
                         <List.Item ><h3>{project.description}</h3></List.Item>
                         <Segment>
@@ -174,57 +99,10 @@ const ProjectSegment = ({ project, msgAlert, user}) => {
                                     :
                                     null
                                 }
-                           
-                                
-                          
+
                         </Grid.Row>
                     </Grid.Column>
                 </Grid.Row>
-                {/* <Grid.Row>
-                        <List.Item ><h3>{project.description}</h3></List.Item>
-                </Grid.Row> */}
-
-
-                {/* <Grid.Row>
-                    <Grid.Column>
-                        <Segment>
-                            <List.Item ><h4>Start Date:</h4> {project.startDate}</List.Item>
-                        </Segment>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>
-                            <List.Item ><h4>Finish Date:</h4> {project.finishDate}</List.Item>
-                        </Segment>
-                    </Grid.Column>
-
-                    <Grid.Column>
-                        <List.Item ><h4>Role:</h4> {project.role}</List.Item>
-                    </Grid.Column>
-                </Grid.Row>                     */}
-
-
-
-                {/* <Grid.Column width={4} verticalAlign='center' textAlign='middle'>
-                    <Progress percent={percent} indicating />
-                    { mine ? 
-                    <>
-                    <Button onClick={decreaseProgress}  negative circular icon='minus'/>
-                    <Button onClick={increaseProgress} positive circular icon='plus'/>
-                    {
-                        showSaveButton ?
-                        <>
-                            <Divider hidden />
-                            <Button onClick={handleSaveProgress} loading={percentChangeSaving}>Save</Button>
-
-                        </>
-                        :
-                        null
-                    }
-                    </>
-                    :
-                    null
-                    } 
-                </Grid.Column> */}
             </Grid>
             </Container>
         </Segment>
