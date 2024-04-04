@@ -177,9 +177,9 @@ const App = (triggerRefresh) => {
             <Route path="/skills" element={<Skills msgAlert={msgAlert} />} />
             <Route
               path="/projectDetail/:projectId"
-              user={user}
-              project={project}
-               element={<ProjectDetail msgAlert={msgAlert} />}
+              
+               element={<ProjectDetail user={user}
+              project={project} msgAlert={msgAlert} />}
             />
             {/* <Route
 										path='/user-page'
