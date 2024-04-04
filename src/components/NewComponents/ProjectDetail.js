@@ -76,6 +76,7 @@ const ProjectDetail = ({project, user}) => {
     // console.log("VIZ TOGGLE");
   };
 
+  console.log(project, "this is the projecto!!____")
   return (
     <>
       <Header as="h2" size="big" icon inverted textAlign="center">

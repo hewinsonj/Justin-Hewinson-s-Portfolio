@@ -99,8 +99,6 @@ const LandingPage = () =>
       />
     );
 
-    console.log(window.innerWidth);
-
     return (
       <>
         <Grid padded centered columns={2}>
