@@ -36,13 +36,13 @@ import {  Button, Segment, Grid, Label, Icon, Image, Modal, Ref, Form, Container
 
 const App = (triggerRefresh) => {
 
-	const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null)
+  const [project, setProject] = useState(null);
 	const [viewedUser, setViewedUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	//trigger to help components update if there is a new activity created w/in the modal, which can be called from anywhere. This is purely a toggle and no meaning should be taken from whether it is true or false
 	const [newActivity, setNewActivity] = useState(false)
 	const [newProject, setNewProject] = useState(false)
-
 	//grab requested user's id from params
 	// const { otherUserId } = useParams()
 	//set state variables for activities which are public for this user's public profile and completed counts
@@ -71,39 +71,7 @@ const App = (triggerRefresh) => {
 		)
 		})
   }
-  
-    // window.addEventListener("resize", updateDimensions);
-    // window.addEventListener("load", updateDimensions);
 
-  const componentDidMount = ({}) => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  }
-  const componentWillUnmount = ({}) => {
-    window.removeEventListener("resize", updateDimensions);
-    window.removeEventListener("load", updateDimensions);
-  }
-
-  const updateDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-
-    console.log(window.innerWidth);
-
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  }
-
-  const handleWindowBig = () => {
-    this.setState({ bigMenu: true });
-    console.log("handleBig happened", this.bigMenu);
-  };
-  const handleWindowSmall = () => {
-    this.setState({ bigMenu: false });
-    console.log("handleSmall happened", this.bigMenu);
-  }
 
 
 	return (
@@ -201,11 +169,18 @@ const App = (triggerRefresh) => {
             />
             <Route
               path="/projects"
-              element={<Projects msgAlert={msgAlert} user={user} />}
+              element={
+                <Projects msgAlert={msgAlert} user={user} project={project} />
+              }
             />
             <Route path="/contact" element={<Contact msgAlert={msgAlert} />} />
             <Route path="/skills" element={<Skills msgAlert={msgAlert} />} />
-            <Route path="/projectDetail/:projectId" element={<ProjectDetail msgAlert={msgAlert} />} />
+            <Route
+              path="/projectDetail/:projectId"
+              user={user}
+              project={project}
+               element={<ProjectDetail msgAlert={msgAlert} />}
+            />
             {/* <Route
 										path='/user-page'
 										element={
