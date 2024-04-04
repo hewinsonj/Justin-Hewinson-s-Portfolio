@@ -78,26 +78,23 @@ const Skills = () => {
 
   return (
     <>
-      <Divider hidden />
-      <Grid.Row>
-        <Header as="h2" size="huge" icon inverted>
-          <Icon
-            name="clipboard list"
-            size="huge"
-            // onClick={handleTriggerRefresh}
-          />
-          Programming Languages & Development Tools
-        </Header>
-      </Grid.Row>
+
+
+      <Header as="h2" size="huge" icon inverted textAlign="center">
+        <Icon
+          name="clipboard list"
+          size="huge"
+          // onClick={handleTriggerRefresh}
+        />
+        Programming Languages & Development Tools
+      </Header>
 
       {bigMenu ? (
-        <Grid columns={2} >
+        <Grid columns={2}>
           <Grid.Column padded floated="right" width={4}>
-            <Grid.Row textAlign="center">
-              
-              
-            </Grid.Row>
-            <Segment><h1 id="center">Development</h1>
+            <Grid.Row textAlign="center"></Grid.Row>
+            <Segment>
+              <h1 id="center">Development</h1>
               <List bulleted size="huge" divided>
                 <ListItem>JavaScript</ListItem>
                 <ListItem>Python</ListItem>
@@ -119,10 +116,9 @@ const Skills = () => {
             </Segment>
           </Grid.Column>
           <Grid.Column padded width={4} floated="left">
-            <Grid.Row inverted>
-              
-            </Grid.Row>
-            <Segment><h1 id="center" >Tools</h1>
+            <Grid.Row inverted></Grid.Row>
+            <Segment>
+              <h1 id="center">Tools</h1>
               <List bulleted size="huge" divided>
                 <ListItem>GitHub</ListItem>
                 <ListItem>Postman</ListItem>
@@ -135,11 +131,7 @@ const Skills = () => {
         </Grid>
       ) : (
         <Segment color="grey" inverted>
-          <Grid.Row>
-            <Header as="h2" size="big" icon inverted>
-              Development
-            </Header>
-          </Grid.Row>
+          <h1 id="center">Development</h1>
           <Grid columns={2} centered>
             <Grid.Column width={14}>
               <Segment centered>
@@ -166,7 +158,7 @@ const Skills = () => {
               </Segment>
             </Grid.Column>
             <Grid.Column padded width={14}>
-              <Grid.Row >
+              <Grid.Row>
                 <h1 id="center">Tools</h1>
               </Grid.Row>
               <Segment>

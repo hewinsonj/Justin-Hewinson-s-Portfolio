@@ -4,15 +4,75 @@ import {  Button, Segment, Grid, Feed, Icon, Image, Progress, List, Divider, Con
 import { signOut } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 import { updateProject } from '../../api/project'
+import ProjectDetail from "../NewComponents/ProjectDetail";
 
 
 const ProjectSegment = ({ project, msgAlert, user}) => {
     
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    const [bigMenu, setBigMenu] = React.useState(true);
+    const [width, setWidth] = React.useState(0);
+    const [height, setHeight] = React.useState(0);
 
+      useEffect(() => {
+        componentDidMount();
+        componentWillUnmount();
+        updateDimensions();
+      }, []);
+
+      const componentDidMount = () => {
+        window.addEventListener("resize", updateDimensions);
+        window.addEventListener("load", updateDimensions);
+
+        // console.log(window.innerWidth, "YOOOO1");
+      };
+
+      const componentWillUnmount = () => {
+        window.addEventListener("resize", updateDimensions);
+        window.addEventListener("load", updateDimensions);
+
+        // console.log(window.innerWidth, "YOOOO2");
+      };
+
+      const updateDimensions = () => {
+        setWidth((prevWidth) => (prevWidth = window.innerWidth));
+        setHeight((prevHeight) => (prevHeight = window.innerHeight));
+
+        if (window.innerWidth > 1536) {
+          handleWindowBig();
+        } else {
+          handleWindowSmall();
+        }
+      };
+
+      const handleWindowBig = () => {
+        setBigMenu((prevBigMenu) => (prevBigMenu = true));
+        console.log("handleBig happened", bigMenu);
+      };
+      const handleWindowSmall = () => {
+        setBigMenu((prevBigMenu) => (prevBigMenu = false));
+        console.log("handleSmall happened", window.innerWidth, bigMenu);
+      };
+
+      componentDidMount();
+    componentWillUnmount();
+    
+    const mobileProjJSX = (
+      <ProjectDetail
+        key={project.id}
+        project={project}
+        user={user}
+        msgAlert={msgAlert}
+        // addProject={(type) => addProject(type)}
+      />
+    );
 
     return (
-        <Segment id='actListItems' raised>
+       
+        <Segment
+            // id='actListItems' raised
+        
+        > {bigMenu ? 
             <Container fluid>
             <Grid columns={4} textAlign='center'>
                 <Grid.Row>
@@ -85,7 +145,7 @@ const ProjectSegment = ({ project, msgAlert, user}) => {
                                     { project.link2.length > 1 ?
                                     'Front-end'
                                     :
-                                    'Repo'
+                                    'Repository'
                                     }
                                 </a></h2>
                                 { project.link2.length > 1 ?
@@ -104,8 +164,9 @@ const ProjectSegment = ({ project, msgAlert, user}) => {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            </Container>
-        </Segment>
+            </Container>: {mobileProjJSX} }
+        </Segment >
+            
     )
 }
 

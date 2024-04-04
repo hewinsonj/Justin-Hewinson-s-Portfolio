@@ -198,8 +198,7 @@ export default class Header extends Component {
               ) : null}
             </Menu>
           ) : (
-              <Menu attached="top" color="grey" id="mobileMenu"
-              >
+            <Menu attached="top" color="grey" id="mobileMenu">
               <Dropdown
                 item
                 icon={<Icon name="globe" size="large" inverted />}
@@ -236,6 +235,15 @@ export default class Header extends Component {
                       class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                     >
                       Skills
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link
+                      to={`/projectDetail/:projectId`}
+                      class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    >
+                      ProjDetail
                     </Link>
                   </DropdownItem>
 
