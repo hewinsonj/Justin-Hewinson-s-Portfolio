@@ -150,7 +150,7 @@ export default class Header extends Component {
               </Menu.Item>
               {/* This is a conditional that checks if a user is logged in */}
               {this.props.user ? (
-                <Menu.Menu widths={3}>
+              <Menu>
                   <Modal
                     onClose={() => this.handleClose()}
                     onOpen={() => this.setState({ setOpen: true })}
@@ -194,7 +194,7 @@ export default class Header extends Component {
                       Change Password
                     </Link>
                   </Menu.Item>
-                </Menu.Menu>
+                </Menu>
               ) : null}
             </Menu>
           ) : (
@@ -238,14 +238,14 @@ export default class Header extends Component {
                     </Link>
                   </DropdownItem>
 
-                  <DropdownItem>
+                  {/* <DropdownItem>
                     <Link
                       to={`/projectDetail/:projectId`}
                       class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                     >
                       ProjDetail
                     </Link>
-                  </DropdownItem>
+                  </DropdownItem> */}
 
                   <DropdownItem>
                     <Link

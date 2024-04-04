@@ -47,10 +47,8 @@ const App = (triggerRefresh) => {
 	// const { otherUserId } = useParams()
 	//set state variables for activities which are public for this user's public profile and completed counts
 	const segmentRef = React.useRef()
-	const [visible, setVisible] = React.useState(false)
 	const [email, setEmail] = useState('')
   const [thisUser, setThisUser] = useState({})
-  const [bigMenu, setBigMenu] = React.useState(false)
 	// const handleRefresh = (e) => { e.preventDefault()
 	// 	triggerRefresh()
 	// }
@@ -82,11 +80,6 @@ const App = (triggerRefresh) => {
           msgAlert={msgAlert}
           setNewActivity={setNewActivity}
           setNewProject={setNewProject}
-          bigMenu={setBigMenu}
-          handleWindowBig={handleWindowBig}
-          handleWindowSmall={handleWindowSmall}
-          componentWillUnmount={componentWillUnmount}
-          componentDidMount={componentDidMount}
         />
         <Ref innerRef={segmentRef}>
           <Routes>
