@@ -288,3 +288,7 @@ code {
     border-radius: 50%;
   }
 }
+
+.whiteWords {
+  color: white;
+}

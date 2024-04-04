@@ -37,16 +37,12 @@ const ProjectDetail = ({user}) => {
     componentDidMount();
     componentWillUnmount();
     // triggerRefresh();
-  }, []);
-
-     useEffect(() => {
-       getProject(user, projectId)
+    getProject(projectId)
          .then((res) => {
            setProject(res.data.project);
-           console.log("project is got!!!!!!", res.data.project);
+           console.log("project is got!!!!!!");
          })
-       
-     });
+  }, []);
 
   const componentDidMount = () => {
     window.addEventListener("resize", updateDimensions);
@@ -93,24 +89,24 @@ const ProjectDetail = ({user}) => {
   return (
     <>
       <Header as="h2" size="big" icon inverted textAlign="center">
+        <Link to={`/projects`} className="whiteWords">
         <Icon
           name="database"
           size="big"
           // onClick={handleTriggerRefresh}
         />
-        Project Detail
+        Projects</Link>
       </Header>
-      <Container>
+      {/* <Container floated='right'>
         <Button>
-          {" "}
-          <Link to={`/projects`}>Projects</Link>
-        </Button>
-      </Container>
+          Projects
+        </Button> 
+      </Container> */}
       {bigMenu ? (
         <Grid columns={2}>BIGMENU PROJ DETAIL</Grid>
       ) : (
         <Segment
-          color="grey"
+          color="b"
           inverted
           style={{
             border: "solid",
@@ -118,6 +114,9 @@ const ProjectDetail = ({user}) => {
           }}
         >
           {/* <Image src="https://i.imgur.com/GWkVhJO.jpg" /> */}
+          <Header as="h2" size="big" icon inverted textAlign="center">
+            {project.projTitle}
+          </Header>
           <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
@@ -157,23 +156,17 @@ const ProjectDetail = ({user}) => {
                 </Grid.Row>
               </Grid>
             </Modal.Content>
-          </Modal>
-          <h2>click the image to view more</h2>
+            </Modal>
+            <Container textAlign="center">
+          <p>click the image to view more</p></Container>
           <Segment>
             <p>{project.description}</p>
           </Segment>
           <Segment>
             <Grid padded>
               <Header floated="left"> Technologies</Header>
-
-              <h2
-                style={{
-                  fontStyle: "bold",
-                  fontSize: "6vw",
-                }}
-              >
                 {project.client}
-              </h2>
+             
             </Grid>
           </Segment>
           <Segment>
@@ -182,21 +175,21 @@ const ProjectDetail = ({user}) => {
                 <h2>
                   <Icon name="caret right" />
                   <a href={`${project.link1}`} target="_blank">
-                      {/* {project.link2.length > 1 ? "Front-end" : "Repository"} */}
-                      link
+                    {/* {project.link2.length > 1 ? "Front-end" : "Repository"} */}
+                    link
                   </a>
                 </h2>
               </List.Item>
 
               {/* {project.link2.length > 1 ? ( */}
-                <List.Item>
-                  <h2>
-                    <Icon name="caret right" />
-                    <a href={`${project.link2}`} target="_blank">
-                      Back-end
-                    </a>
-                  </h2>
-                </List.Item>
+              <List.Item>
+                <h2>
+                  <Icon name="caret right" />
+                  <a href={`${project.link2}`} target="_blank">
+                    Back-end
+                  </a>
+                </h2>
+              </List.Item>
               {/* ) : null} */}
 
               {project.link3 ? (

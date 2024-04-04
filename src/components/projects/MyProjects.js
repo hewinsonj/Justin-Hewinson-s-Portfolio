@@ -71,11 +71,11 @@ const MyProjects = ({allProjects, filterProjects, msgAlert, user, addProject, ha
 
     const handleWindowBig = () => {
       setBigMenu((prevBigMenu) => (prevBigMenu = true));
-      console.log("handleBig happened", bigMenu);
+    //   console.log("handleBig happened", bigMenu);
     };
     const handleWindowSmall = () => {
       setBigMenu((prevBigMenu) => (prevBigMenu = false));
-      console.log("handleSmall happened", window.innerWidth, bigMenu);
+    //   console.log("handleSmall happened", window.innerWidth, bigMenu);
     };
 
     componentDidMount();
@@ -110,7 +110,7 @@ const MyProjects = ({allProjects, filterProjects, msgAlert, user, addProject, ha
                      </Header>
                      <Image src={project.img1} />
                      <p>cilck to view detail</p>
-                     <Segment inverted color="grey">
+                     <Segment inverted color="black">
                        {project.client}
                      </Segment>
                    </Segment>

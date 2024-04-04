@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { getUserInfo } from "../../api/user";
 import {
   Menu,
   Icon,
@@ -34,16 +35,21 @@ export default class Header extends Component {
     height: 0,
   };
 
+  // constructor(user) {
+  //   super();
+  //   user = this.props.user;
+  // }
+
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   handleClose = () => {
     this.setState({ setOpen: false });
   };
 
-
-	
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
     window.addEventListener("load", this.updateDimensions);
+    console.log(this.props.user, 'user')
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
@@ -70,13 +76,12 @@ export default class Header extends Component {
     this.setState({ bigMenu: false });
     // console.log("handleSmall happened", this.bigMenu);
   };
-	
 
   render() {
     const { activeItem } = this.state;
-	  
+
     // window.addEventListener("resize", updateDimensions());
-	
+
     return (
       <>
         <Sticky id="stickyHeader">
@@ -150,7 +155,7 @@ export default class Header extends Component {
               </Menu.Item>
               {/* This is a conditional that checks if a user is logged in */}
               {this.props.user ? (
-              <Menu>
+                <Menu>
                   <Modal
                     onClose={() => this.handleClose()}
                     onOpen={() => this.setState({ setOpen: true })}
@@ -257,6 +262,21 @@ export default class Header extends Component {
                       Resume
                     </Link>
                   </DropdownItem>
+
+                  {this.props.user ? (
+                    <DropdownMenu>
+                      <DropdownItem>
+                        <Link to="sign-out" class="linkSize">
+                          Sign Out
+                        </Link>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <Link to="change-password" class="linkSize">
+                          Change Password
+                        </Link>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  ) : null}
                   <DropdownDivider />
                   <DropdownItem>
                     {/* <Icon name="dropdown" /> */}
