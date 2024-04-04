@@ -1,64 +1,74 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, Segment, Grid, Label, Icon, Image, Modal, Header, List, GridRow, Container, Sticky} from "semantic-ui-react";
+import {
+  Button,
+  Segment,
+  Grid,
+  Label,
+  Icon,
+  Image,
+  Modal,
+  Header,
+  List,
+  GridRow,
+  Container,
+  Sticky,
+} from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import { signOut } from "../../api/auth";
 import messages from "../shared/AutoDismissAlert/messages";
 import LoadingScreen from "../shared/LoadingPage";
 import { Link } from "react-router-dom";
 
-const LandingPage = (
-    // bigMenu, componentDidMount, componentWillUnmount
-) => {
-//   const { componentWillUnmount, componentDidMount, bigMenu } = props;
+const LandingPage = () =>
+  // bigMenu, componentDidMount, componentWillUnmount
+  {
+    //   const { componentWillUnmount, componentDidMount, bigMenu } = props;
 
     const [open, setOpen] = React.useState(false);
     const [bigMenu, setBigMenu] = React.useState(true);
     const [width, setWidth] = React.useState(0);
     const [height, setHeight] = React.useState(0);
 
-      useEffect(() => {
-        componentDidMount();
-          componentWillUnmount();
-          updateDimensions();
-      }, []);
+    useEffect(() => {
+      componentDidMount();
+      componentWillUnmount();
+      updateDimensions();
+    }, []);
 
     const componentDidMount = () => {
-        window.addEventListener("resize", updateDimensions);
-        window.addEventListener("load", updateDimensions);
-        
-        // console.log(window.innerWidth, "YOOOO1");
+      window.addEventListener("resize", updateDimensions);
+      window.addEventListener("load", updateDimensions);
+
+      // console.log(window.innerWidth, "YOOOO1");
     };
 
     const componentWillUnmount = () => {
-        window.addEventListener("resize", updateDimensions);
-        window.addEventListener("load", updateDimensions);
+      window.addEventListener("resize", updateDimensions);
+      window.addEventListener("load", updateDimensions);
 
-        // console.log(window.innerWidth, "YOOOO2");
+      // console.log(window.innerWidth, "YOOOO2");
     };
 
     const updateDimensions = () => {
-      
-        setWidth(prevWidth => prevWidth = window.innerWidth)
-        setHeight(prevHeight => prevHeight = window.innerHeight);
+      setWidth((prevWidth) => (prevWidth = window.innerWidth));
+      setHeight((prevHeight) => (prevHeight = window.innerHeight));
 
-        if (window.innerWidth > 1536) {
+      if (window.innerWidth > 1536) {
         handleWindowBig();
-        } else {
+      } else {
         handleWindowSmall();
-        }
+      }
     };
 
-  const handleWindowBig = () => {
-    setBigMenu(prevBigMenu => prevBigMenu = true)
-    console.log("handleBig happened", bigMenu);
-  };
-  const handleWindowSmall = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = false));
-    console.log("handleSmall happened", window.innerWidth, bigMenu);
-  };
+    const handleWindowBig = () => {
+      setBigMenu((prevBigMenu) => (prevBigMenu = true));
+    };
+    const handleWindowSmall = () => {
+      setBigMenu((prevBigMenu) => (prevBigMenu = false));
+    };
 
-  componentDidMount();
-  componentWillUnmount();
+    componentDidMount();
+    componentWillUnmount();
 
     const isBigMenu = bigMenu ? (
       <Image
@@ -88,44 +98,52 @@ const LandingPage = (
         spaced="right"
       />
     );
-    
+
     console.log(window.innerWidth);
 
-  return (
-    <>
-      <Grid padded centered columns={2}>
-        <Grid.Row>
-          <div class="landingback raleway">
-            <p id="flexText">Welcome to </p>
-          </div>
-        </Grid.Row>
-        <Grid.Row>
-          <div class="landingback raleway">
-            <h1 id="flexText">
-              Justin Hewinson
-              <Link to={`sign-in`} id="flexText">
-                '
-              </Link>
-              s
-            </h1>
-          </div>
-        </Grid.Row>
-        <Grid.Row>
-          <div class="landingback raleway">
-            <p id="flexText">portfolio</p>
-          </div>
-        </Grid.Row>
-        <Grid.Row fluid centered>
-          <Container fluid>
-            <h1 style={{ filter: "drop-shadow(6px 6px 30px black", justifyContent: "center", alignContent: "center", verticalAlign: "center", margin: "5vw", marginTop: "0"}}>
-              {isBigMenu}
-            </h1>
-          </Container>
-        </Grid.Row>
-        
-      </Grid>
-    </>
-  );
-};
+    return (
+      <>
+        <Grid padded centered columns={2}>
+          <Grid.Row>
+            <div class="landingback raleway">
+              <p id="flexText">Welcome to </p>
+            </div>
+          </Grid.Row>
+          <Grid.Row>
+            <div class="landingback raleway">
+              <h1 id="flexText">
+                Justin Hewinson
+                <Link to={`sign-in`} id="flexText">
+                  '
+                </Link>
+                s
+              </h1>
+            </div>
+          </Grid.Row>
+          <Grid.Row>
+            <div class="landingback raleway">
+              <p id="flexText">portfolio</p>
+            </div>
+          </Grid.Row>
+          <Grid.Row fluid centered>
+            <Container fluid>
+              <h1
+                style={{
+                  filter: "drop-shadow(6px 6px 30px black",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  verticalAlign: "center",
+                  margin: "5vw",
+                  marginTop: "0",
+                }}
+              >
+                {isBigMenu}
+              </h1>
+            </Container>
+          </Grid.Row>
+        </Grid>
+      </>
+    );
+  };
 
 export default LandingPage;
