@@ -58,12 +58,9 @@ export const getTheirProjects = (currentUser, requestedUserId) => {
 //data returned: res.data.activity is the activity object itself (including all notes as res.data.notes)
 //res.data.publicNotes has all notes associated with the activity which have been marked a private by their authors 
 //res.data.privateViewableNotes has all notes in the activity which have been marked private BUT which were authored by the current user making the request
-export const getProject = (user, projectId) => {
+export const getProject = (projectId) => {
     return axios({
         method: 'GET',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
         url: `${apiUrl}/projects/${projectId}`
     })
 }

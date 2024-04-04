@@ -1,4 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { getProject} from "../../api/project";
 import {
   Button,
   Segment,
@@ -20,12 +21,15 @@ import { signOut } from "../../api/auth";
 import messages from "../shared/AutoDismissAlert/messages";
 import LoadingScreen from "../shared/LoadingPage";
 
-const ProjectDetail = ({project, user}) => {
+const ProjectDetail = ({user}) => {
   const [open, setOpen] = React.useState(false);
   const [width, setWidth] = React.useState(0);
   const [height, setHeight] = React.useState(0);
   const [bigMenu, setBigMenu] = React.useState(true);
   const [visible, setViz] = useState(false);
+  const [project, setProject] = useState({});
+
+  const { projectId } = useParams();
 
   useEffect(() => {
     handleToggleVisibility();
@@ -34,6 +38,15 @@ const ProjectDetail = ({project, user}) => {
     componentWillUnmount();
     // triggerRefresh();
   }, []);
+
+     useEffect(() => {
+       getProject(user, projectId)
+         .then((res) => {
+           setProject(res.data.project);
+           console.log("project is got!!!!!!", res.data.project);
+         })
+       
+     });
 
   const componentDidMount = () => {
     window.addEventListener("resize", updateDimensions);
@@ -76,7 +89,7 @@ const ProjectDetail = ({project, user}) => {
     // console.log("VIZ TOGGLE");
   };
 
-  console.log(project, "this is the projecto!!____")
+  console.log(project.name, "this is the projecto!!____")
   return (
     <>
       <Header as="h2" size="big" icon inverted textAlign="center">
@@ -169,32 +182,33 @@ const ProjectDetail = ({project, user}) => {
                 <h2>
                   <Icon name="caret right" />
                   <a href={`${project.link1}`} target="_blank">
-                    {project.link2.length > 1 ? "Front-end" : "Repository"}
+                      {/* {project.link2.length > 1 ? "Front-end" : "Repository"} */}
+                      link
                   </a>
                 </h2>
               </List.Item>
-              
-                {project.link2.length > 1 ? (
-                  <List.Item>
+
+              {/* {project.link2.length > 1 ? ( */}
+                <List.Item>
                   <h2>
                     <Icon name="caret right" />
                     <a href={`${project.link2}`} target="_blank">
                       Back-end
                     </a>
-                    </h2>
-                  </List.Item>
-                ) : null}
+                  </h2>
+                </List.Item>
+              {/* ) : null} */}
 
-                {project.link3 ? (
-                  <List.Item>
-                    <h2>
-                      <Icon name="caret right" />
-                      <a href={`${project.link3}`} target="_blank">
-                        Deployed
-                      </a>
-                    </h2>
-                  </List.Item>
-                ) : null }
+              {project.link3 ? (
+                <List.Item>
+                  <h2>
+                    <Icon name="caret right" />
+                    <a href={`${project.link3}`} target="_blank">
+                      Deployed
+                    </a>
+                  </h2>
+                </List.Item>
+              ) : null}
             </List>
           </Segment>
         </Segment>

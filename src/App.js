@@ -169,8 +169,7 @@ const App = (triggerRefresh) => {
             <Route path="/contact" element={<Contact msgAlert={msgAlert} />} />
             <Route path="/skills" element={<Skills msgAlert={msgAlert} />} />
             <Route
-              path="/projectDetail/:projectId"
-              
+              path="/projectDetail/:projectId"            
                element={<ProjectDetail user={user}
               project={project} msgAlert={msgAlert} />}
             />

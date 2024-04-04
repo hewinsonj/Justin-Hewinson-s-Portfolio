@@ -98,7 +98,7 @@ const MyProjects = ({allProjects, filterProjects, msgAlert, user, addProject, ha
        const myProjectsMiniJSX = allProjects ? (
          filterProjects.map((project) => (
            <Link
-             to={`/projectDetail/${project._id}`}
+             to={`/projectDetail/${project.id}`}
              class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
            >
              <Divider hidden />
