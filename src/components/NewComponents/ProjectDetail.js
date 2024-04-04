@@ -166,7 +166,6 @@ const ProjectDetail = ({project, user}) => {
             <List divided>
               <List.Item>
                 <h2>
-                  {" "}
                   <Icon name="caret right" />
                   <a href={`${project.link1}`} target="_blank">
                     {project.link2.length > 1 ? "Front-end" : "Repository"}
@@ -177,7 +176,6 @@ const ProjectDetail = ({project, user}) => {
                 {project.link2.length > 1 ? (
                   <List.Item>
                   <h2>
-                    {" "}
                     <Icon name="caret right" />
                     <a href={`${project.link2}`} target="_blank">
                       Back-end
@@ -189,7 +187,6 @@ const ProjectDetail = ({project, user}) => {
                 {project.link3 ? (
                   <List.Item>
                     <h2>
-                      {" "}
                       <Icon name="caret right" />
                       <a href={`${project.link3}`} target="_blank">
                         Deployed
