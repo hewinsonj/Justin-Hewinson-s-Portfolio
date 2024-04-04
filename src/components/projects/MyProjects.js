@@ -25,7 +25,7 @@ import {
     Container,
     List,  
     Divider,
-    Header
+    Header,
 
 } from "semantic-ui-react";
 
@@ -104,22 +104,16 @@ const MyProjects = ({allProjects, filterProjects, msgAlert, user, addProject, ha
              <Divider hidden />
              <Grid centered>
                <Grid.Row>
-                 <Link
-                   to={`/projectDetail/:projectId`}
-                   class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                 >
                    <Segment>
                      <Header size="huge" icon textAlign="center" color="black">
-                       MyTiki APP
+                       {project.projTitle}
                      </Header>
-                     <Image src="https://i.imgur.com/GWkVhJO.jpg" />
+                     <Image src={project.img1} />
                      <p>cilck to view detail</p>
                      <Segment inverted color="grey">
-                       HTML5, CSS, Bootstrap, JavaScript, LiquidJs, Express,
-                       MongoDB, Mongoose, Morgan, Bcryptjs
+                       {project.client}
                      </Segment>
                    </Segment>
-                 </Link>
                </Grid.Row>
              </Grid>
            </Link>
