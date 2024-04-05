@@ -710,7 +710,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
         </Grid>
       )}
 
-      {/* {visible ? ( */}
+      {visible ? (
         <Grid columns={2} centered container>
           {/*------------------------------MAIN AREA-----------------------------------  */}
           <Grid.Row>
@@ -870,7 +870,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      {/* ) : null} */}
+       ) : null} 
 
       <Divider hidden />
     </>

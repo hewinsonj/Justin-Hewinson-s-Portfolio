@@ -28,7 +28,7 @@ const ProjectDetail = ({user}) => {
   const [bigMenu, setBigMenu] = React.useState(true);
   const [visible, setViz] = useState(false);
   const [project, setProject] = useState({});
-
+  const navigate = useNavigate();
   const { projectId } = useParams();
 
   useEffect(() => {
@@ -64,6 +64,9 @@ const ProjectDetail = ({user}) => {
     // console.log("right her her");
     if (window.innerWidth > 1536) {
       handleWindowBig();
+      
+        navigate(`/projects`)
+      
       //   console.log("right herBIG");
     } else {
       handleWindowSmall();
@@ -175,22 +178,21 @@ const ProjectDetail = ({user}) => {
                 <h2>
                   <Icon name="caret right" />
                   <a href={`${project.link1}`} target="_blank">
-                    {/* {project.link2.length > 1 ? "Front-end" : "Repository"} */}
-                    link
+                      { project.link2 ? "Front-end" : "Repository"}
+
                   </a>
                 </h2>
               </List.Item>
-
-              {/* {project.link2.length > 1 ? ( */}
+              {project.link2 ? (
               <List.Item>
                 <h2>
                   <Icon name="caret right" />
                   <a href={`${project.link2}`} target="_blank">
-                    Back-end
+                    Back-End
                   </a>
                 </h2>
               </List.Item>
-              {/* ) : null} */}
+              ) : null}
 
               {project.link3 ? (
                 <List.Item>

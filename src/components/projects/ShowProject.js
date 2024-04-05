@@ -28,7 +28,7 @@ const ShowProject = ({ user, msgAlert }) => {
     // const navigate = useNavigate()
 
     useEffect(() => {
-      getProject(user, projectId)
+      getProject(projectId)
         .then((res) => {
             setProject(res.data.project)
             setPercent(res.data.project.progress)
@@ -41,9 +41,6 @@ const ShowProject = ({ user, msgAlert }) => {
             })
         })
     },[updated])
-
-  
-    
 
     const handleDeleteProject = () => {
       deleteProject(user, projectId)

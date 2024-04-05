@@ -49,7 +49,7 @@ export default class Header extends Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
     window.addEventListener("load", this.updateDimensions);
-    console.log(this.props.user, 'user')
+    // console.log(this.props.user, 'user')
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
@@ -131,6 +131,15 @@ export default class Header extends Component {
                 </Link>
               </Menu.Item>
               <Menu.Item
+                name="contact"
+                active={activeItem === "contact"}
+                onClick={this.handleItemClick}
+              >
+                <Link to={`contact`} class="linkSize">
+                  Contact
+                </Link>
+              </Menu.Item>
+              <Menu.Item
                 name="resume"
                 active={activeItem === "resume"}
                 onClick={this.handleItemClick}
@@ -144,63 +153,8 @@ export default class Header extends Component {
                   Resume
                 </Link>
               </Menu.Item>
-              <Menu.Item
-                name="contact"
-                active={activeItem === "contact"}
-                onClick={this.handleItemClick}
-              >
-                <Link to={`contact`} class="linkSize">
-                  Contact
-                </Link>
-              </Menu.Item>
-              {/* This is a conditional that checks if a user is logged in */}
-              {this.props.user ? (
-                <Menu>
-                  <Modal
-                    onClose={() => this.handleClose()}
-                    onOpen={() => this.setState({ setOpen: true })}
-                    open={this.state.setOpen}
-                    trigger={
-                      <Menu.Item
-                        name="New Project"
-                        active={activeItem === "new project"}
-                        onClick={this.handleItemClick}
-                        class="linkSize"
-                      >
-                        New Project
-                      </Menu.Item>
-                    }
-                  >
-                    <Modal.Content>
-                      <CreateProject
-                        user={this.props.user}
-                        setNewProject={this.props.setNewProject}
-                        msgAlert={this.props.msgAlert}
-                        handleClose={this.handleClose}
-                      />
-                    </Modal.Content>
-                  </Modal>
 
-                  <Menu.Item
-                    name="sign out"
-                    active={activeItem === "sign out"}
-                    onClick={this.handleItemClick}
-                  >
-                    <Link to="sign-out" class="linkSize">
-                      Sign Out
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item
-                    name="change password"
-                    active={activeItem === "change password"}
-                    onClick={this.handleItemClick}
-                  >
-                    <Link to="change-password" class="linkSize">
-                      Change Password
-                    </Link>
-                  </Menu.Item>
-                </Menu>
-              ) : null}
+              {/* This is a conditional that checks if a user is logged in */}
             </Menu>
           ) : (
             <Menu attached="top" color="grey" id="mobileMenu">
@@ -251,7 +205,14 @@ export default class Header extends Component {
                       ProjDetail
                     </Link>
                   </DropdownItem> */}
-
+                  <DropdownItem>
+                    <Link
+                      to={`contact`}
+                      class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    >
+                      Contact
+                    </Link>
+                  </DropdownItem>
                   <DropdownItem>
                     <Link
                       to={`//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view`}
@@ -305,22 +266,55 @@ export default class Header extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-
-              {/* <MenuMenu position="right">
-                <div className="ui right aligned category search item">
-                  <div className="ui transparent icon input">
-                    <input
-                      className="prompt"
-                      type="text"
-                      placeholder="Search animals..."
-                    />
-                    <i className="search link icon" />
-                  </div>
-                  <div className="results" />
-                </div>
-              </MenuMenu> */}
             </Menu>
           )}
+          {this.props.user ? (
+            <Menu>
+              <Modal
+                onClose={() => this.handleClose()}
+                onOpen={() => this.setState({ setOpen: true })}
+                open={this.state.setOpen}
+                trigger={
+                  <Menu.Item
+                    name="New Project"
+                    active={activeItem === "new project"}
+                    onClick={this.handleItemClick}
+                    class="linkSize"
+                  >
+                    New Project
+                  </Menu.Item>
+                }
+              >
+                <Modal.Content>
+                  <CreateProject
+                    user={this.props.user}
+                    setNewProject={this.props.setNewProject}
+                    msgAlert={this.props.msgAlert}
+                    handleClose={this.handleClose}
+                  />
+                </Modal.Content>
+              </Modal>
+
+              <Menu.Item
+                name="sign out"
+                active={activeItem === "sign out"}
+                onClick={this.handleItemClick}
+              >
+                <Link to="sign-out" class="linkSize">
+                  Sign Out
+                </Link>
+              </Menu.Item>
+              <Menu.Item
+                name="change password"
+                active={activeItem === "change password"}
+                onClick={this.handleItemClick}
+              >
+                <Link to="change-password" class="linkSize">
+                  Change Password
+                </Link>
+              </Menu.Item>
+            </Menu>
+          ) : null}
         </Sticky>
       </>
     );

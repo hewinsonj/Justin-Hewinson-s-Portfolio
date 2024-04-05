@@ -91,26 +91,35 @@
 //  </Segment>;
 
 
-
-
-        <Divider hidden />
-        <Grid centered>
-                    <Grid.Row>
-                        <Link
-                      to={`/projectDetail/:projectId`}
-                      class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-            <Segment>
-              <Header size="huge" icon textAlign="center" color="black">
-                MyTiki APP
-              </Header>
-                            <Image src="https://i.imgur.com/GWkVhJO.jpg" />
-                            <p>cilck to view detail</p>
-              <Segment inverted color="grey">
-                HTML5, CSS, Bootstrap, JavaScript, LiquidJs, Express, MongoDB,
-                Mongoose, Morgan, Bcryptjs
-              </Segment>
-                            </Segment>
-                        </Link>
-          </Grid.Row>
-        </Grid>
+<Grid columns={2} centered padded>
+  <Grid.Column textAlign="center">
+    <Grid.Row>
+      <h1>
+        Email:{" "}
+        <a href="mailto:hewinsonbusiness@gmail.com?subject=Contacting you from your portfolio">
+          hewinsonbusiness@gmail.com
+        </a>
+      </h1>
+    </Grid.Row>
+    <Grid.Row>
+      {/* <h1>Cell: (404) 454 1727</h1> */}
+      <h1>Located near Atlanta, Georgia</h1>
+    </Grid.Row>
+  </Grid.Column>
+  <Grid.Column textAlign="center">
+    <Grid.Row>
+      <h1>
+        LinkedIn:{" "}
+        <a href="https://www.linkedin.com/in/justin-hewinson/">
+          https://www.linkedin.com/in/justin-hewinson/
+        </a>
+      </h1>
+    </Grid.Row>
+    <Grid.Row>
+      <h1>
+        GitHub:{" "}
+        <a href="https://github.com/hewinsonj">https://github.com/hewinsonj</a>
+      </h1>
+    </Grid.Row>
+  </Grid.Column>
+</Grid>;
