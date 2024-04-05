@@ -58,14 +58,12 @@ const Contact  = () => {
         <Divider hidden />
         <Container textAlign="center" padded>
           <Header as="h2" size="huge" icon inverted>
-            
-              <Icon
-                name="phone volume"
-                size="huge"
-                padded
-                // onClick={handleTriggerRefresh}
-              />
-           
+            <Icon
+              name="phone volume"
+              size="huge"
+              padded
+              // onClick={handleTriggerRefresh}
+            />
             Contact
           </Header>
         </Container>
@@ -80,7 +78,9 @@ const Contact  = () => {
           <Segment textAlign="center">
             {bigMenu ? (
               <List size="massive" divided>
-                <ListItem>Mobile: <a href="tel:4044541727" >(404) 454-1727 </a></ListItem>
+                <ListItem>
+                  Mobile: <a href="tel:4044541727">(404) 454-1727 </a>
+                </ListItem>
                 <ListItem>
                   Email:{" "}
                   <a href="mailto:hewinsonbusiness@gmail.com?subject=Contacting you from your portfolio">
@@ -103,7 +103,9 @@ const Contact  = () => {
               </List>
             ) : (
               <List size="huge" divided>
-                <ListItem>Mobile: (404) 454-1727</ListItem>
+                <ListItem>
+                  Mobile: <a href="tel:4044541727">(404) 454-1727 </a>
+                </ListItem>
                 <ListItem>
                   Email:{" "}
                   <a href="mailto:hewinsonbusiness@gmail.com?subject=Contacting you from your portfolio">
