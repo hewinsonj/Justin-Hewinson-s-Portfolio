@@ -55,73 +55,78 @@ const Contact  = () => {
  
     return (
       <>
-    <Divider hidden />
+        <Divider hidden />
         <Container textAlign="center" padded>
-            <Header as="h2" size="huge" icon inverted>
-                <Icon
+          <Header as="h2" size="huge" icon inverted>
+            
+              <Icon
                 name="phone volume"
                 size="huge"
                 padded
                 // onClick={handleTriggerRefresh}
-                />
-                    Contact
-            </Header>
+              />
+           
+            Contact
+          </Header>
         </Container>
-    <Segment
-        color="grey"
-        inverted
-        style={{
-        border: "solid",
-        bordercolor: "light grey",
-        }}
+        <Segment
+          color="grey"
+          inverted
+          style={{
+            border: "solid",
+            bordercolor: "light grey",
+          }}
         >
-                <Segment textAlign='center'>
-                    {bigMenu ? <List size="massive" divided >
-                <ListItem>Mobile: (404) 454-1727</ListItem>
+          <Segment textAlign="center">
+            {bigMenu ? (
+              <List size="massive" divided>
+                <ListItem>Mobile: <a href="tel:4044541727" >(404) 454-1727 </a></ListItem>
                 <ListItem>
-                    Email:{" "}
-                    <a href="mailto:hewinsonbusiness@gmail.com?subject=Contacting you from your portfolio">
+                  Email:{" "}
+                  <a href="mailto:hewinsonbusiness@gmail.com?subject=Contacting you from your portfolio">
                     hewinsonbusiness@gmail.com
-                    </a>
+                  </a>
                 </ListItem>
                 <ListItem>
-                    LinkedIn:{" "}
-                    <a href="https://www.linkedin.com/in/justin-hewinson/">
+                  LinkedIn:{" "}
+                  <a href="https://www.linkedin.com/in/justin-hewinson/">
                     https://www.linkedin.com/in/justin-hewinson/
-                    </a>
+                  </a>
                 </ListItem>
                 <ListItem>
-                    GitHub:{" "}
-                    <a href="https://github.com/hewinsonj">
+                  GitHub:{" "}
+                  <a href="https://github.com/hewinsonj">
                     https://github.com/hewinsonj
-                    </a>
+                  </a>
                 </ListItem>
                 <ListItem>Located near Atlanta, GA</ListItem>
-            </List> : 
-            <List size="huge" divided >
+              </List>
+            ) : (
+              <List size="huge" divided>
                 <ListItem>Mobile: (404) 454-1727</ListItem>
                 <ListItem>
-                    Email:{" "}
-                    <a href="mailto:hewinsonbusiness@gmail.com?subject=Contacting you from your portfolio">
+                  Email:{" "}
+                  <a href="mailto:hewinsonbusiness@gmail.com?subject=Contacting you from your portfolio">
                     hewinsonbusiness@gmail.com
-                    </a>
+                  </a>
                 </ListItem>
                 <ListItem>
-                    LinkedIn:{" "}
-                    <a href="https://www.linkedin.com/in/justin-hewinson/">
+                  LinkedIn:{" "}
+                  <a href="https://www.linkedin.com/in/justin-hewinson/">
                     https://www.linkedin.com/in/justin-hewinson/
-                    </a>
+                  </a>
                 </ListItem>
                 <ListItem>
-                    GitHub:{" "}
-                    <a href="https://github.com/hewinsonj">
+                  GitHub:{" "}
+                  <a href="https://github.com/hewinsonj">
                     https://github.com/hewinsonj
-                    </a>
+                  </a>
                 </ListItem>
                 <ListItem>Located near Atlanta, GA</ListItem>
-            </List>}
+              </List>
+            )}
+          </Segment>
         </Segment>
-    </Segment>
       </>
     );
 }

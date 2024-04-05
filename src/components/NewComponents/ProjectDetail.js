@@ -93,12 +93,13 @@ const ProjectDetail = ({user}) => {
     <>
       <Header as="h2" size="big" icon inverted textAlign="center">
         <Link to={`/projects`} className="whiteWords">
-        <Icon
-          name="database"
-          size="big"
-          // onClick={handleTriggerRefresh}
-        />
-        Projects</Link>
+          <Icon
+            name="database"
+            size="big"
+            // onClick={handleTriggerRefresh}
+          />
+          Projects
+        </Link>
       </Header>
       {/* <Container floated='right'>
         <Button>
@@ -159,17 +160,17 @@ const ProjectDetail = ({user}) => {
                 </Grid.Row>
               </Grid>
             </Modal.Content>
-            </Modal>
-            <Container textAlign="center">
-          <p>click the image to view more</p></Container>
+          </Modal>
+          <Container textAlign="center">
+            <p>click the image to view more</p>
+          </Container>
           <Segment>
             <p>{project.description}</p>
           </Segment>
           <Segment>
             <Grid padded>
               <Header floated="left"> Technologies</Header>
-                {project.client}
-             
+              {project.client}
             </Grid>
           </Segment>
           <Segment>
@@ -178,20 +179,19 @@ const ProjectDetail = ({user}) => {
                 <h2>
                   <Icon name="caret right" />
                   <a href={`${project.link1}`} target="_blank">
-                      { project.link2 ? "Front-end" : "Repository"}
-
+                    {project.link2 ? "Front-end" : "Repository"}
                   </a>
                 </h2>
               </List.Item>
               {project.link2 ? (
-              <List.Item>
-                <h2>
-                  <Icon name="caret right" />
-                  <a href={`${project.link2}`} target="_blank">
-                    Back-End
-                  </a>
-                </h2>
-              </List.Item>
+                <List.Item>
+                  <h2>
+                    <Icon name="caret right" />
+                    <a href={`${project.link2}`} target="_blank">
+                      {project.link3 ? "Back-End" : "Deployed"}
+                    </a>
+                  </h2>
+                </List.Item>
               ) : null}
 
               {project.link3 ? (

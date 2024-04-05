@@ -95,7 +95,7 @@ const Skills = () => {
             <Grid.Row textAlign="center"></Grid.Row>
             <Segment>
               <h1 id="center">Development</h1>
-              <List bulleted size="huge" divided>
+              <List bulleted size="massive" divided>
                 <ListItem>JavaScript</ListItem>
                 <ListItem>Python</ListItem>
                 <ListItem>React</ListItem>
@@ -119,7 +119,7 @@ const Skills = () => {
             <Grid.Row inverted></Grid.Row>
             <Segment>
               <h1 id="center">Tools</h1>
-              <List bulleted size="huge" divided>
+              <List bulleted size="massive" divided>
                 <ListItem>GitHub</ListItem>
                 <ListItem>Postman</ListItem>
                 <ListItem>Powershell</ListItem>
