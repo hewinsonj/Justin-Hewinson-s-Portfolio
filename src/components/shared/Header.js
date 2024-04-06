@@ -279,6 +279,15 @@ export default class Header extends Component {
                           OutSystems Certification
                         </a>
                       </DropdownItem>
+                      <DropdownItem>
+                        <a
+                          href="//drive.google.com/file/d/1sR_wR8siTJVva1Bv6qcGf7dJ6GoILf_z/view?usp=sharing"
+                          class="linkSize"
+                          color="blue"
+                        >
+                          General Assembly Course Completion Certificate
+                        </a>
+                      </DropdownItem>
                     </DropdownMenu>
                   </DropdownItem>
 
