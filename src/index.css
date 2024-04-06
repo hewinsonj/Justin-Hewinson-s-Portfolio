@@ -28,7 +28,7 @@ html {
 }
 
 #flexText {
-  font-size: 8vw;
+  font-size: 7vw;
 }
 
 #bigBody {
@@ -269,8 +269,13 @@ code {
 }
 
 .linkSize {
-  font-size: 2rem;
+  font-size: 1rem;
   font-family: 'Raleway', sans-serif;
+}
+
+.linkSizeBig {
+    font-size: 1.5vw;
+    font-family: 'Raleway', sans-serif;
 }
 
 /* #profilePic {

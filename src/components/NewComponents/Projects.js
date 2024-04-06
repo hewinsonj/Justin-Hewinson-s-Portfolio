@@ -100,7 +100,7 @@ const Projects = ({ msgAlert, newProject, user }) => {
           Projects
         </Header>
       ) : (
-        <Header size="small" icon inverted textAlign="center">
+        <Header size="large" icon inverted textAlign="center">
           <Icon
             name="database"
             size="small"

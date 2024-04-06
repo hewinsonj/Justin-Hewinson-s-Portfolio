@@ -92,14 +92,14 @@ export default class Header extends Component {
               pointing
               class="linkSize"
               id="header"
-              widths={6}
+              widths={8}
             >
               <Menu.Item
                 name="Landing"
                 active={activeItem === "Landing"}
                 onClick={this.handleItemClick}
               >
-                <Link to={`/`} class="linkSize">
+                <Link to={`/`} class="linkSizeBig">
                   <Icon name="globe"></Icon>
                 </Link>
               </Menu.Item>
@@ -108,7 +108,7 @@ export default class Header extends Component {
                 active={activeItem === "about me"}
                 onClick={this.handleItemClick}
               >
-                <Link to={`/about-me`} class="linkSize">
+                <Link to={`/about-me`} class="linkSizeBig">
                   About me
                 </Link>
               </Menu.Item>
@@ -117,7 +117,7 @@ export default class Header extends Component {
                 active={activeItem === "search"}
                 onClick={this.handleItemClick}
               >
-                <Link to={`/projects`} class="linkSize">
+                <Link to={`/projects`} class="linkSizeBig">
                   Projects
                 </Link>
               </Menu.Item>
@@ -126,7 +126,7 @@ export default class Header extends Component {
                 active={activeItem === "skills"}
                 onClick={this.handleItemClick}
               >
-                <Link to={`skills `} class="linkSize">
+                <Link to={`skills `} class="linkSizeBig">
                   Skills
                 </Link>
               </Menu.Item>
@@ -135,22 +135,35 @@ export default class Header extends Component {
                 active={activeItem === "contact"}
                 onClick={this.handleItemClick}
               >
-                <Link to={`contact`} class="linkSize">
+                <Link to={`contact`} class="linkSizeBig">
                   Contact
                 </Link>
               </Menu.Item>
               <Menu.Item
-                name="resume"
-                active={activeItem === "resume"}
+                name="experience"
+                active={activeItem === "experience"}
                 onClick={this.handleItemClick}
               >
-                <Link
-                  to={`//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view`}
-                  target="_blank"
-                  color="blue"
-                  class="linkSize"
-                >
-                  Resume
+                <Link to={`experience`} class="linkSizeBig">
+                  Experience
+                </Link>
+              </Menu.Item>
+              <Menu.Item
+                name="education"
+                active={activeItem === "education"}
+                onClick={this.handleItemClick}
+              >
+                <Link to={`education`} class="linkSizeBig">
+                  Education
+                </Link>
+              </Menu.Item>
+              <Menu.Item
+                name="documents"
+                active={activeItem === "documents"}
+                onClick={this.handleItemClick}
+              >
+                <Link to={`documents`} class="linkSizeBig">
+                  Documents
                 </Link>
               </Menu.Item>
 
@@ -160,7 +173,7 @@ export default class Header extends Component {
             <Menu attached="top" color="grey" id="mobileMenu">
               <Dropdown
                 item
-                icon={<Icon name="globe" size="large" inverted />}
+                icon={<Icon name="globe" size="big" inverted />}
                 simple
               >
                 <DropdownMenu size="medium" inverted>
@@ -172,6 +185,7 @@ export default class Header extends Component {
                       <Icon name="globe"></Icon>
                     </Link>
                   </DropdownItem>
+                  <DropdownDivider />
                   <DropdownItem>
                     <Link
                       to={`/about-me`}
@@ -180,6 +194,7 @@ export default class Header extends Component {
                       About me
                     </Link>
                   </DropdownItem>
+                  <DropdownDivider />
                   <DropdownItem>
                     <Link
                       to={`/projects`}
@@ -188,6 +203,7 @@ export default class Header extends Component {
                       Projects
                     </Link>
                   </DropdownItem>
+                  <DropdownDivider />
                   <DropdownItem>
                     <Link
                       to={`skills `}
@@ -196,6 +212,7 @@ export default class Header extends Component {
                       Skills
                     </Link>
                   </DropdownItem>
+                  <DropdownDivider />
 
                   {/* <DropdownItem>
                     <Link
@@ -207,21 +224,62 @@ export default class Header extends Component {
                   </DropdownItem> */}
                   <DropdownItem>
                     <Link
+                      to={`experience`}
+                      class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    >
+                      Experience
+                    </Link>
+                  </DropdownItem>
+                  <DropdownDivider />
+                  <DropdownItem>
+                    <Link
+                      to={`education`}
+                      class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    >
+                      Education
+                    </Link>
+                  </DropdownItem>
+                  <DropdownDivider />
+                  <DropdownItem>
+                    <Link
                       to={`contact`}
                       class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                     >
                       Contact
                     </Link>
                   </DropdownItem>
+                  <DropdownDivider />
                   <DropdownItem>
-                    <Link
-                      to={`//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view`}
-                      target="_blank"
-                      color="blue"
+                    {/* <Icon name="dropdown" /> */}
+
+                    <span
+                      className="text"
                       class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                     >
-                      Resume
-                    </Link>
+                      Documents
+                    </span>
+
+                    <DropdownMenu>
+                      <DropdownItem>
+                        <Link
+                          to={`//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view`}
+                          target="_blank"
+                          color="blue"
+                          class="linkSize link link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >
+                          Resume
+                        </Link>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <a
+                          href="//drive.google.com/file/d/12GACq2BBciISgyVBFPUZazc3ggfUEZeR/view?usp=sharing"
+                          class="linkSize"
+                          color="blue"
+                        >
+                          OutSystems Certification
+                        </a>
+                      </DropdownItem>
+                    </DropdownMenu>
                   </DropdownItem>
 
                   {this.props.user ? (

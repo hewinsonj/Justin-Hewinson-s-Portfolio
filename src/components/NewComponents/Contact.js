@@ -56,17 +56,33 @@ const Contact  = () => {
     return (
       <>
         <Divider hidden />
-        <Container textAlign="center" padded>
-          <Header as="h2" size="huge" icon inverted>
-            <Icon
-              name="phone volume"
-              size="huge"
-              padded
-              // onClick={handleTriggerRefresh}
-            />
-            Contact
-          </Header>
-        </Container>
+
+        {bigMenu ? (
+          <Container textAlign="center" padded>
+            <Header as="h2" size="huge" icon inverted>
+              <Icon
+                name="phone volume"
+                size="huge"
+                padded
+                // onClick={handleTriggerRefresh}
+              />
+              Contact
+            </Header>
+          </Container>
+        ) : (
+          <Container textAlign="center" padded>
+            <Header as="h2" size="large" icon inverted>
+              <Icon
+                name="phone volume"
+                size="large"
+                padded
+                // onClick={handleTriggerRefresh}
+              />
+              Contact
+            </Header>
+          </Container>
+        )}
+        
         <Segment
           color="grey"
           inverted

@@ -78,22 +78,32 @@ const Skills = () => {
 
   return (
     <>
-
-
-      <Header as="h2" size="huge" icon inverted textAlign="center">
-        <Icon
-          name="clipboard list"
-          size="huge"
-          // onClick={handleTriggerRefresh}
-        />
-        Programming Languages & Development Tools
-      </Header>
+      {bigMenu ? (
+        <Header as="h2" size="huge" icon inverted textAlign="center">
+          <Icon
+            name="clipboard list"
+            size="huge"
+            // onClick={handleTriggerRefresh}
+          />
+          Programming Languages & Development Tools
+        </Header>
+      ) : (
+        <Header as="h2" size="large" icon inverted textAlign="center">
+          <Icon
+            name="clipboard list"
+            size="huge"
+            // onClick={handleTriggerRefresh}
+          />
+          Programming Languages & Development Tools
+        </Header>
+      )}
 
       {bigMenu ? (
         <Grid columns={2}>
           <Grid.Column padded floated="right" width={4}>
             <Grid.Row textAlign="center"></Grid.Row>
-            <Segment>
+            <Segment
+            >
               <h1 id="center">Development</h1>
               <List bulleted size="massive" divided>
                 <ListItem>JavaScript</ListItem>
@@ -130,7 +140,14 @@ const Skills = () => {
           </Grid.Column>
         </Grid>
       ) : (
-        <Segment color="grey" inverted>
+        <Segment
+          color="grey"
+          inverted
+          style={{
+            border: "solid",
+            bordercolor: "lightgrey",
+          }}
+        >
           <h1 id="center">Development</h1>
           <Grid columns={2} centered>
             <Grid.Column width={14}>

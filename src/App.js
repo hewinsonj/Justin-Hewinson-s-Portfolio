@@ -26,6 +26,9 @@ import CreateAccount from './components/NewComponents/CreateAccount'
 import Projects from './components/NewComponents/Projects'
 import Contact from './components/NewComponents/Contact'
 import Skills from './components/NewComponents/Skills'
+import Documents from "./components/NewComponents/Documents";
+import Experience from "./components/NewComponents/Experience";
+import Education from "./components/NewComponents/Education";
 import ProjectDetail from "./components/NewComponents/ProjectDetail";
 import {  Button, Segment, Grid, Label, Icon, Image, Modal, Ref, Form, Container, Sidebar, Menu, Checkbox } from 'semantic-ui-react'
 
@@ -168,10 +171,25 @@ const App = (triggerRefresh) => {
             />
             <Route path="/contact" element={<Contact msgAlert={msgAlert} />} />
             <Route path="/skills" element={<Skills msgAlert={msgAlert} />} />
+            <Route path="/documents" element={<Documents msgAlert={msgAlert} />} />
             <Route
-              path="/projectDetail/:projectId"            
-               element={<ProjectDetail user={user}
-              project={project} msgAlert={msgAlert} />}
+              path="/experience"
+              element={<Experience msgAlert={msgAlert} />}
+            />
+            <Route
+              path="/education"
+              element={<Education msgAlert={msgAlert} />}
+            />
+
+            <Route
+              path="/projectDetail/:projectId"
+              element={
+                <ProjectDetail
+                  user={user}
+                  project={project}
+                  msgAlert={msgAlert}
+                />
+              }
             />
             {/* <Route
 										path='/user-page'

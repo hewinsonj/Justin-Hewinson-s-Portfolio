@@ -73,7 +73,7 @@ const LandingPage = () =>
     const isBigMenu = bigMenu ? (
       <Image
         src="https://i.imgur.com/0NFkSem.jpg"
-        size="big"
+        size="large"
         id="profilePic"
         style={{
           border: "solid",

@@ -725,7 +725,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   About Me
                 </Header>
               ) : (
-                <Header as="h2" size="small" icon inverted>
+                <Header as="h2" size="large" icon inverted>
                   <Icon
                     name="user outline"
                     size="huge"
