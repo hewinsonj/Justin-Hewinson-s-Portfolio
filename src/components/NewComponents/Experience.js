@@ -213,7 +213,7 @@ const Experience = () => {
                     }}
                   >
                     Acquired extensive knowledge on 40+ cocktails and spirits.
-                    Cross-trained and coordinator scheduling with a team of 12+.
+                    Cross-trained and coordinated scheduling with a team of 12+.
                     Worked collaboratively to resolve issues ensuring customer
                     and staff retention
                   </h2>
@@ -337,7 +337,7 @@ const Experience = () => {
                     }}
                   >
                     Acquired extensive knowledge on 40+ cocktails and spirits.
-                    Cross-trained and coordinator scheduling with a team of 12+.
+                    Cross-trained and coordinated scheduling with a team of 12+.
                     Worked collaboratively to resolve issues ensuring customer
                     and staff retention
                   </p>
