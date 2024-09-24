@@ -32,68 +32,49 @@ const Skills = () => {
     updateDimensions();
     componentDidMount();
     componentWillUnmount();
-    // triggerRefresh();
   }, []);
 
   const componentDidMount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO1");
   };
 
   const componentWillUnmount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO2");
   };
 
   const updateDimensions = () => {
     setWidth((prevWidth) => (prevWidth = window.innerWidth));
     setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    // console.log("right her her");
     if (window.innerWidth > 1536) {
       handleWindowBig();
-      //   console.log("right herBIG");
     } else {
       handleWindowSmall();
-      //   console.log("right herSMALL");
     }
   };
 
   const handleWindowBig = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = true));
-    // console.log("handleBig happened");
   };
   const handleWindowSmall = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = false));
-    // console.log("handleSmall happened");
   };
 
   const handleToggleVisibility = () => {
     setViz((preViz) => (preViz = true));
-    // console.log("VIZ TOGGLE");
   };
 
   return (
     <>
       {bigMenu ? (
         <Header as="h2" size="huge" icon inverted textAlign="center">
-          <Icon
-            name="clipboard list"
-            size="huge"
-            // onClick={handleTriggerRefresh}
-          />
+          <Icon name="clipboard list" size="huge" />
           Programming Languages & Development Tools
         </Header>
       ) : (
         <Header as="h2" size="large" icon inverted textAlign="center">
-          <Icon
-            name="clipboard list"
-            size="huge"
-            // onClick={handleTriggerRefresh}
-          />
+          <Icon name="clipboard list" size="huge" />
           Programming Languages & Development Tools
         </Header>
       )}
@@ -102,8 +83,7 @@ const Skills = () => {
         <Grid columns={2}>
           <Grid.Column padded floated="right" width={4}>
             <Grid.Row textAlign="center"></Grid.Row>
-            <Segment
-            >
+            <Segment>
               <h1 id="center">Development</h1>
               <List bulleted size="massive" divided>
                 <ListItem>JavaScript</ListItem>
@@ -191,7 +171,9 @@ const Skills = () => {
               </Segment>
             </Grid.Column>
           </Grid>
+          <Divider/>
         </Segment>
+        
       )}
     </>
   );

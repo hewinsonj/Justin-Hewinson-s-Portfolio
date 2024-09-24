@@ -32,68 +32,49 @@ const Education = () => {
     updateDimensions();
     componentDidMount();
     componentWillUnmount();
-    // triggerRefresh();
   }, []);
 
   const componentDidMount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO1");
   };
 
   const componentWillUnmount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO2");
   };
 
   const updateDimensions = () => {
     setWidth((prevWidth) => (prevWidth = window.innerWidth));
     setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    // console.log("right her her");
     if (window.innerWidth > 1536) {
       handleWindowBig();
-      //   console.log("right herBIG");
     } else {
       handleWindowSmall();
-      //   console.log("right herSMALL");
     }
   };
 
   const handleWindowBig = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = true));
-    // console.log("handleBig happened");
   };
   const handleWindowSmall = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = false));
-    // console.log("handleSmall happened");
   };
 
   const handleToggleVisibility = () => {
     setViz((preViz) => (preViz = true));
-    // console.log("VIZ TOGGLE");
   };
 
   return (
     <>
       {bigMenu ? (
         <Header as="h2" size="huge" icon inverted textAlign="center">
-          <Icon
-            name="graduation cap"
-            size="huge"
-            // onClick={handleTriggerRefresh}
-          />
+          <Icon name="graduation cap" size="huge" />
           Education
         </Header>
       ) : (
         <Header as="h2" size="large" icon inverted textAlign="center">
-          <Icon
-            name="graduation cap"
-            size="huge"
-            // onClick={handleTriggerRefresh}
-          />
+          <Icon name="graduation cap" size="huge" />
           Education
         </Header>
       )}
@@ -108,11 +89,7 @@ const Education = () => {
             bordercolor: "lightgrey",
           }}
         >
-          <Grid
-            //   columns={2}
-            centered
-            stackable
-          >
+          <Grid centered stackable>
             <Divider hidden fitted></Divider>
             <Segment padded>
               <Container fluid textAlign="center">
@@ -122,7 +99,6 @@ const Education = () => {
                       src="https://i.imgur.com/eQLhUPV.jpg"
                       size="small"
                       padded={false}
-                      // floated="right"
                       wrapped
                     />
                   </Grid.Column>
@@ -132,7 +108,6 @@ const Education = () => {
                         border: "outset",
                         bordercolor: "lightgrey",
                         margin: "0",
-                        // paddingright: "20vw",
                       }}
                     >
                       General Assembly
@@ -146,13 +121,7 @@ const Education = () => {
               <List bulleted size="huge" divided>
                 <Divider hidden fitted></Divider>
                 <Grid padded>
-                  <h2
-                    style={
-                      {
-                        //   textAlign: "left",
-                      }
-                    }
-                  >
+                  <h2>
                     Completed 2022 - Full-Stack software engineering immersive
                     student in an intensive, 24-week, 450+ hour program focused
                     on product development fundamentals, object-oriented
@@ -194,7 +163,6 @@ const Education = () => {
                   </h2>
                 </Grid>
               </List>
-              {/* </Grid.Row> */}
             </Segment>
             <Divider hidden fitted />
           </Grid>
@@ -208,11 +176,7 @@ const Education = () => {
             bordercolor: "lightgrey",
           }}
         >
-          <Grid
-            //   columns={2}
-            centered
-            stackable
-          >
+          <Grid centered stackable>
             <Divider hidden fitted></Divider>
             <Segment>
               <Container fluid textAlign="center">
@@ -220,7 +184,6 @@ const Education = () => {
                   src="https://i.imgur.com/eQLhUPV.jpg"
                   size="tiny"
                   padded={false}
-                  // floated="right"
                   wrapped
                 />
                 <h1
@@ -238,13 +201,7 @@ const Education = () => {
               <List bulleted size="huge" divided>
                 <Divider hidden fitted></Divider>
                 <Grid padded>
-                  <p
-                    style={
-                      {
-                        //   textAlign: "left",
-                      }
-                    }
-                  >
+                  <p>
                     Completed 2022 - Full-Stack software engineering immersive
                     student in an intensive, 24-week, 450+ hour program focused
                     on product development fundamentals, object-oriented
@@ -285,7 +242,6 @@ const Education = () => {
                   </p>
                 </Grid>
               </List>
-              {/* </Grid.Row> */}
             </Segment>
             <Divider hidden fitted />
           </Grid>

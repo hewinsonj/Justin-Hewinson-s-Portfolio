@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getProject} from "../../api/project";
+import { getProject } from "../../api/project";
 import {
   Button,
   Segment,
@@ -21,7 +21,7 @@ import { signOut } from "../../api/auth";
 import messages from "../shared/AutoDismissAlert/messages";
 import LoadingScreen from "../shared/LoadingPage";
 
-const ProjectDetail = ({user}) => {
+const ProjectDetail = ({ user }) => {
   const [open, setOpen] = React.useState(false);
   const [width, setWidth] = React.useState(0);
   const [height, setHeight] = React.useState(0);
@@ -36,76 +36,54 @@ const ProjectDetail = ({user}) => {
     updateDimensions();
     componentDidMount();
     componentWillUnmount();
-    // triggerRefresh();
-    getProject(projectId)
-         .then((res) => {
-           setProject(res.data.project);
-           console.log("project is got!!!!!!");
-         })
+    getProject(projectId).then((res) => {
+      setProject(res.data.project);
+      console.log("project is got!!!!!!");
+    });
   }, []);
 
   const componentDidMount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO1");
   };
 
   const componentWillUnmount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO2");
   };
 
   const updateDimensions = () => {
     setWidth((prevWidth) => (prevWidth = window.innerWidth));
     setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    // console.log("right her her");
     if (window.innerWidth > 1536) {
       handleWindowBig();
-      
-        navigate(`/projects`)
-      
-      //   console.log("right herBIG");
+      navigate(`/projects`);
     } else {
       handleWindowSmall();
-      //   console.log("right herSMALL");
     }
   };
 
   const handleWindowBig = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = true));
-    // console.log("handleBig happened");
   };
   const handleWindowSmall = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = false));
-    // console.log("handleSmall happened");
   };
 
   const handleToggleVisibility = () => {
     setViz((preViz) => (preViz = true));
-    // console.log("VIZ TOGGLE");
   };
 
-  console.log(project.name, "this is the projecto!!____")
+  console.log(project.name, "this is the projecto!!____");
   return (
     <>
       <Header as="h2" size="big" icon inverted textAlign="center">
         <Link to={`/projects`} className="whiteWords">
-          <Icon
-            name="database"
-            size="big"
-            // onClick={handleTriggerRefresh}
-          />
+          <Icon name="database" size="big" />
           Projects
         </Link>
       </Header>
-      {/* <Container floated='right'>
-        <Button>
-          Projects
-        </Button> 
-      </Container> */}
+
       {bigMenu ? (
         <Grid columns={2}>BIGMENU PROJ DETAIL</Grid>
       ) : (
@@ -117,7 +95,6 @@ const ProjectDetail = ({user}) => {
             bordercolor: "lightgrey",
           }}
         >
-          {/* <Image src="https://i.imgur.com/GWkVhJO.jpg" /> */}
           <Header as="h2" size="big" icon inverted textAlign="center">
             {project.projTitle}
           </Header>

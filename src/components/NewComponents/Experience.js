@@ -32,68 +32,49 @@ const Experience = () => {
     updateDimensions();
     componentDidMount();
     componentWillUnmount();
-    // triggerRefresh();
   }, []);
 
   const componentDidMount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO1");
   };
 
   const componentWillUnmount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO2");
   };
 
   const updateDimensions = () => {
     setWidth((prevWidth) => (prevWidth = window.innerWidth));
     setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    // console.log("right her her");
     if (window.innerWidth > 1536) {
       handleWindowBig();
-      //   console.log("right herBIG");
     } else {
       handleWindowSmall();
-      //   console.log("right herSMALL");
     }
   };
 
   const handleWindowBig = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = true));
-    // console.log("handleBig happened");
   };
   const handleWindowSmall = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = false));
-    // console.log("handleSmall happened");
   };
 
   const handleToggleVisibility = () => {
     setViz((preViz) => (preViz = true));
-    // console.log("VIZ TOGGLE");
   };
 
   return (
     <>
       {bigMenu ? (
         <Header as="h2" size="huge" icon inverted textAlign="center">
-          <Icon
-            name="clock outline"
-            size="huge"
-            // onClick={handleTriggerRefresh}
-          />
+          <Icon name="clock outline" size="huge" />
           Experience
         </Header>
       ) : (
         <Header as="h2" size="large" icon inverted textAlign="center">
-          <Icon
-            name="clock outline"
-            size="huge"
-            // onClick={handleTriggerRefresh}
-          />
+          <Icon name="clock outline" size="huge" />
           Experience
         </Header>
       )}
@@ -108,13 +89,8 @@ const Experience = () => {
             bordercolor: "lightgrey",
           }}
         >
-          <Grid
-            //   columns={2}
-            centered
-            stackable
-          >
+          <Grid centered stackable>
             <Divider hidden fitted></Divider>
-            {/* <Grid.Column width={14}> */}
             <Segment>
               <Container fluid textAlign="center">
                 <h1
@@ -127,8 +103,6 @@ const Experience = () => {
                 >
                   The SOS Tiki Bar
                 </h1>
-                {/* </Grid.Column> */}
-                {/* </Grid> */}
               </Container>
               <Divider></Divider>
               <List bulleted size="huge" divided>
@@ -232,13 +206,8 @@ const Experience = () => {
             bordercolor: "lightgrey",
           }}
         >
-          <Grid
-            //   columns={2}
-            centered
-            stackable
-          >
+          <Grid centered stackable>
             <Divider hidden fitted></Divider>
-            {/* <Grid.Column width={14}> */}
             <Segment>
               <Container fluid textAlign="center">
                 <h1
@@ -251,8 +220,6 @@ const Experience = () => {
                 >
                   The SOS Tiki Bar
                 </h1>
-                {/* </Grid.Column> */}
-                {/* </Grid> */}
               </Container>
               <Divider></Divider>
               <List bulleted size="huge" divided>

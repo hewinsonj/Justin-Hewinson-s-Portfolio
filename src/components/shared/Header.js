@@ -19,27 +19,17 @@ import {
   Dropdown,
   MenuItem,
 } from "semantic-ui-react";
-import CreateActivity from "../activities/CreateActivity";
 import CreateProject from "../projects/CreateProject";
-import UserPublicPage from "../user/UserPublicPage";
 import { Link } from "react-router-dom";
-// import ComponentDidMount from "//Users/justinhewinson/sei_monstermash/projects/hewinson portfolio/j-hewinson-portfolio/src/App"
 
 export default class Header extends Component {
   state = {
     activeItem: "home",
     setOpen: false,
-    newActivity: false,
     bigMenu: true,
     width: 0,
     height: 0,
   };
-
-  // constructor(user) {
-  //   super();
-  //   user = this.props.user;
-  // }
-
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   handleClose = () => {
@@ -49,7 +39,6 @@ export default class Header extends Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
     window.addEventListener("load", this.updateDimensions);
-    // console.log(this.props.user, 'user')
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
@@ -58,8 +47,6 @@ export default class Header extends Component {
 
   updateDimensions = () => {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
-
-    // console.log(window.innerWidth);
 
     if (window.innerWidth > 1536) {
       this.handleWindowBig();
@@ -70,17 +57,13 @@ export default class Header extends Component {
 
   handleWindowBig = () => {
     this.setState({ bigMenu: true });
-    // console.log("handleBig happened", this.bigMenu);
   };
   handleWindowSmall = () => {
     this.setState({ bigMenu: false });
-    // console.log("handleSmall happened", this.bigMenu);
   };
 
   render() {
     const { activeItem } = this.state;
-
-    // window.addEventListener("resize", updateDimensions());
 
     return (
       <>
@@ -213,15 +196,6 @@ export default class Header extends Component {
                     </Link>
                   </DropdownItem>
                   <DropdownDivider />
-
-                  {/* <DropdownItem>
-                    <Link
-                      to={`/projectDetail/:projectId`}
-                      class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-                      ProjDetail
-                    </Link>
-                  </DropdownItem> */}
                   <DropdownItem>
                     <Link
                       to={`experience`}
@@ -250,8 +224,6 @@ export default class Header extends Component {
                   </DropdownItem>
                   <DropdownDivider />
                   <DropdownItem>
-                    {/* <Icon name="dropdown" /> */}
-
                     <span
                       className="text"
                       class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
@@ -307,7 +279,6 @@ export default class Header extends Component {
                   ) : null}
                   <DropdownDivider />
                   <DropdownItem>
-                    {/* <Icon name="dropdown" /> */}
                     <span
                       className="text"
                       class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"

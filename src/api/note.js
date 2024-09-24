@@ -1,10 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-
-
 //create note
-//data returned: res.data.activity is the activity to which the note has been appended
 export const createNote = (user, projectId, newNote) => {
     return axios({
         method: 'POST',

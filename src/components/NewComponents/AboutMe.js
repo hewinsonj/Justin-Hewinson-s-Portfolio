@@ -29,70 +29,60 @@ import {
 } from "semantic-ui-react";
 
 const AboutMe = (triggerRefresh, msgAlert) => {
-const [visible, setViz] = useState(false);
-const [card1Viz, setcard1Viz] = useState(false);
-const [card2Viz, setcard2Viz] = useState(false);
-const [card3Viz, setcard3Viz] = useState(false);
-const [card4Viz, setcard4Viz] = useState(false);
-const [card5Viz, setcard5Viz] = useState(false);
-const [card6Viz, setcard6Viz] = useState(false);
-const [card7Viz, setcard7Viz] = useState(false);
-const [card8Viz, setcard8Viz] = useState(false);
-const [card9Viz, setcard9Viz] = useState(false);
-const [card10Viz, setcard10Viz] = useState(false);
-const [card11Viz, setcard11Viz] = useState(false);
-const [card12Viz, setcard12Viz] = useState(false);
-const [width, setWidth] = React.useState(0);
-const [height, setHeight] = React.useState(0);
-const [bigMenu, setBigMenu] = React.useState(true);
+  const [visible, setViz] = useState(false);
+  const [card1Viz, setcard1Viz] = useState(false);
+  const [card2Viz, setcard2Viz] = useState(false);
+  const [card3Viz, setcard3Viz] = useState(false);
+  const [card4Viz, setcard4Viz] = useState(false);
+  const [card5Viz, setcard5Viz] = useState(false);
+  const [card6Viz, setcard6Viz] = useState(false);
+  const [card7Viz, setcard7Viz] = useState(false);
+  const [card8Viz, setcard8Viz] = useState(false);
+  const [card9Viz, setcard9Viz] = useState(false);
+  const [card10Viz, setcard10Viz] = useState(false);
+  const [card11Viz, setcard11Viz] = useState(false);
+  const [card12Viz, setcard12Viz] = useState(false);
+  const [width, setWidth] = React.useState(0);
+  const [height, setHeight] = React.useState(0);
+  const [bigMenu, setBigMenu] = React.useState(true);
 
   useEffect(() => {
     handleToggleVisibility();
     updateDimensions();
     componentDidMount();
     componentWillUnmount();
-    // triggerRefresh();
   }, []);
 
   const componentDidMount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
 
-    // console.log(window.innerWidth, "YOOOO1");
   };
 
   const componentWillUnmount = () => {
     window.addEventListener("resize", updateDimensions);
     window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO2");
   };
 
   const updateDimensions = () => {
     setWidth((prevWidth) => (prevWidth = window.innerWidth));
     setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    // console.log("right her her");
     if (window.innerWidth > 1536) {
       handleWindowBig();
-      //   console.log("right herBIG");
     } else {
       handleWindowSmall();
-      //   console.log("right herSMALL");
     }
   };
 
   const handleWindowBig = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = true));
-    // console.log("handleBig happened");
   };
   const handleWindowSmall = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = false));
-    // console.log("handleSmall happened");
   };
 
   const handleToggleVisibility = () => {
     setViz((preViz) => (preViz = true));
-    // console.log("VIZ TOGGLE");
   };
 
   // Functions that trigger the fade-in effect of the AboutMe detail cards, and decides which layout to use based on wheather or not the window size is greater than 1536px
@@ -102,7 +92,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
       setcard1Viz((preViz) => (preViz = true));
     } else {
       setcard2Viz((preViz) => (preViz = true));
-      //   console.log("Workin!");
     }
   };
 
@@ -111,7 +100,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
       setcard3Viz((preViz) => (preViz = true));
     } else {
       setcard4Viz((preViz) => (preViz = true));
-      //   console.log("Workin!");
     }
   };
 
@@ -120,7 +108,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
       setcard5Viz((preViz) => (preViz = true));
     } else {
       setcard6Viz((preViz) => (preViz = true));
-      //   console.log("Workin!");
     }
   };
 
@@ -129,7 +116,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
       setcard7Viz((preViz) => (preViz = true));
     } else {
       setcard8Viz((preViz) => (preViz = true));
-      //   console.log("Workin!");
     }
   };
 
@@ -138,18 +124,16 @@ const [bigMenu, setBigMenu] = React.useState(true);
       setcard9Viz((preViz) => (preViz = true));
     } else {
       setcard10Viz((preViz) => (preViz = true));
-      //   console.log("Workin!");
     }
   };
-    
-      const handleToggleVisibilityCard11 = () => {
-        if (bigMenu) {
-          setcard11Viz((preViz) => (preViz = true));
-        } else {
-          setcard12Viz((preViz) => (preViz = true));
-          //   console.log("Workin!");
-        }
-      };
+
+  const handleToggleVisibilityCard11 = () => {
+    if (bigMenu) {
+      setcard11Viz((preViz) => (preViz = true));
+    } else {
+      setcard12Viz((preViz) => (preViz = true));
+    }
+  };
 
   // Functions that trigger the fade-out effect of the AboutMe detail cards and the fade-in effect of the main AboutMe cards
 
@@ -172,7 +156,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
     } else {
       setcard4Viz((preViz2) => (preViz2 = false));
       setViz((preViz) => (preViz = true));
-      //   console.log("WorkinFalse!");
     }
   };
 
@@ -183,8 +166,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
     } else {
       setcard6Viz((preViz2) => (preViz2 = false));
       setViz((preViz) => (preViz = true));
-
-      //   console.log("WorkinFalse!");
     }
   };
 
@@ -195,8 +176,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
     } else {
       setcard8Viz((preViz2) => (preViz2 = false));
       setViz((preViz) => (preViz = true));
-
-      //   console.log("WorkinFalse!");
     }
   };
 
@@ -207,11 +186,9 @@ const [bigMenu, setBigMenu] = React.useState(true);
     } else {
       setcard10Viz((preViz2) => (preViz2 = false));
       setViz((preViz) => (preViz = true));
-
-      //   console.log("WorkinFalse!");
     }
   };
-    
+
   const handleToggleVisibilityCard11A = () => {
     if (bigMenu) {
       setcard11Viz((preViz) => (preViz = false));
@@ -219,8 +196,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
     } else {
       setcard12Viz((preViz2) => (preViz2 = false));
       setViz((preViz) => (preViz = true));
-
-      //   console.log("WorkinFalse!");
     }
   };
 
@@ -253,11 +228,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
     setViz((preViz) => (preViz = false));
     handleToggleVisibilityCard11();
   };
-
-  //     const handleTriggerRefresh = (e) => {
-  //       e.preventDefault();
-  //     triggerRefresh()
-  //   };
 
   return (
     <>
@@ -720,7 +690,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   <Icon
                     name="user outline"
                     size="huge"
-                    // onClick={handleTriggerRefresh}
                   />
                   About Me
                 </Header>
@@ -729,7 +698,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   <Icon
                     name="user outline"
                     size="huge"
-                    // onClick={handleTriggerRefresh}
                   />
                   About Me
                 </Header>
@@ -740,7 +708,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
           <Grid.Row style={{ margin: "0, 0, 0, 0" }}>
             <Grid.Column>
               <Grid.Row>
-                
                 <Transition visible={visible} animation="scale" duration={1000}>
                   <Card onClick={handleToggleInvisibility} centered>
                     <Image
@@ -777,7 +744,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
                       </a>
                     </CardContent>
                   </Card>
-                  {/* </Segment> */}
                 </Transition>
               </Grid.Row>
             </Grid.Column>
@@ -870,7 +836,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
             </Grid.Column>
           </Grid.Row>
         </Grid>
-       ) : null} 
+      ) : null}
 
       <Divider hidden />
     </>
