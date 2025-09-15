@@ -116,11 +116,9 @@ const CreateAccount = (props) => {
                 secondary
                 inverted
                 color="yellow"
-                class="signButton"
+                className="signButton"
                 type="submit"
-                centered
-                textAlign="center"
-                verticalAlign="middle"
+                style={{ display: "block", margin: "0.5rem auto" }}
               >
                 Submit
               </Form.Button>
