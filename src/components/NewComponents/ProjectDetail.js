@@ -4,75 +4,49 @@ import {
   Button,
   Segment,
   Grid,
-  Label,
   Icon,
   Image,
   Modal,
   Header,
   List,
-  GridRow,
   Container,
-  ListItem,
-  ListList,
-  Divider,
 } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
-import { signOut } from "../../api/auth";
-import messages from "../shared/AutoDismissAlert/messages";
-import LoadingScreen from "../shared/LoadingPage";
 
 const ProjectDetail = ({ user }) => {
   const [open, setOpen] = React.useState(false);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
   const [bigMenu, setBigMenu] = React.useState(true);
-  const [visible, setViz] = useState(false);
   const [project, setProject] = useState({});
   const navigate = useNavigate();
   const { projectId } = useParams();
 
   useEffect(() => {
-    handleToggleVisibility();
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+        navigate(`/projects`);
+      } else {
+        handleWindowSmall();
+      }
+    };
+
     updateDimensions();
-    componentDidMount();
-    componentWillUnmount();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
     getProject(projectId).then((res) => {
       setProject(res.data.project);
       console.log("project is got!!!!!!");
     });
-  }, []);
 
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
+  }, [navigate, projectId]);
 
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-      navigate(`/projects`);
-    } else {
-      handleWindowSmall();
-    }
-  };
-
-  const handleWindowBig = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = true));
-  };
-  const handleWindowSmall = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = false));
-  };
-
-  const handleToggleVisibility = () => {
-    setViz((preViz) => (preViz = true));
-  };
+  const handleWindowBig = () => setBigMenu(true);
+  const handleWindowSmall = () => setBigMenu(false);
 
   console.log(project.name, "this is the projecto!!____");
   return (
@@ -92,7 +66,7 @@ const ProjectDetail = ({ user }) => {
           inverted
           style={{
             border: "solid",
-            bordercolor: "lightgrey",
+            borderColor: "lightgrey",
           }}
         >
           <Header as="h2" size="big" icon inverted textAlign="center">
@@ -155,7 +129,7 @@ const ProjectDetail = ({ user }) => {
               <List.Item>
                 <h2>
                   <Icon name="caret right" />
-                  <a href={`${project.link1}`} target="_blank">
+                  <a href={`${project.link1}`} target="_blank" rel="noreferrer">
                     {project.link2 ? "Front-end" : "Repository"}
                   </a>
                 </h2>
@@ -164,7 +138,7 @@ const ProjectDetail = ({ user }) => {
                 <List.Item>
                   <h2>
                     <Icon name="caret right" />
-                    <a href={`${project.link2}`} target="_blank">
+                    <a href={`${project.link2}`} target="_blank" rel="noreferrer">
                       {project.link3 ? "Back-End" : "Deployed"}
                     </a>
                   </h2>
@@ -175,7 +149,7 @@ const ProjectDetail = ({ user }) => {
                 <List.Item>
                   <h2>
                     <Icon name="caret right" />
-                    <a href={`${project.link3}`} target="_blank">
+                    <a href={`${project.link3}`} target="_blank" rel="noreferrer">
                       Deployed
                     </a>
                   </h2>

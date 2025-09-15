@@ -1,67 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Button,
   Segment,
   Grid,
-  Feed,
   Icon,
   Image,
-  Progress,
   List,
-  Divider,
   Container,
   Modal,
 } from "semantic-ui-react";
-import { signOut } from "../../api/auth";
-import messages from "../shared/AutoDismissAlert/messages";
-import { updateProject } from "../../api/project";
 import ProjectDetail from "../NewComponents/ProjectDetail";
 
 const ProjectSegment = ({ project, msgAlert, user }) => {
   const [open, setOpen] = useState(false);
-  const [bigMenu, setBigMenu] = React.useState(true);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
+  const [bigMenu, setBigMenu] = useState(true);
 
   useEffect(() => {
-    componentDidMount();
-    componentWillUnmount();
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+      } else {
+        handleWindowSmall();
+      }
+    };
+
     updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
   }, []);
 
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  };
-
-  const handleWindowBig = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = true));
-    console.log("handleBig happened", bigMenu);
-  };
-  const handleWindowSmall = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = false));
-    console.log("handleSmall happened", window.innerWidth, bigMenu);
-  };
-
-  componentDidMount();
-  componentWillUnmount();
+  const handleWindowBig = () => setBigMenu(true);
+  const handleWindowSmall = () => setBigMenu(false);
 
   const mobileProjJSX = (
     <ProjectDetail
@@ -79,7 +54,7 @@ const ProjectSegment = ({ project, msgAlert, user }) => {
         <Container fluid>
           <Grid columns={4} textAlign="center">
             <Grid.Row>
-              <Grid.Column width={11} padded textAlign="center">
+              <Grid.Column width={11} textAlign="center">
                 <Segment>
                   <Modal
                     onClose={() => setOpen(false)}
@@ -157,10 +132,10 @@ const ProjectSegment = ({ project, msgAlert, user }) => {
               <Grid.Column width={5}>
                 {user ? (
                   <Link to={`./${project.id}`}>
-                    <h1 class="porjName">{project.projTitle}</h1>
+                    <h1 className="porjName">{project.projTitle}</h1>
                   </Link>
                 ) : (
-                  <h1 class="porjName">{project.projTitle}</h1>
+                  <h1 className="porjName">{project.projTitle}</h1>
                 )}
                 <List.Item>
                   <h3>{project.description}</h3>
@@ -170,11 +145,15 @@ const ProjectSegment = ({ project, msgAlert, user }) => {
                     <h2>Technologies:</h2> <h3>{project.client}</h3>
                   </List.Item>
                 </Segment>
-                <Grid.Row fluid>
+                <Grid.Row>
                   <h2>
                     {" "}
                     <Icon name="caret right" />
-                    <a href={`${project.link1}`} target="_blank">
+                    <a
+                      href={`${project.link1}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       {project.link2.length > 1 ? "Front-end" : "Repository"}
                     </a>
                   </h2>
@@ -182,7 +161,11 @@ const ProjectSegment = ({ project, msgAlert, user }) => {
                     <h2>
                       {" "}
                       <Icon name="caret right" />
-                      <a href={`${project.link2}`} target="_blank">
+                      <a
+                        href={`${project.link2}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         Back-end
                       </a>
                     </h2>
@@ -192,7 +175,11 @@ const ProjectSegment = ({ project, msgAlert, user }) => {
                     <h2>
                       {" "}
                       <Icon name="caret right" />
-                      <a href={`${project.link3}`} target="_blank">
+                      <a
+                        href={`${project.link3}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         Deployed
                       </a>
                     </h2>
@@ -203,7 +190,7 @@ const ProjectSegment = ({ project, msgAlert, user }) => {
           </Grid>
         </Container>
       ) : (
-        { mobileProjJSX }
+        mobileProjJSX
       )}
     </Segment>
   );

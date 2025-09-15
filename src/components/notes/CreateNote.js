@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { createNote } from "../../api/note";
-import { Modal } from "semantic-ui-react";
 
 import NoteForm from "../shared/NoteForm";
 

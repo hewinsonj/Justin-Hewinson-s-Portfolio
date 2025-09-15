@@ -1,109 +1,107 @@
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  Button,
-  Segment,
-  Grid,
-  Label,
-  Icon,
-  Image,
-  Modal,
-  Header,
-  List,
-  GridRow,
-  Container,
-  Sticky,
-} from "semantic-ui-react";
-import React, { useState, useEffect } from "react";
-import { signOut } from "../../api/auth";
-import messages from "../shared/AutoDismissAlert/messages";
-import LoadingScreen from "../shared/LoadingPage";
 import { Link } from "react-router-dom";
+import { Grid, Image, Container } from "semantic-ui-react";
+import React, { useEffect, useState } from "react";
 
 const LandingPage = () => {
-  const [open, setOpen] = React.useState(false);
-  const [bigMenu, setBigMenu] = React.useState(true);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
-
-  useEffect(() => {
-    componentDidMount();
-    componentWillUnmount();
-    updateDimensions();
-  }, []);
-
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  };
+  const [bigMenu, setBigMenu] = useState(true);
 
   const handleWindowBig = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = true));
+    setBigMenu(true);
   };
   const handleWindowSmall = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = false));
+    setBigMenu(false);
   };
 
-  componentDidMount();
-  componentWillUnmount();
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+      } else {
+        handleWindowSmall();
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
+  }, []);
 
   const isBigMenu = bigMenu ? (
     <Image
       src="https://i.imgur.com/0NFkSem.jpg"
-      size="large"
       id="profilePic"
       style={{
-        border: "solid",
-        bordercolor: "solid",
-        margintop: "2rem",
-        paddingright: "20vw",
+        width: "clamp(120px, 22vw, 280px)",
+        height: "clamp(120px, 22vw, 280px)",
+        objectFit: "cover",
+        border: "3px solid lightgrey",
+        marginTop: "1.5rem",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
       }}
       circular
       floated="right"
-      padded="very"
+      bordered
     />
   ) : (
     <Image
       src="https://i.imgur.com/0NFkSem.jpg"
-      size="medium"
       id="profilePic"
       style={{
-        border: "solid",
-        bordercolor: "black",
+        width: "clamp(120px, 30vw, 220px)",
+        height: "clamp(120px, 30vw, 220px)",
+        objectFit: "cover",
+        border: "3px solid lightgrey",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
       }}
       circular
       spaced="right"
+      bordered
     />
   );
 
   return (
     <>
-      <Grid padded centered columns={2}>
+      <Grid
+        padded
+        centered
+        columns={2}
+        style={{
+          minHeight: "100vh",
+          paddingTop: "4rem",
+          paddingBottom: "2rem",
+        }}
+      >
         <Grid.Row>
-          <div class="landingback raleway">
-            <p id="flexText">Welcome to </p>
+          <div className="landingback raleway">
+            <p
+              id="flexText"
+              style={{
+                fontSize: "clamp(24px, 6vw, 64px)",
+                margin: 0,
+                lineHeight: 1.1,
+              }}
+            >
+              Welcome to
+            </p>
           </div>
         </Grid.Row>
         <Grid.Row>
-          <div class="landingback raleway">
-            <h1 id="flexText">
+          <div className="landingback raleway">
+            <h1
+              id="flexText"
+              style={{
+                fontSize: "clamp(36px, 8vw, 96px)",
+                margin: "0.25em 0",
+                lineHeight: 1.05,
+              }}
+            >
               Justin Hewinson
-              <Link to={`sign-in`} id="flexText">
+              <Link to="/sign-in" id="flexText">
                 '
               </Link>
               s
@@ -111,24 +109,33 @@ const LandingPage = () => {
           </div>
         </Grid.Row>
         <Grid.Row>
-          <div class="landingback raleway">
-            <p id="flexText">portfolio</p>
+          <div>
+            <p
+              id="flexText"
+              style={{
+                fontSize: "clamp(24px, 6vw, 64px)",
+                margin: 0,
+                lineHeight: 1.1,
+              }}
+            >
+              portfolio
+            </p>
           </div>
         </Grid.Row>
-        <Grid.Row fluid centered>
+        <Grid.Row centered>
           <Container fluid>
-            <h1
+            <div
               style={{
-                filter: "drop-shadow(6px 6px 30px black",
+                filter: "drop-shadow(6px 6px 30px black)",
+                display: "flex",
                 justifyContent: "center",
-                alignContent: "center",
-                verticalAlign: "center",
-                margin: "5vw",
-                marginTop: "0",
+                alignItems: "center",
+                margin: "clamp(8px, 3vw, 32px)",
+                marginTop: 0,
               }}
             >
               {isBigMenu}
-            </h1>
+            </div>
           </Container>
         </Grid.Row>
       </Grid>

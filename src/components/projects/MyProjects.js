@@ -1,29 +1,12 @@
 import ProjectSegment from "./ProjectSegment";
 import LoadingScreen from "../shared/LoadingPage";
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
-import ProjectDetail from "../NewComponents/ProjectDetail";
+import { Link } from "react-router-dom";
 import {
-  Menu,
-  Icon,
-  Sticky,
-  Modal,
-  Button,
-  Checkbox,
   Grid,
   Image,
   Segment,
-  Sidebar,
-  DropdownMenu,
-  DropdownItem,
-  DropdownHeader,
-  DropdownDivider,
-  MenuMenu,
-  Dropdown,
-  MenuItem,
   Form,
-  Container,
-  List,
   Divider,
   Header,
 } from "semantic-ui-react";
@@ -36,46 +19,30 @@ const MyProjects = ({
   addProject,
   handleChange,
 }) => {
-  const [bigMenu, setBigMenu] = React.useState(true);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
+  const [bigMenu, setBigMenu] = useState(true);
 
   useEffect(() => {
-    componentDidMount();
-    componentWillUnmount();
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+      } else {
+        handleWindowSmall();
+      }
+    };
+
     updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
   }, []);
 
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
+  const handleWindowBig = () => setBigMenu(true);
+  const handleWindowSmall = () => setBigMenu(false);
 
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  };
-
-  const handleWindowBig = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = true));
-  };
-  const handleWindowSmall = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = false));
-  };
-
-  componentDidMount();
-  componentWillUnmount();
 const priorityOrder = ['a', 'b', 'c', 'd', 'e', 'f'];
 
 const myProjectsJSX = allProjects ? (
@@ -97,10 +64,16 @@ const myProjectsJSX = allProjects ? (
   <LoadingScreen />
 );
   const myProjectsMiniJSX = allProjects ? (
-    filterProjects.map((project) => (
+      filterProjects
+        .slice() // shallow copy so we don’t mutate props
+        .sort((p1, p2) => {
+          return priorityOrder.indexOf(p1.priority) - priorityOrder.indexOf(p2.priority);
+        })
+        .map((project) => (
       <Link
+        key={project.id}
         to={`/projectDetail/${project.id}`}
-        class="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+        className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
       >
         <Divider hidden />
         <Grid centered>
@@ -125,7 +98,7 @@ const myProjectsJSX = allProjects ? (
 
   return (
     <>
-      <Form raised>
+      <Form>
         <Form.Input
           placeholder="Filter  results  by  coding technologies"
           onChange={handleChange}

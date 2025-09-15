@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "../../api/auth";
 import messages from "../shared/AutoDismissAlert/messages";
-import { Segment, Form, Container, Input, Button } from "semantic-ui-react";
+import { Segment, Form, Container, Button } from "semantic-ui-react";
 
 const SignIn = (props) => {
   const [email, setEmail] = useState("");
@@ -74,7 +74,7 @@ const SignIn = (props) => {
               secondary
               inverted
               color="yellow"
-              class="signButton"
+              className="signButton"
               type="submit"
             >
               Submit

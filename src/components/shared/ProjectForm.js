@@ -4,8 +4,6 @@ import {
   Checkbox,
   Form,
   Container,
-  Icon,
-  Grid,
 } from "semantic-ui-react";
 
 const ProjectForm = (props) => {

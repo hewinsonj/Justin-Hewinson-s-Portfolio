@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { changePassword } from "../../api/auth";
 import messages from "../shared/AutoDismissAlert/messages";
-import { Button, Segment, Form, Container, Input } from "semantic-ui-react";
+import { Segment, Form, Container } from "semantic-ui-react";
 
 const ChangePassword = (props) => {
   const [oldPassword, setOldPassword] = useState("");

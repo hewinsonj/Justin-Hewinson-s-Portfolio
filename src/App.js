@@ -1,6 +1,6 @@
 // import React, { Component, Fragment } from 'react'
 import React, { useState, Fragment } from "react";
-import { Route, Routes, Link, ScrollRestoration } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import AutoDismissAlert from "./components/shared/AutoDismissAlert/AutoDismissAlert";
 import Header from "./components/shared/Header";
@@ -9,7 +9,6 @@ import SignIn from "./components/auth/SignIn";
 import SignOut from "./components/auth/SignOut";
 import ChangePassword from "./components/auth/ChangePassword";
 import ShowProject from "./components/projects/ShowProject";
-import IndexProject from "./components/projects/IndexProject";
 import AboutMe from "./components/NewComponents/AboutMe";
 import LandingPage from "./components/NewComponents/LandingPage";
 import CreateAccount from "./components/NewComponents/CreateAccount";
@@ -20,31 +19,13 @@ import Documents from "./components/NewComponents/Documents";
 import Experience from "./components/NewComponents/Experience";
 import Education from "./components/NewComponents/Education";
 import ProjectDetail from "./components/NewComponents/ProjectDetail";
-import {
-  Button,
-  Segment,
-  Grid,
-  Label,
-  Icon,
-  Image,
-  Modal,
-  Ref,
-  Form,
-  Container,
-  Sidebar,
-  Menu,
-  Checkbox,
-  Divider,
-} from "semantic-ui-react";
+import { Ref } from "semantic-ui-react";
 
-const App = (triggerRefresh) => {
+const App = () => {
   const [user, setUser] = useState(null);
-  const [project, setProject] = useState(null);
+  const [project] = useState(null);
   const [msgAlerts, setMsgAlerts] = useState([]);
-  const [newProject, setNewProject] = useState(false);
   const segmentRef = React.useRef();
-  const [email, setEmail] = useState("");
-  const [thisUser, setThisUser] = useState({});
 
   const clearUser = () => {
     setUser(null);
@@ -66,7 +47,7 @@ const App = (triggerRefresh) => {
   return (
     <Fragment>
       <>
-        <Header user={user} msgAlert={msgAlert} setNewProject={setNewProject} />
+        <Header user={user} msgAlert={msgAlert} />
         <Ref innerRef={segmentRef}>
           <Routes>
             <Route
@@ -100,7 +81,6 @@ const App = (triggerRefresh) => {
             <Route path="/" element={<LandingPage msgAlert={msgAlert} />} />
             <Route
               path="/about-me"
-              triggerRefresh={triggerRefresh}
               element={<AboutMe msgAlert={msgAlert} />}
             />
             <Route

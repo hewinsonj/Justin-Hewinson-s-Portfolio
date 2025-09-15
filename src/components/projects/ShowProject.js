@@ -1,33 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {
-  Label,
-  Icon,
-  Item,
-  Button,
-  Segment,
-  Grid,
-  Comment,
-  Form,
-  Modal,
-  Progress,
-  Divider,
-} from "semantic-ui-react";
+import { Button, Segment, Grid, Modal } from "semantic-ui-react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { getProject, updateProject, deleteProject } from "../../api/project";
+import { getProject, deleteProject } from "../../api/project";
 import UpdateProjectModal from "./UpdateProjectModal";
-import ProjectForm from "../shared/ProjectForm";
 import LoadingScreen from "../shared/LoadingPage";
-import NoteForm from "../shared/NoteForm";
 import CreateNote from "../notes/CreateNote";
 import NotesModal from "../notes/NotesModal";
 
 const ShowProject = ({ user, msgAlert }) => {
   const [project, setProject] = useState({});
   const [updated, setUpdated] = useState(false);
-  const [deleted, setDeleted] = useState(false);
   const navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
   const [noteModalShow, setNoteModalShow] = useState(false);
 
   const { projectId } = useParams();
@@ -44,12 +27,11 @@ const ShowProject = ({ user, msgAlert }) => {
           variant: "danger",
         });
       });
-  }, [updated]);
+  }, [updated, projectId, msgAlert]);
 
   const handleDeleteProject = () => {
     deleteProject(user, projectId)
       .then(() => {
-        setDeleted(true);
         msgAlert({
           heading: "Success",
           message: "Deleting a Project",
@@ -87,7 +69,7 @@ const ShowProject = ({ user, msgAlert }) => {
             ></Grid.Column>
           </Grid>
         </Segment>
-        <Segment inverted color="yellow" class="capitalize-me">
+        <Segment inverted color="yellow" className="capitalize-me">
           <Grid centered stretched>
             <Grid.Row padded>
               <Segment fluid>

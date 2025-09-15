@@ -1,37 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import {
-  Button,
-  Divider,
-  Segment,
-  Grid,
-  Feed,
-  Icon,
-  Image,
-  Progress,
-  Modal,
-  Container,
-  Header,
-} from "semantic-ui-react";
-import { signOut } from "../../api/auth";
-import messages from "../shared/AutoDismissAlert/messages";
-import ProjectSegment from "../projects/ProjectSegment";
-import LoadingScreen from "../shared/LoadingPage";
+import { Segment, Header, Icon } from "semantic-ui-react";
 import { getAllProjects } from "../../api/project";
 import MyProjects from "../projects/MyProjects";
 
 const Projects = ({ msgAlert, newProject, user }) => {
   const [allProjects, setAllProjects] = useState(null);
   const [filterProjects, setFilterProjects] = useState([]);
-  const [searchText, setSearchText] = useState([]);
   const [bigMenu, setBigMenu] = React.useState(true);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
 
   useEffect(() => {
-    componentDidMount();
-    componentWillUnmount();
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+      } else {
+        handleWindowSmall();
+      }
+    };
+
     updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
   }, []);
 
   useEffect(() => {
@@ -41,36 +34,8 @@ const Projects = ({ msgAlert, newProject, user }) => {
     });
   }, []);
 
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  };
-
-  const handleWindowBig = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = true));
-  };
-  const handleWindowSmall = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = false));
-  };
-
-  componentDidMount();
-  componentWillUnmount();
+  const handleWindowBig = () => setBigMenu(true);
+  const handleWindowSmall = () => setBigMenu(false);
 
   const handleChange = (e) => {
     let projects = allProjects;
@@ -84,13 +49,25 @@ const Projects = ({ msgAlert, newProject, user }) => {
   return (
     <>
       {bigMenu ? (
-        <Header size="huge" icon inverted textAlign="center">
-          <Icon name="database" size="huge" />
+        <Header
+          size="huge"
+          icon
+          inverted
+          textAlign="center"
+          className="landingback"
+        >
+          <Icon name="database" size="huge" className="landingback " />
           Projects
         </Header>
       ) : (
-        <Header size="large" icon inverted textAlign="center">
-          <Icon name="database" size="small" />
+        <Header
+          size="large"
+          icon
+          inverted
+          textAlign="center"
+          className="landingback"
+        >
+          <Icon name="database" size="small" className="landingback" />
           Projects
         </Header>
       )}
@@ -101,7 +78,7 @@ const Projects = ({ msgAlert, newProject, user }) => {
         inverted
         style={{
           border: "solid",
-          bordercolor: "lightgrey",
+          borderColor: "lightgrey",
         }}
       >
         <MyProjects

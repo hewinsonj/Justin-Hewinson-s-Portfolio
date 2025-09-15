@@ -1,34 +1,19 @@
-import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
-import { CarouselProvider, Slide, Slider } from "pure-react-carousel";
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import { signOut } from "../../api/auth";
-import messages from "../shared/AutoDismissAlert/messages";
-import LoadingScreen from "../shared/LoadingPage";
+import React, { useState, useEffect } from "react";
 import {
-  Button,
   Segment,
   Grid,
-  Label,
   Icon,
   Image,
-  Modal,
   Header,
-  List,
-  GridRow,
   Container,
   Transition,
   Divider,
-  HeaderSubheader,
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardMeta,
   Message,
 } from "semantic-ui-react";
 
-const AboutMe = (triggerRefresh, msgAlert) => {
+const AboutMe = () => {
   const [visible, setViz] = useState(false);
   const [card1Viz, setcard1Viz] = useState(false);
   const [card2Viz, setcard2Viz] = useState(false);
@@ -42,47 +27,36 @@ const AboutMe = (triggerRefresh, msgAlert) => {
   const [card10Viz, setcard10Viz] = useState(false);
   const [card11Viz, setcard11Viz] = useState(false);
   const [card12Viz, setcard12Viz] = useState(false);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
+  // Removed unused width/height state
   const [bigMenu, setBigMenu] = React.useState(true);
 
   useEffect(() => {
-    handleToggleVisibility();
+    // show the main grid immediately
+    setViz(true);
+
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+      } else {
+        handleWindowSmall();
+      }
+    };
+
     updateDimensions();
-    componentDidMount();
-    componentWillUnmount();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
   }, []);
-
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-
-  };
-
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  };
 
   const handleWindowBig = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = true));
   };
   const handleWindowSmall = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = false));
-  };
-
-  const handleToggleVisibility = () => {
-    setViz((preViz) => (preViz = true));
   };
 
   // Functions that trigger the fade-in effect of the AboutMe detail cards, and decides which layout to use based on wheather or not the window size is greater than 1536px
@@ -238,8 +212,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
             <Grid.Row centered>
               <Container onClick={handleToggleVisibilityCard1A}>
                 <Segment inverted>
-                  <Grid columns={2} centered fluid>
-                    <Grid.Column width={7} centered>
+                  <Grid columns={2} centered>
+                    <Grid.Column width={7}>
                       <Image
                         size="huge"
                         src="https://i.imgur.com/fFEjwMs.jpg"
@@ -247,7 +221,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     </Grid.Column>
                     <Grid.Column width={9}>
                       <Message>
-                        <Message.Header padded>
+                        <Message.Header>
                           <h1>Summary of Me</h1>
                         </Message.Header>
                         <Divider />
@@ -280,7 +254,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -291,8 +265,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                       />
                     </Grid.Row>
                     <Grid.Row>
-                      <Message>
-                        <Message.Header padded>
+                      <Message style={{ paddingTop: "0.5rem" }}>
+                        <Message.Header>
                           <h1>Summary of Me</h1>
                         </Message.Header>
                         <Message.Content>
@@ -322,8 +296,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
             <Grid.Row centered>
               <Container onClick={handleToggleVisibilityCard3A}>
                 <Segment inverted>
-                  <Grid columns={2} centered fluid>
-                    <Grid.Column width={7} centered>
+                  <Grid columns={2} centered>
+                    <Grid.Column width={7}>
                       <Image
                         size="huge"
                         src="https://i.imgur.com/kPyrE4S.jpg"
@@ -331,7 +305,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     </Grid.Column>
                     <Grid.Column width={9}>
                       <Message>
-                        <Message.Header padded>
+                        <Message.Header>
                           <h1>Software Engineer</h1>
                         </Message.Header>
                         <Divider />
@@ -357,7 +331,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -368,8 +342,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                       />
                     </Grid.Row>
                     <Grid.Row>
-                      <Message>
-                        <Message.Header padded>
+                      <Message style={{ paddingTop: "0.5rem" }}>
+                        <Message.Header>
                           <h1>Software Engineer</h1>
                         </Message.Header>
                         <Message.Content>
@@ -392,8 +366,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
             <Grid.Row centered>
               <Container onClick={handleToggleVisibilityCard5A}>
                 <Segment inverted>
-                  <Grid columns={2} centered fluid>
-                    <Grid.Column width={7} centered>
+                  <Grid columns={2} centered>
+                    <Grid.Column width={7}>
                       <Image
                         size="huge"
                         src="https://i.imgur.com/yeyQ0aa.jpg"
@@ -401,7 +375,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     </Grid.Column>
                     <Grid.Column width={9}>
                       <Message>
-                        <Message.Header padded>
+                        <Message.Header>
                           <h1>Musician</h1>
                         </Message.Header>
                         <Divider />
@@ -434,7 +408,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -445,8 +419,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                       />
                     </Grid.Row>
                     <Grid.Row>
-                      <Message>
-                        <Message.Header padded>
+                      <Message style={{ paddingTop: "0.5rem" }}>
+                        <Message.Header>
                           <h1>Musician</h1>
                         </Message.Header>
                         <Message.Content>
@@ -476,8 +450,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
             <Grid.Row centered>
               <Container onClick={handleToggleVisibilityCard7A}>
                 <Segment inverted>
-                  <Grid columns={2} centered fluid>
-                    <Grid.Column width={7} centered>
+                  <Grid columns={2} centered>
+                    <Grid.Column width={7}>
                       <Image
                         size="huge"
                         src="https://i.imgur.com/CIfphyK.jpg"
@@ -485,7 +459,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     </Grid.Column>
                     <Grid.Column width={9}>
                       <Message>
-                        <Message.Header padded>
+                        <Message.Header>
                           <h1>Handy Man</h1>
                         </Message.Header>
                         <Divider />
@@ -511,7 +485,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -522,8 +496,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                       />
                     </Grid.Row>
                     <Grid.Row>
-                      <Message>
-                        <Message.Header padded>
+                      <Message style={{ paddingTop: "0.5rem" }}>
+                        <Message.Header>
                           <h1>Handy Man</h1>
                         </Message.Header>
                         <Message.Content>
@@ -546,8 +520,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
             <Grid.Row centered>
               <Container onClick={handleToggleVisibilityCard9A}>
                 <Segment inverted>
-                  <Grid columns={2} centered fluid>
-                    <Grid.Column width={7} centered>
+                  <Grid columns={2} centered>
+                    <Grid.Column width={7}>
                       <Image
                         size="huge"
                         src="https://i.imgur.com/Jum8hGP.jpg"
@@ -555,7 +529,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     </Grid.Column>
                     <Grid.Column width={9}>
                       <Message>
-                        <Message.Header padded>
+                        <Message.Header>
                           <h1>Bartender</h1>
                         </Message.Header>
                         <Divider />
@@ -580,7 +554,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -591,8 +565,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                       />
                     </Grid.Row>
                     <Grid.Row>
-                      <Message>
-                        <Message.Header padded>
+                      <Message style={{ paddingTop: "0.5rem" }}>
+                        <Message.Header>
                           <h1>Bartender</h1>
                         </Message.Header>
                         <Message.Content>
@@ -614,8 +588,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
             <Grid.Row centered>
               <Container onClick={handleToggleVisibilityCard11A}>
                 <Segment inverted>
-                  <Grid columns={2} centered fluid>
-                    <Grid.Column width={7} centered>
+                  <Grid columns={2} centered>
+                    <Grid.Column width={7}>
                       <Image
                         size="huge"
                         src="https://i.imgur.com/y62LjRD.png"
@@ -623,7 +597,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     </Grid.Column>
                     <Grid.Column width={9}>
                       <Message>
-                        <Message.Header padded>
+                        <Message.Header>
                           <h1>Gamer</h1>
                         </Message.Header>
                         <Divider />
@@ -648,7 +622,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -659,8 +633,8 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                       />
                     </Grid.Row>
                     <Grid.Row>
-                      <Message>
-                        <Message.Header padded>
+                      <Message style={{ paddingTop: "0.5rem" }}>
+                        <Message.Header>
                           <h1>Gamer</h1>
                         </Message.Header>
                         <Message.Content>
@@ -686,18 +660,32 @@ const AboutMe = (triggerRefresh, msgAlert) => {
           <Grid.Row>
             <Transition visible={visible} animation="scale" duration={1000}>
               {bigMenu ? (
-                <Header as="h2" size="huge" icon inverted>
+                <Header
+                  as="h2"
+                  size="huge"
+                  icon
+                  inverted
+                  className="landingback "
+                >
                   <Icon
                     name="user outline"
                     size="huge"
+                    className="landingback "
                   />
                   About Me
                 </Header>
               ) : (
-                <Header as="h2" size="large" icon inverted>
+                <Header
+                  as="h2"
+                  size="large"
+                  icon
+                  inverted
+                  className="landingback "
+                >
                   <Icon
                     name="user outline"
                     size="huge"
+                    className="landingback "
                   />
                   About Me
                 </Header>
@@ -717,10 +705,10 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     />
 
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="user" />
                         Summary
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -738,10 +726,10 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     <Image src="https://i.imgur.com/kPyrE4S.jpg" />
 
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="computer" />
                         Software Engineer
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -751,7 +739,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
 
           <Grid.Row>
             <Grid.Column>
-              <Grid.Row padded>
+              <Grid.Row>
                 <Divider hidden />
                 <Transition visible={visible} animation="scale" duration={1000}>
                   <Card onClick={handleToggleInvisibility5} centered>
@@ -761,10 +749,10 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                       ui={false}
                     />
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="music" />
                         Musician
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -782,10 +770,10 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     />
 
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="wrench" />
                         Handy Man
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -794,7 +782,7 @@ const AboutMe = (triggerRefresh, msgAlert) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Grid.Row padded>
+              <Grid.Row>
                 <Divider hidden />
                 <Transition visible={visible} animation="scale" duration={1000}>
                   <Card onClick={handleToggleInvisibility9} centered>
@@ -804,10 +792,10 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                       ui={false}
                     />
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="beer" />
                         Bartender
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -825,10 +813,10 @@ const AboutMe = (triggerRefresh, msgAlert) => {
                     />
 
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="game" />
                         Gamer
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>

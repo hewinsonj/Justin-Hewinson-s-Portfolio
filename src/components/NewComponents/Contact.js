@@ -1,55 +1,16 @@
-import { useNavigate, useParams } from "react-router-dom";
 import {
-  Button,
   Segment,
-  Grid,
-  Label,
   Icon,
-  Image,
-  Modal,
   Header,
   List,
-  GridRow,
   Container,
   Divider,
   ListItem,
 } from "semantic-ui-react";
-import React, { useState, useEffect } from "react";
-import { signOut } from "../../api/auth";
-import LoadingScreen from "../shared/LoadingPage";
+import React, { useEffect } from "react";
 
 const Contact = () => {
-  const [open, setOpen] = React.useState(false);
   const [bigMenu, setBigMenu] = React.useState(true);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
-
-  useEffect(() => {
-    componentDidMount();
-    componentWillUnmount();
-    updateDimensions();
-  }, []);
-
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  };
 
   const handleWindowBig = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = true));
@@ -58,32 +19,40 @@ const Contact = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = false));
   };
 
-  componentDidMount();
-  componentWillUnmount();
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+      } else {
+        handleWindowSmall();
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
+  }, []);
 
   return (
     <>
       <Divider hidden />
 
       {bigMenu ? (
-        <Container textAlign="center" padded>
-          <Header as="h2" size="huge" icon inverted>
-            <Icon
-              name="phone volume"
-              size="huge"
-              padded
-            />
+        <Container textAlign="center">
+          <Header as="h2" size="huge" icon inverted className="landingback">
+            <Icon name="phone volume" size="huge" className="landingback" />
             Contact
           </Header>
         </Container>
       ) : (
-        <Container textAlign="center" padded>
-          <Header as="h2" size="large" icon inverted>
-            <Icon
-              name="phone volume"
-              size="large"
-              padded
-            />
+        <Container textAlign="center">
+          <Header as="h2" size="large" icon inverted className="landingback">
+            <Icon name="phone volume" size="large" className="landingback" />
             Contact
           </Header>
         </Container>
@@ -94,7 +63,7 @@ const Contact = () => {
         inverted
         style={{
           border: "solid",
-          bordercolor: "light grey",
+          borderColor: "light grey",
         }}
       >
         <Segment textAlign="center">

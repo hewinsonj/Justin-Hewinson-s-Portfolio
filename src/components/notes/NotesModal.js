@@ -22,7 +22,7 @@ const NotesModal = ({ project, user, msgAlert }) => {
           });
         });
     }
-  }, [open, anUpdate]);
+  }, [open, anUpdate, msgAlert, project.id, user]);
 
   let modalContent;
   if (!notes) {

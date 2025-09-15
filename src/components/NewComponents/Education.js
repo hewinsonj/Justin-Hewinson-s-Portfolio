@@ -1,80 +1,60 @@
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import {
-  Button,
   Segment,
   Grid,
-  Label,
   Icon,
   Image,
-  Modal,
   Header,
   List,
-  GridRow,
   Container,
   ListItem,
-  ListList,
   Divider,
 } from "semantic-ui-react";
-import React, { useState, useEffect } from "react";
-import { signOut } from "../../api/auth";
-import messages from "../shared/AutoDismissAlert/messages";
-import LoadingScreen from "../shared/LoadingPage";
 
 const Education = () => {
-  const [open, setOpen] = React.useState(false);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
-  const [bigMenu, setBigMenu] = React.useState(true);
-  const [visible, setViz] = useState(false);
+  const [bigMenu, setBigMenu] = useState(true);
 
   useEffect(() => {
-    handleToggleVisibility();
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        setBigMenu(true);
+      } else {
+        setBigMenu(false);
+      }
+    };
     updateDimensions();
-    componentDidMount();
-    componentWillUnmount();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
   }, []);
-
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  };
-
-  const handleWindowBig = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = true));
-  };
-  const handleWindowSmall = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = false));
-  };
-
-  const handleToggleVisibility = () => {
-    setViz((preViz) => (preViz = true));
-  };
 
   return (
     <>
       {bigMenu ? (
-        <Header as="h2" size="huge" icon inverted textAlign="center">
-          <Icon name="graduation cap" size="huge" />
+        <Header
+          as="h2"
+          size="huge"
+          icon
+          inverted
+          textAlign="center"
+          className="landingback"
+        >
+          <Icon name="graduation cap" size="huge" className="landingback" />
           Education
         </Header>
       ) : (
-        <Header as="h2" size="large" icon inverted textAlign="center">
-          <Icon name="graduation cap" size="huge" />
+        <Header
+          as="h2"
+          size="large"
+          icon
+          inverted
+          textAlign="center"
+          className="landingback"
+        >
+          <Icon name="graduation cap" size="huge" className="landingback" />
           Education
         </Header>
       )}
@@ -83,22 +63,21 @@ const Education = () => {
         <Segment
           color="grey"
           inverted
-          padded
           style={{
             border: "solid",
-            bordercolor: "lightgrey",
+            borderColor: "lightgrey",
+            padding: "1rem",
           }}
         >
           <Grid centered stackable>
             <Divider hidden fitted></Divider>
-            <Segment padded>
+            <Segment style={{ padding: "1rem" }}>
               <Container fluid textAlign="center">
                 <Grid.Row columns={2}>
                   <Grid.Column>
                     <Image
                       src="https://i.imgur.com/eQLhUPV.jpg"
                       size="small"
-                      padded={false}
                       wrapped
                     />
                   </Grid.Column>
@@ -106,8 +85,10 @@ const Education = () => {
                     <h1
                       style={{
                         border: "outset",
-                        bordercolor: "lightgrey",
-                        margin: "0",
+                        borderColor: "lightgrey",
+                        margin: "10px auto",
+                        textAlign: "center",
+                        width: "100%",
                       }}
                     >
                       General Assembly
@@ -140,9 +121,10 @@ const Education = () => {
               <h1
                 style={{
                   border: "outset",
-                  bordercolor: "lightgrey",
-                  margin: "1px, 0, 2px,0",
-                  paddingright: "20vw",
+                  borderColor: "lightgrey",
+                  margin: "10px auto",
+                  textAlign: "center",
+                  width: "100%",
                 }}
               >
                 Gwinnett Technical College
@@ -154,12 +136,13 @@ const Education = () => {
                 <Grid padded centered textAlign="center">
                   <h2
                     style={{
-                      textalign: "center",
-                      justifycontent: "center",
+                      textAlign: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    <h1>Business Management Major</h1> 2010 - 2011 Classes
-                    included Macro-Economics and General Business Management
+                    <strong>Business Management Major</strong> — 2010 - 2011.
+                    Classes included Macro-Economics and General Business
+                    Management
                   </h2>
                 </Grid>
               </List>
@@ -173,25 +156,26 @@ const Education = () => {
           inverted
           style={{
             border: "solid",
-            bordercolor: "lightgrey",
+            borderColor: "lightgrey",
+            padding: "1rem",
           }}
         >
           <Grid centered stackable>
             <Divider hidden fitted></Divider>
-            <Segment>
+            <Segment style={{ padding: "1rem" }}>
               <Container fluid textAlign="center">
                 <Image
                   src="https://i.imgur.com/eQLhUPV.jpg"
                   size="tiny"
-                  padded={false}
                   wrapped
                 />
                 <h1
                   style={{
                     border: "outset",
-                    bordercolor: "lightgrey",
-                    margin: "0",
-                    paddingright: "20vw",
+                    borderColor: "lightgrey",
+                    margin: "10px auto",
+                    textAlign: "center",
+                    width: "100%",
                   }}
                 >
                   General Assembly
@@ -220,9 +204,10 @@ const Education = () => {
               <h1
                 style={{
                   border: "outset",
-                  bordercolor: "lightgrey",
-                  margin: "1px, 0, 2px,0",
-                  paddingright: "20vw",
+                  borderColor: "lightgrey",
+                  margin: "10px auto",
+                  textAlign: "center",
+                  width: "100%",
                 }}
               >
                 Gwinnett Technical College

@@ -1,87 +1,70 @@
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import {
-  Button,
   Segment,
   Grid,
-  Label,
   Icon,
-  Image,
-  Modal,
   Header,
   List,
-  GridRow,
-  Container,
   ListItem,
-  ListList,
   Divider,
 } from "semantic-ui-react";
-import React, { useState, useEffect } from "react";
-import { signOut } from "../../api/auth";
-import messages from "../shared/AutoDismissAlert/messages";
-import LoadingScreen from "../shared/LoadingPage";
 
 const Skills = () => {
-  const [open, setOpen] = React.useState(false);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
-  const [bigMenu, setBigMenu] = React.useState(true);
-  const [visible, setViz] = useState(false);
+  const [bigMenu, setBigMenu] = useState(true);
 
   useEffect(() => {
-    handleToggleVisibility();
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+      } else {
+        handleWindowSmall();
+      }
+    };
+
     updateDimensions();
-    componentDidMount();
-    componentWillUnmount();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
   }, []);
 
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-    } else {
-      handleWindowSmall();
-    }
-  };
-
-  const handleWindowBig = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = true));
-  };
-  const handleWindowSmall = () => {
-    setBigMenu((prevBigMenu) => (prevBigMenu = false));
-  };
-
-  const handleToggleVisibility = () => {
-    setViz((preViz) => (preViz = true));
-  };
+  const handleWindowBig = () => setBigMenu(true);
+  const handleWindowSmall = () => setBigMenu(false);
 
   return (
     <>
       {bigMenu ? (
-        <Header as="h2" size="huge" icon inverted textAlign="center">
-          <Icon name="clipboard list" size="huge" />
+        <Header
+          as="h2"
+          size="huge"
+          icon
+          inverted
+          textAlign="center"
+          className="landingback"
+        >
+          <Icon name="clipboard list" size="huge" className="landingback" />
           Programming Languages & Development Tools
         </Header>
       ) : (
-        <Header as="h2" size="large" icon inverted textAlign="center">
-          <Icon name="clipboard list" size="huge" />
+        <Header
+          as="h2"
+          size="large"
+          icon
+          inverted
+          textAlign="center"
+          className="landingback"
+        >
+          <Icon name="clipboard list" size="huge" className="landingback" />
           Programming Languages & Development Tools
         </Header>
       )}
 
       {bigMenu ? (
         <Grid columns={2}>
-          <Grid.Column padded floated="right" width={4}>
+          <Grid.Column floated="right" width={4}>
             <Grid.Row textAlign="center"></Grid.Row>
             <Segment>
               <h1 id="center">Development</h1>
@@ -105,8 +88,8 @@ const Skills = () => {
               </List>
             </Segment>
           </Grid.Column>
-          <Grid.Column padded width={4} floated="left">
-            <Grid.Row inverted></Grid.Row>
+          <Grid.Column width={4} floated="left">
+            <Grid.Row></Grid.Row>
             <Segment>
               <h1 id="center">Tools</h1>
               <List bulleted size="massive" divided>
@@ -125,13 +108,13 @@ const Skills = () => {
           inverted
           style={{
             border: "solid",
-            bordercolor: "lightgrey",
+            borderColor: "lightgrey",
           }}
         >
           <h1 id="center">Development</h1>
           <Grid columns={2} centered>
             <Grid.Column width={14}>
-              <Segment centered>
+              <Segment>
                 <Grid.Row centered>
                   <List bulleted size="huge" divided>
                     <ListItem>JavaScript</ListItem>
@@ -154,7 +137,7 @@ const Skills = () => {
                 </Grid.Row>
               </Segment>
             </Grid.Column>
-            <Grid.Column padded width={14}>
+            <Grid.Column width={14}>
               <Grid.Row>
                 <h1 id="center">Tools</h1>
               </Grid.Row>
@@ -171,9 +154,8 @@ const Skills = () => {
               </Segment>
             </Grid.Column>
           </Grid>
-          <Divider/>
+          <Divider />
         </Segment>
-        
       )}
     </>
   );

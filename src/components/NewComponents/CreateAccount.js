@@ -1,27 +1,15 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Segment,
-  Icon,
-  Divider,
-  Form,
-  Container,
-  Message,
-  Header,
-  List,
-  Image,
-  Progress,
-} from "semantic-ui-react";
+import { Grid, Segment, Form, Container } from "semantic-ui-react";
 import { signUp, signIn } from "../../api/auth";
 import messages from "../shared/AutoDismissAlert/messages";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CreateAccount = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [username, setUsername] = useState("");
-  const [createdDate, setCreatedDate] = useState("");
+  const [username] = useState("");
+  const [createdDate] = useState("");
   const navigate = useNavigate();
 
   const onSignUp = (event) => {
@@ -116,11 +104,9 @@ const CreateAccount = (props) => {
                 secondary
                 inverted
                 color="yellow"
-                class="signButton"
+                className="signButton"
                 type="submit"
-                centered
-                textAlign="center"
-                verticalAlign="middle"
+                style={{ display: "block", margin: "0.5rem auto", textAlign: "center" }}
               >
                 Submit
               </Form.Button>

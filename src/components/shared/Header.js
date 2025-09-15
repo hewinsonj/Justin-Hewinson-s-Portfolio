@@ -1,23 +1,13 @@
 import React, { Component } from "react";
-import { getUserInfo } from "../../api/user";
 import {
   Menu,
   Icon,
   Sticky,
   Modal,
-  Button,
-  Checkbox,
-  Grid,
-  Image,
-  Segment,
-  Sidebar,
   DropdownMenu,
   DropdownItem,
-  DropdownHeader,
   DropdownDivider,
-  MenuMenu,
   Dropdown,
-  MenuItem,
 } from "semantic-ui-react";
 import CreateProject from "../projects/CreateProject";
 import { Link } from "react-router-dom";
@@ -167,106 +157,51 @@ export default class Header extends Component {
                 icon={<Icon name="globe" size="big" inverted />}
                 simple
               >
-                <DropdownMenu size="medium" inverted>
-                  <DropdownItem>
-                    <Link
-                      to={`/`}
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-                      <Icon name="globe"></Icon>
-                    </Link>
+                <DropdownMenu size="medium">
+                  <DropdownItem as={Link} to="/" className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    <Icon name="globe"></Icon>
                   </DropdownItem>
                   <DropdownDivider />
-                  <DropdownItem>
-                    <Link
-                      to={`/about-me`}
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-                      About me
-                    </Link>
+                  <DropdownItem as={Link} to="/about-me" className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    About me
                   </DropdownItem>
                   <DropdownDivider />
-                  <DropdownItem>
-                    <Link
-                      to={`/projects`}
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-                      Projects
-                    </Link>
+                  <DropdownItem as={Link} to="/projects" className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    Projects
                   </DropdownItem>
                   <DropdownDivider />
-                  <DropdownItem>
-                    <Link
-                      to={`skills `}
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-                      Skills
-                    </Link>
+                  <DropdownItem as={Link} to="/skills" className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    Skills
                   </DropdownItem>
                   <DropdownDivider />
-                  <DropdownItem>
-                    <Link
-                      to={`experience`}
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-                      Experience
-                    </Link>
+                  <DropdownItem as={Link} to="/experience" className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    Experience
                   </DropdownItem>
                   <DropdownDivider />
-                  <DropdownItem>
-                    <Link
-                      to={`education`}
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-                      Education
-                    </Link>
+                  <DropdownItem as={Link} to="/education" className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    Education
                   </DropdownItem>
                   <DropdownDivider />
-                  <DropdownItem>
-                    <Link
-                      to={`contact`}
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    >
-                      Contact
-                    </Link>
+                  <DropdownItem as={Link} to="/contact" className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    Contact
                   </DropdownItem>
                   <DropdownDivider />
                   <DropdownItem>
                     <span
-                      className="text"
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                      className="text linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                     >
                       Documents
                     </span>
 
                     <DropdownMenu>
-                      <DropdownItem>
-                        <Link
-                          to={`//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view`}
-                          target="_blank"
-                          color="blue"
-                          className="linkSize link link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                        >
-                          Resume
-                        </Link>
+                      <DropdownItem as="a" href="//drive.google.com/file/d/1Wu11jcnVA7FKj9V0A8x17vlcG6i3r8Bi/view" target="_blank" color="blue" className="linkSize link link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                        Resume
                       </DropdownItem>
-                      <DropdownItem>
-                        <a
-                          href="//drive.google.com/file/d/12GACq2BBciISgyVBFPUZazc3ggfUEZeR/view?usp=sharing"
-                          className="linkSize"
-                          color="blue"
-                        >
-                          OutSystems Certification
-                        </a>
+                      <DropdownItem as="a" href="//drive.google.com/file/d/12GACq2BBciISgyVBFPUZazc3ggfUEZeR/view?usp=sharing" className="linkSize" color="blue">
+                        OutSystems Certification
                       </DropdownItem>
-                      <DropdownItem>
-                        <a
-                          href="//drive.google.com/file/d/1sR_wR8siTJVva1Bv6qcGf7dJ6GoILf_z/view?usp=sharing"
-                          className="linkSize"
-                          color="blue"
-                        >
-                          General Assembly Course Completion Certificate
-                        </a>
+                      <DropdownItem as="a" href="//drive.google.com/file/d/1sR_wR8siTJVva1Bv6qcGf7dJ6GoILf_z/view?usp=sharing" className="linkSize" color="blue">
+                        General Assembly Course Completion Certificate
                       </DropdownItem>
                     </DropdownMenu>
                   </DropdownItem>
@@ -288,25 +223,17 @@ export default class Header extends Component {
                   <DropdownDivider />
                   <DropdownItem>
                     <span
-                      className="text"
-                      className="linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                      className="text linkSize link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                     >
                       Other Sites
                     </span>
 
                     <DropdownMenu>
-                      <DropdownItem>
-                        <a href="https://github.com/hewinsonj" className="linkSize">
-                          Github
-                        </a>
+                      <DropdownItem as="a" href="https://github.com/hewinsonj" className="linkSize">
+                        Github
                       </DropdownItem>
-                      <DropdownItem>
-                        <a
-                          href="https://www.linkedin.com/in/justin-hewinson/"
-                          className="linkSize"
-                        >
-                          LinkedIn
-                        </a>
+                      <DropdownItem as="a" href="https://www.linkedin.com/in/justin-hewinson/" className="linkSize">
+                        LinkedIn
                       </DropdownItem>
                     </DropdownMenu>
                   </DropdownItem>

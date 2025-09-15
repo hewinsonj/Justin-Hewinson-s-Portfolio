@@ -5,7 +5,6 @@ import { deleteNote } from "../../api/note";
 const Note = ({ note, user, project, triggerRefresh, msgAlert }) => {
   const noteOwner = note.owner;
   const projectOwnerId = project.owner._id;
-  const userId = user._id;
   const navigate = useNavigate();
 
   const handle = noteOwner.username ? noteOwner.username : noteOwner.email;

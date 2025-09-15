@@ -36,7 +36,7 @@ const UpdateProjectModal = (props) => {
     e.preventDefault();
 
     //close form if no change was made
-    if (project == props.project) {
+    if (project === props.project) {
       setOpen(false);
     } else {
       updateProject(user, project, props.project._id)
