@@ -1,34 +1,19 @@
-import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
-import { CarouselProvider, Slide, Slider } from "pure-react-carousel";
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import { signOut } from "../../api/auth";
-import messages from "../shared/AutoDismissAlert/messages";
-import LoadingScreen from "../shared/LoadingPage";
+import React, { useState, useEffect } from "react";
 import {
-  Button,
   Segment,
   Grid,
-  Label,
   Icon,
   Image,
-  Modal,
   Header,
-  List,
-  GridRow,
   Container,
   Transition,
   Divider,
-  HeaderSubheader,
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardMeta,
   Message,
 } from "semantic-ui-react";
 
-const AboutMe = (triggerRefresh, msgAlert) => {
+const AboutMe = () => {
 const [visible, setViz] = useState(false);
 const [card1Viz, setcard1Viz] = useState(false);
 const [card2Viz, setcard2Viz] = useState(false);
@@ -42,44 +27,29 @@ const [card9Viz, setcard9Viz] = useState(false);
 const [card10Viz, setcard10Viz] = useState(false);
 const [card11Viz, setcard11Viz] = useState(false);
 const [card12Viz, setcard12Viz] = useState(false);
-const [width, setWidth] = React.useState(0);
-const [height, setHeight] = React.useState(0);
 const [bigMenu, setBigMenu] = React.useState(true);
 
   useEffect(() => {
-    handleToggleVisibility();
+    // show the main grid immediately
+    setViz(true);
+
+    const updateDimensions = () => {
+      if (window.innerWidth > 1536) {
+        handleWindowBig();
+      } else {
+        handleWindowSmall();
+      }
+    };
+
     updateDimensions();
-    componentDidMount();
-    componentWillUnmount();
-    // triggerRefresh();
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      window.removeEventListener("load", updateDimensions);
+    };
   }, []);
-
-  const componentDidMount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO1");
-  };
-
-  const componentWillUnmount = () => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("load", updateDimensions);
-
-    // console.log(window.innerWidth, "YOOOO2");
-  };
-
-  const updateDimensions = () => {
-    setWidth((prevWidth) => (prevWidth = window.innerWidth));
-    setHeight((prevHeight) => (prevHeight = window.innerHeight));
-    // console.log("right her her");
-    if (window.innerWidth > 1536) {
-      handleWindowBig();
-      //   console.log("right herBIG");
-    } else {
-      handleWindowSmall();
-      //   console.log("right herSMALL");
-    }
-  };
 
   const handleWindowBig = () => {
     setBigMenu((prevBigMenu) => (prevBigMenu = true));
@@ -90,10 +60,6 @@ const [bigMenu, setBigMenu] = React.useState(true);
     // console.log("handleSmall happened");
   };
 
-  const handleToggleVisibility = () => {
-    setViz((preViz) => (preViz = true));
-    // console.log("VIZ TOGGLE");
-  };
 
   // Functions that trigger the fade-in effect of the AboutMe detail cards, and decides which layout to use based on wheather or not the window size is greater than 1536px
 
@@ -305,7 +271,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -382,7 +348,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -459,7 +425,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -536,7 +502,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -605,7 +571,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -673,7 +639,7 @@ const [bigMenu, setBigMenu] = React.useState(true);
                   inverted
                   style={{
                     border: "solid",
-                    bordercolor: "light grey",
+                    borderColor: "light grey",
                   }}
                 >
                   <Grid centered>
@@ -745,10 +711,10 @@ const [bigMenu, setBigMenu] = React.useState(true);
                     />
 
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="user" />
                         Summary
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -766,10 +732,10 @@ const [bigMenu, setBigMenu] = React.useState(true);
                     <Image src="https://i.imgur.com/kPyrE4S.jpg" />
 
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="computer" />
                         Software Engineer
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                   {/* </Segment> */}
@@ -790,10 +756,10 @@ const [bigMenu, setBigMenu] = React.useState(true);
                       ui={false}
                     />
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="music" />
                         Musician
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -811,10 +777,10 @@ const [bigMenu, setBigMenu] = React.useState(true);
                     />
 
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="wrench" />
                         Handy Man
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -833,10 +799,10 @@ const [bigMenu, setBigMenu] = React.useState(true);
                       ui={false}
                     />
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="beer" />
                         Bartender
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
@@ -854,10 +820,10 @@ const [bigMenu, setBigMenu] = React.useState(true);
                     />
 
                     <CardContent extra>
-                      <a>
+                      <span>
                         <Icon name="game" />
                         Gamer
-                      </a>
+                      </span>
                     </CardContent>
                   </Card>
                 </Transition>
