@@ -76,9 +76,15 @@ const MyProjects = ({
 
   componentDidMount();
   componentWillUnmount();
+const priorityOrder = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-  const myProjectsJSX = allProjects ? (
-    filterProjects.map((project) => (
+const myProjectsJSX = allProjects ? (
+  filterProjects
+    .slice() // shallow copy so we don’t mutate props
+    .sort((p1, p2) => {
+      return priorityOrder.indexOf(p1.priority) - priorityOrder.indexOf(p2.priority);
+    })
+    .map((project) => (
       <ProjectSegment
         key={project.id}
         project={project}
@@ -87,10 +93,9 @@ const MyProjects = ({
         addProject={(type) => addProject(type)}
       />
     ))
-  ) : (
-    <LoadingScreen />
-  );
-
+) : (
+  <LoadingScreen />
+);
   const myProjectsMiniJSX = allProjects ? (
     filterProjects.map((project) => (
       <Link
