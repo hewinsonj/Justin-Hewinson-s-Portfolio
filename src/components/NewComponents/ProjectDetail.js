@@ -51,9 +51,9 @@ const ProjectDetail = ({ user }) => {
   console.log(project.name, "this is the projecto!!____");
   return (
     <>
-      <Header as="h2" size="big" icon inverted textAlign="center">
+      <Header as="h2" size="big" icon inverted textAlign="center" className="landingback">
         <Link to={`/projects`} className="whiteWords">
-          <Icon name="database" size="big" />
+          <Icon name="database" size="big" className="landingback"/>
           Projects
         </Link>
       </Header>

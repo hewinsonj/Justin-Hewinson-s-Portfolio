@@ -36,8 +36,8 @@ const LandingPage = () => {
       src="https://i.imgur.com/0NFkSem.jpg"
       id="profilePic"
       style={{
-        width: "clamp(120px, 22vw, 280px)",
-        height: "clamp(120px, 22vw, 280px)",
+        width: "clamp(220px, 35vw, 500px)",
+        height: "clamp(220px, 35vw, 500px)",
         objectFit: "cover",
         border: "3px solid lightgrey",
         marginTop: "1.5rem",
@@ -52,8 +52,8 @@ const LandingPage = () => {
       src="https://i.imgur.com/0NFkSem.jpg"
       id="profilePic"
       style={{
-        width: "clamp(120px, 30vw, 220px)",
-        height: "clamp(120px, 30vw, 220px)",
+        width: "clamp(200px, 45vw, 400px)",
+        height: "clamp(200px, 45vw, 400px)",
         objectFit: "cover",
         border: "3px solid lightgrey",
         boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
@@ -83,7 +83,7 @@ const LandingPage = () => {
               style={{
                 fontSize: "clamp(24px, 6vw, 64px)",
                 margin: 0,
-                lineHeight: 1.1,
+                lineHeight: 1.05,
               }}
             >
               Welcome to
@@ -95,9 +95,9 @@ const LandingPage = () => {
             <h1
               id="flexText"
               style={{
-                fontSize: "clamp(36px, 8vw, 96px)",
+                fontSize: "clamp(48px, 9vw, 120px)",
                 margin: "0.25em 0",
-                lineHeight: 1.05,
+                lineHeight: 1.0,
               }}
             >
               Justin Hewinson
@@ -112,10 +112,11 @@ const LandingPage = () => {
           <div>
             <p
               id="flexText"
+              className="landingback raleway"
               style={{
                 fontSize: "clamp(24px, 6vw, 64px)",
                 margin: 0,
-                lineHeight: 1.1,
+                lineHeight: 1.05,
               }}
             >
               portfolio
