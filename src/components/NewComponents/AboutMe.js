@@ -665,12 +665,12 @@ const AboutMe = () => {
                   size="huge"
                   icon
                   inverted
-                  className="landingback "
+                  className="landingback"
                 >
                   <Icon
                     name="user outline"
                     size="huge"
-                    className="landingback "
+                    className="landingback"
                   />
                   About Me
                 </Header>
@@ -680,12 +680,12 @@ const AboutMe = () => {
                   size="large"
                   icon
                   inverted
-                  className="landingback "
+                  className="landingback"
                 >
                   <Icon
                     name="user outline"
                     size="huge"
-                    className="landingback "
+                    className="landingback"
                   />
                   About Me
                 </Header>

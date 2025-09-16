@@ -36,8 +36,8 @@ const LandingPage = () => {
       src="https://i.imgur.com/0NFkSem.jpg"
       id="profilePic"
       style={{
-        width: "clamp(220px, 35vw, 500px)",
-        height: "clamp(220px, 35vw, 500px)",
+        width: "clamp(200px, 35vw, 300px)",
+        height: "clamp(220px, 35vw, 300px)",
         objectFit: "cover",
         border: "3px solid lightgrey",
         marginTop: "1.5rem",
@@ -95,7 +95,7 @@ const LandingPage = () => {
             <h1
               id="flexText"
               style={{
-                fontSize: "clamp(48px, 9vw, 120px)",
+                fontSize: "clamp(48px, 9vw, 100px)",
                 margin: "0.25em 0",
                 lineHeight: 1.0,
               }}
