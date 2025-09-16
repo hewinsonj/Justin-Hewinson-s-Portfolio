@@ -77,7 +77,7 @@ const LandingPage = () => {
         }}
       >
         <Grid.Row>
-          <div className="landingback raleway">
+          <div className="landingback raleway hero-blur-fix">
             <p
               id="flexText"
               style={{
@@ -91,7 +91,7 @@ const LandingPage = () => {
           </div>
         </Grid.Row>
         <Grid.Row>
-          <div className="landingback raleway">
+          <div className="landingback raleway hero-blur-fix">
             <h1
               id="flexText"
               style={{
@@ -109,7 +109,7 @@ const LandingPage = () => {
           </div>
         </Grid.Row>
         <Grid.Row>
-          <div>
+          <div className="landingback raleway hero-blur-fix">
             <p
               id="flexText"
               className="landingback raleway"
@@ -126,6 +126,7 @@ const LandingPage = () => {
         <Grid.Row centered>
           <Container fluid>
             <div
+              className="hero-blur-fix"
               style={{
                 filter: "drop-shadow(6px 6px 30px black)",
                 display: "flex",

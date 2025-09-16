@@ -297,3 +297,50 @@ code {
 .whiteWords {
   color: white;
 }
+
+/* --------------------
+   iOS Safari blur seam fixes
+   Usage: add class `hero-blur-fix` to the element you are blurring (or its wrapper)
+   If you use backdrop-filter, prefer `backdrop-fade` on that element.
+   -------------------- */
+.hero-blur-fix {
+  position: relative;
+  isolation: isolate; /* keep pseudo behind content */
+}
+
+.hero-blur-fix::before {
+  content: "";
+  position: absolute;
+  inset: -32px;                    /* extend beyond element so blur isn't clipped */
+  background: inherit;             /* or same bg as the element */
+  filter: blur(24px);
+  transform: translateZ(0);        /* helps iOS compositing */
+  z-index: -1;
+  /* feather edges so no hard line appears on iPhone */
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent, #000 24px, #000 calc(100% - 24px), transparent);
+          mask-image: linear-gradient(to bottom,
+    transparent, #000 24px, #000 calc(100% - 24px), transparent);
+}
+
+/* For BACKDROP blurs (blurring what is behind the element) */
+.backdrop-fade {
+  background: rgba(0,0,0,0.04);    /* tiny alpha required for iOS to apply backdrop */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  /* feather the edges to hide the seam */
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent, #000 20px, #000 calc(100% - 20px), transparent);
+          mask-image: linear-gradient(to bottom,
+    transparent, #000 20px, #000 calc(100% - 20px), transparent);
+  border: 1px solid transparent;   /* subpixel rounding band‑aid on iOS */
+  background-clip: padding-box;
+}
+
+/* Avoid parent clipping that causes iOS seams */
+/* Ensure common wrappers don't clip the blur on mobile */
+@supports (-webkit-touch-callout: none) {
+  .no-overflow-on-ios {
+    overflow: visible !important;  /* only on iOS Safari */
+  }
+}
